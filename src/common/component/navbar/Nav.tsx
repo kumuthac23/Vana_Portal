@@ -22,21 +22,19 @@ import CartDrawer from '../../../drawer/CartDrawer';
 const Navbar: React.FC = () => {
   const isMobileView = useMediaQuery("(max-width:1000px)");
 
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [navDrawerOpen, setNavDrawerOpen] = useState(false);
   const [searchDrawerOpen, setSearchDrawerOpen] = useState(false);
-  const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
+  const [myBagDrawerOpen, setMyBagDrawerOpen] = useState(false);
 
-  const handleDrawerOpen = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setDrawerOpen(true);
+  const handleDrawerOpen = () => {
+    setNavDrawerOpen(true);
   };
 
   const handleDrawerClose = () => {
-    setDrawerOpen(false);
+    setNavDrawerOpen(false);
   };
 
-  const handleSearchDrawerOpen = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handleSearchDrawerOpen = () => {
     setSearchDrawerOpen(true);
   };
 
@@ -45,13 +43,12 @@ const Navbar: React.FC = () => {
   };
 
 
-  const handleCartDrawerOpen = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCartDrawerOpen(true);
+  const handleMyBagDrawerOpen = () => {
+    setMyBagDrawerOpen(true);
   };
 
-  const handleCartDrawerClose = () => {
-    setCartDrawerOpen(false);
+  const handleMyBagDrawerClose = () => {
+    setMyBagDrawerOpen(false);
   };
 
   return (
@@ -64,10 +61,10 @@ const Navbar: React.FC = () => {
     isMobileView ? (
         <Grid item xs={12}  >
            <Box display={"flex"}>
-        <IconButton color="inherit" onClick={(e) => handleDrawerOpen(e)}>
+        <IconButton color="inherit" onClick={handleDrawerOpen}>
           <MenuIcon />
         </IconButton>
-        <IconButton color="inherit"  onClick={(e) =>handleSearchDrawerOpen(e)}>
+        <IconButton color="inherit"  onClick={handleSearchDrawerOpen}>
           <SearchIcon />
         </IconButton>
         </Box> 
@@ -78,7 +75,7 @@ const Navbar: React.FC = () => {
   variant="outlined"
   size='small'
   fullWidth
-  onClick={(e) => handleSearchDrawerOpen(e)}
+  onClick={handleSearchDrawerOpen}
   placeholder="Search..."
   sx={{
     '& .MuiOutlinedInput-root': {
@@ -110,7 +107,7 @@ const Navbar: React.FC = () => {
             <IconButton color="inherit">
                 <AccountCircleIcon />
               </IconButton>
-              <IconButton color="inherit" onClick={(e)=>handleCartDrawerOpen(e)}>
+              <IconButton color="inherit" onClick={handleMyBagDrawerOpen}>
                 <Badge badgeContent={0} color="secondary">
                   <ShoppingBasketIcon />
                 </Badge>
@@ -121,9 +118,9 @@ const Navbar: React.FC = () => {
     </Toolbar>
     </AppBar>
     <Divider sx={{ width: '80%', margin: 'auto' }} />
-    <NavbarDrawer open={drawerOpen} onClose={handleDrawerClose}/>
+    <NavbarDrawer open={navDrawerOpen} onClose={handleDrawerClose}/>
     <SearchDrawer open={searchDrawerOpen} onClose={handleSearchDrawerClose}/>
-    <CartDrawer open={cartDrawerOpen}  onClose={handleCartDrawerClose}/>
+    <CartDrawer open={myBagDrawerOpen}  onClose={handleMyBagDrawerClose}/>
     </>
   )
 }

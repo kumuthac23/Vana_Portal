@@ -1,4 +1,4 @@
-import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from '@mui/material';
 import theme from './theme/theme'; 
 import Layout from "./common/component/layout/Layout";
@@ -13,7 +13,7 @@ import { paths } from "./routes/path";
 function App() {
   return (
     <ThemeProvider theme={theme}>
-    <Router>
+    <BrowserRouter>
         <Routes>
           <Route path={paths.ROOT} element={<Layout />}>
             <Route index element={< Home/>} />
@@ -24,7 +24,7 @@ function App() {
             <Route path={paths.FAQABOUT} element={<FAQ/>} />
           </Route>
         </Routes>
-      </Router>
+      </BrowserRouter>
     </ThemeProvider>
   )
 }

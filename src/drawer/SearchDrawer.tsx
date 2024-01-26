@@ -1,10 +1,9 @@
-import React from "react";
 import { Box, Drawer, IconButton, TextField } from "@mui/material";
 import { SearchDrawerProps } from "../interface/type";
 import SearchIcon from '@mui/icons-material/Search';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
-const SearchDrawer: React.FC<SearchDrawerProps> = ({ open, onClose }) => {
+const SearchDrawer = ({ open, onClose }:SearchDrawerProps) => {
   return (
     <Drawer anchor="left" open={open} onClose={onClose}>
           <Box sx={{ width: "300px", display: 'flex' ,alignItems: 'center', p: 2 ,justifyContent:"space-between"}}>

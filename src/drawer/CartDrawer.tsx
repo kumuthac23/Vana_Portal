@@ -1,12 +1,10 @@
 // CartDrawer.tsx
-
-import React from 'react';
 import { Drawer, Grid, IconButton, Typography, Button } from '@mui/material';
 import { Close } from '@mui/icons-material';
 import { CartDrawerProps } from '../interface/type';
 import useStyles from '../styles/cartDrawer'; 
 
-const CartDrawer: React.FC<CartDrawerProps> = ({ open, onClose }) => {
+const CartDrawer = ({ open, onClose }:CartDrawerProps) => {
   const classes = useStyles();
 
   return (

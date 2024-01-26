@@ -1,12 +1,11 @@
-import React from 'react';
 import { Box, Drawer, IconButton, List, ListItemButton, ListItemText, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { NavbarDrawerProps } from '../interface/type';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { paths } from '../routes/path';
+import { NavbarDrawerProps } from '../interface/type';
 
 
-const NavbarDrawer: React.FC<NavbarDrawerProps> = ({ open, onClose }) => {
+const NavbarDrawer = ({ open, onClose }:NavbarDrawerProps) => {
   const drawerItems = [
     { text: 'Home', link: paths.ROOT },
     { text: 'Ear Rings', link: paths.EARRINGS },
