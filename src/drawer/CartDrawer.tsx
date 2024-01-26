@@ -1,10 +1,14 @@
 // CartDrawer.tsx
 import { Drawer, Grid, IconButton, Typography, Button } from '@mui/material';
 import { Close } from '@mui/icons-material';
-import { CartDrawerProps } from '../interface/type';
 import useStyles from '../styles/cartDrawer'; 
 
-const CartDrawer = ({ open, onClose }:CartDrawerProps) => {
+ interface CartDrawerProps {
+  open: boolean;
+  onClose: () => void;
+}
+
+const MyBagDrawer = ({ open, onClose }:CartDrawerProps) => {
   const classes = useStyles();
 
   return (
@@ -30,4 +34,4 @@ const CartDrawer = ({ open, onClose }:CartDrawerProps) => {
   );
 };
 
-export default CartDrawer;
+export default MyBagDrawer;

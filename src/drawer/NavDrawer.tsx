@@ -2,7 +2,11 @@ import { Box, Drawer, IconButton, List, ListItemButton, ListItemText, Typography
 import { Link } from 'react-router-dom';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { paths } from '../routes/path';
-import { NavbarDrawerProps } from '../interface/type';
+
+ interface NavbarDrawerProps {
+  open: boolean;
+  onClose: () => void;
+}
 
 
 const NavbarDrawer = ({ open, onClose }:NavbarDrawerProps) => {

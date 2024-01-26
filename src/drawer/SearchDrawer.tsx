@@ -1,7 +1,11 @@
 import { Box, Drawer, IconButton, TextField } from "@mui/material";
-import { SearchDrawerProps } from "../interface/type";
 import SearchIcon from '@mui/icons-material/Search';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+
+   interface SearchDrawerProps {
+  open: boolean;
+  onClose: () => void;
+}
 
 const SearchDrawer = ({ open, onClose }:SearchDrawerProps) => {
   return (
