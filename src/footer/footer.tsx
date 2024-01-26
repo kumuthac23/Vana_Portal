@@ -5,6 +5,7 @@ import {
   Button,
   Divider,
   IconButton,
+  useMediaQuery,
 } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
@@ -14,6 +15,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 
 function Footer() {
+  const matches = useMediaQuery("(sm)");
   return (
     <Box sx={{ backgroundColor: "#f5f0ec" }}>
       <Box>
@@ -34,7 +36,7 @@ function Footer() {
               justifyContent: "center",
             }}
           >
-            <Grid item lg={3} md={3} xs={12}>
+            <Grid item lg={3} md={4} xs={12} sm={5}>
               <Box sx={{ my: 1, textAlign: "center" }}>
                 <LocationOnIcon fontSize="large" />
                 <Typography variant="h5"> Store Address</Typography>
@@ -48,10 +50,10 @@ function Footer() {
             <Divider
               orientation="vertical"
               flexItem
-              sx={{ background: "white" }}
+              sx={{ background: "white", borderWidth: "1px" }}
             />
 
-            <Grid item lg={3} md={3} xs={12}>
+            <Grid item lg={3} md={4} xs={12} sm={5}>
               <Box sx={{ my: 1, textAlign: "center" }}>
                 <ChatBubbleIcon fontSize="large" />
                 <Typography variant="h5">General Enquiries</Typography>
@@ -61,6 +63,7 @@ function Footer() {
                     gap: 2,
                     display: "flex",
                     alignItems: "center",
+                    flexDirection: matches ? "column" : "row",
                     justifyContent: "center",
                   }}
                 >
@@ -101,7 +104,11 @@ function Footer() {
             <Divider
               orientation="vertical"
               flexItem
-              sx={{ background: "white" }}
+              sx={{
+                background: "white",
+                display: { xs: "none", md: "block" },
+                borderWidth: "1px",
+              }}
             />
 
             <Grid item lg={2.9} md={2.9} xs={12}>
