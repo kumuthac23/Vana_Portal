@@ -13,6 +13,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import PhoneIcon from "@mui/icons-material/Phone";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
+import theme from "../theme/theme";
 
 function Footer() {
   const matches = useMediaQuery("(sm)");
@@ -37,8 +38,16 @@ function Footer() {
             }}
           >
             <Grid item lg={3} md={4} xs={12} sm={5}>
-              <Box sx={{ my: 1, textAlign: "center" }}>
-                <LocationOnIcon fontSize="large" />
+              <Box
+                sx={{
+                  my: 1,
+                  textAlign: "center",
+                }}
+              >
+                <LocationOnIcon
+                  fontSize="large"
+                  sx={{ color: theme.palette.secondary.main }}
+                />
                 <Typography variant="h5"> Store Address</Typography>
                 <Typography>
                   2700 E Eldorado Pkwy, #203,
@@ -55,7 +64,10 @@ function Footer() {
 
             <Grid item lg={3} md={4} xs={12} sm={5}>
               <Box sx={{ my: 1, textAlign: "center" }}>
-                <ChatBubbleIcon fontSize="large" />
+                <ChatBubbleIcon
+                  fontSize="large"
+                  sx={{ color: theme.palette.secondary.main }}
+                />
                 <Typography variant="h5">General Enquiries</Typography>
                 <Typography my={1}>vana@gmail.com</Typography>
                 <Box
@@ -113,7 +125,10 @@ function Footer() {
 
             <Grid item lg={2.9} md={2.9} xs={12}>
               <Box sx={{ my: 1, textAlign: "center" }}>
-                <PhoneIcon fontSize="large" />
+                <PhoneIcon
+                  fontSize="large"
+                  sx={{ color: theme.palette.secondary.main }}
+                />
                 <Typography variant="h5">Call us</Typography>
                 <Typography>9876543210</Typography>
                 <Box mt={1}>
