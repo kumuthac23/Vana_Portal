@@ -1,6 +1,6 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from '@mui/material';
-import theme from './theme/theme'; 
+import theme from './theme/theme';
 import Layout from "./common/component/layout/Layout";
 import Home from "./pages/home/Home";
 import Bracelates from "./pages/bracelets/Bracelates";
@@ -13,7 +13,7 @@ import { paths } from "./routes/path";
 function App() {
   return (
     <ThemeProvider theme={theme}>
-    <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route path={paths.ROOT} element={<Layout />}>
             <Route index element={< Home/>} />
