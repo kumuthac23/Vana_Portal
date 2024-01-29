@@ -1,9 +1,16 @@
 
+import React from "react";
+import { jewelryCollections } from "../../seed-data/seed-data"; 
+import CollectionPage from "../../common/component/reusablecard/ReusableCard";
 
-function Bracelates() {
-  return (
-    <div>Bracelates</div>
-  )
-}
+const BraceletsPage: React.FC = () => {
+  const braceletsCollection = jewelryCollections.find(
+    (collection) => collection._id === "jc3"
+  );
 
-export default Bracelates
+  if (!braceletsCollection) return null;
+
+  return <CollectionPage collection={braceletsCollection} />;
+};
+
+export default BraceletsPage;
