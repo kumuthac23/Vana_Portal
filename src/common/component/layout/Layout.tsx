@@ -1,9 +1,13 @@
 
 import { Box, Divider, useMediaQuery } from "@mui/material";
 import { Outlet } from "react-router";
-import Footer from "../footer/Footer";
+
 import Nav from "../navbar/Nav";
 import SecondaryNavbar from "../navbar/SecNavbar";
+import Footer from "../../../footer/Footer";
+
+
+
 const Layout = () => {
 
   const isSmallScreen = useMediaQuery("(min-width:1000px)");
