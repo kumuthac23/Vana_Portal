@@ -1,5 +1,5 @@
 // theme.ts
-import { createTheme } from '@mui/material/styles';
+import createTheme from "@mui/material/styles/createTheme";
 
 const theme = createTheme({
   palette: {

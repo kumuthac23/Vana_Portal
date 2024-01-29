@@ -22,7 +22,7 @@ const CollectionPage: React.FC<Props> = ({ collection }) => {
   };
 
   return (
-    <Container sx={{marginTop:"10px"}}>
+    <Container sx={{marginY:"15px"}}>
       <Typography variant="h4" align="center" gutterBottom>
         {collection.name}
       </Typography>
@@ -30,8 +30,11 @@ const CollectionPage: React.FC<Props> = ({ collection }) => {
       <Grid container spacing={3}>
         {collection.products.map((product) => (
           <Grid item key={product._id} xs={12} sm={6} md={4} lg={3}>
-            <Card sx={{height: 400,width: 280,margin: "0 auto"}} onMouseEnter={() => handleMouseEnter(product._id)}
-              onMouseLeave={handleMouseLeave}>
+            <Card sx={{height: 400,width: 280,margin: "0 auto","&:hover": {
+                  transform: "scale(1.05)",
+                  transition: "transform 0.3s ease",
+                },}} onMouseEnter={() => handleMouseEnter(product._id)}
+                onMouseLeave={handleMouseLeave}>
               <CardActionArea component={Link} to={`/product/${product._id}`}>
                 <CardMedia
                   component="img"
