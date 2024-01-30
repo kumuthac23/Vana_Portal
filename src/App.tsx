@@ -9,6 +9,9 @@ import Necklaces from "./pages/necklaces/Necklaces";
 import BestSelller from "./pages/bestseller/BestSelller";
 import FAQ from "./pages/faqabout/FAQ";
 import { paths } from "./routes/path";
+import ProductDetailPage from "./common/ProductDetail";
+import { productDetail } from "./seed-data/seed-data";
+
 
 function App() {
   return (
@@ -16,17 +19,18 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path={paths.ROOT} element={<Layout />}>
-            <Route index element={< Home/>} />
+            <Route index element={<Home />} />
             <Route path={paths.EARRINGS} element={<EarRings />} />
             <Route path={paths.BRACELETS} element={<Bracelates />} />
             <Route path={paths.NECKLACES} element={<Necklaces />} />
             <Route path={paths.BESTSELLER} element={<BestSelller />} />
-            <Route path={paths.FAQABOUT} element={<FAQ/>} />
+            <Route path={paths.FAQABOUT} element={<FAQ />} />
           </Route>
         </Routes>
+          <ProductDetailPage productDetails={productDetail} />
       </BrowserRouter>
     </ThemeProvider>
-  )
+  );
 }
 
 export default App

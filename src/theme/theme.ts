@@ -1,29 +1,58 @@
 // theme.ts
-import { createTheme } from '@mui/material/styles';
+import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#ffffff', 
+      main: "#ffffff",
     },
     secondary: {
-      main: '#f50057',
+      main: "#f50057",
+    },
+  },
+  components: {
+    MuiTypography: {
+      styleOverrides: {
+        h1: {
+          color: "#333",
+          fontSize: "2rem",
+          fontWeight: "500",
+        },
+        h2: {
+          color: "#555",
+          fontSize: "1.5rem",
+          fontWeight: "400",
+        },
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        outlined: {
+          color: "black",
+        },
+        contained: {
+          color: "black",
+        },
+      },
+    },
+    MuiBadge: {
+      styleOverrides: {
+        badge: {
+          width: "30px",
+          height: "30px",
+          color: "white",
+        },
+      },
     },
   },
   typography: {
-    fontFamily: 'Roboto, sans-serif',
-    h1: {
-      fontSize: '2rem',
+    button: {
+      textTransform: "none",
       fontWeight: 500,
-      color: '#333',
-    },
-    h2: {
-      fontSize: '1.5rem',
-      fontWeight: 400,
-      color: '#555',
+      textDecoration: "none",
+      color: "black",
     },
   },
-  spacing: 8,
 });
 
 export default theme;
