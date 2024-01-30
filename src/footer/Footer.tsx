@@ -16,7 +16,10 @@ import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import theme from "../theme/theme";
 
 function Footer() {
-  const matches = useMediaQuery("(sm)");
+ 
+  const mobilescreen = useMediaQuery("(max-width:700px)");
+
+
   return (
     <Box sx={{ backgroundColor: "#f5f0ec" }}>
       <Box>
@@ -75,7 +78,7 @@ function Footer() {
                     gap: 2,
                     display: "flex",
                     alignItems: "center",
-                    flexDirection: matches ? "column" : "row",
+                    flexDirection: mobilescreen ? "column" : "row",
                     justifyContent: "center",
                   }}
                 >
@@ -84,28 +87,17 @@ function Footer() {
                     style={{ textDecoration: "none", color: "white" }}
                   >
                     <Button
-                      startIcon={<EmailIcon />}
+                      startIcon={<EmailIcon sx={{ color: "#0489c9" }} />}
                       variant="contained"
-                      fullWidth
-                      sx={{
-                        lineHeight: 0,
-                        backgroundColor: "#4b7dc4",
-                      }}
+                      
                     >
                       e-mail
                     </Button>
                   </a>
 
                   <Button
-                    startIcon={<WhatsAppIcon />}
+                    startIcon={<WhatsAppIcon sx={{ color: "#25D366" }} />}
                     variant="contained"
-                    sx={{
-                      lineHeight: 0,
-                      backgroundColor: "#4caf50",
-                      "&:hover": {
-                        backgroundColor: "#4caf50",
-                      },
-                    }}
                   >
                     Whatsapp
                   </Button>
