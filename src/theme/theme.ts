@@ -10,6 +10,18 @@ const theme = createTheme({
       main: "#0f0e0f",
     },
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        outlined: {
+          color: "black",
+        },
+        contained: {
+          color: "white",
+        },
+      },
+    }
+  },
   typography: {
     fontFamily: "Roboto, sans-serif",
     h1: {

@@ -50,7 +50,7 @@ function ProductDetail(props: IProps) {
   return (
     <Container>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={5} >
+        <Grid item xs={12} md={5}>
           <Box pb={2}>
             <img
               src={mainImage || productDetails[0]?.posterURL || ""}
@@ -71,7 +71,6 @@ function ProductDetail(props: IProps) {
             item
             xs={12}
             md={4}
-           
             sx={{ display: "flex", flexDirection: "row", gap: 2, px: 3 }}
           >
             {imagesWithPoster.map((item, index) => (
@@ -124,11 +123,13 @@ function ProductDetail(props: IProps) {
                   size="small"
                   aria-label="small outlined button group"
                 >
-                  <Button size="small" onClick={decrementQuantity}>
+                  <Button onClick={decrementQuantity}>
                     -
                   </Button>
-                  <Button sx={{ margin: "0 10px" }}>{quantity}</Button>
-                  <Button size="small" onClick={incrementQuantity}>
+                  <Button  >
+                    {quantity}
+                  </Button>
+                  <Button onClick={incrementQuantity}>
                     +
                   </Button>
                 </ButtonGroup>
