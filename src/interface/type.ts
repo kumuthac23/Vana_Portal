@@ -1,8 +1,5 @@
-export interface IProductDetail {
-  product: IProduct;
-}
 
-export interface IProduct {
+export interface IProductDetails {
   _id: string;
   title: string;
   price: number;

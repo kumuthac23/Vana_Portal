@@ -1,6 +1,6 @@
-import { IProduct } from "../interface/type";
+import {  IProductDetails } from "../interface/type";
 
-export const productDetails: IProduct[] = [
+export const productDetails: IProductDetails[] = [
   {
     _id: "1",
     title: "Example Product",

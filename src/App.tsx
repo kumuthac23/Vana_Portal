@@ -28,7 +28,7 @@ function App() {
             <Route path={paths.FAQABOUT} element={<FAQ />} />
         <Route
           path={paths.PRODUCTDETAIL}
-          element={<ProductDetail productDetails={productDetails} />} // Replace `productDetails` with the actual data
+          element={<ProductDetail productDetails={productDetails} />} 
         />
           </Route>
         </Routes>

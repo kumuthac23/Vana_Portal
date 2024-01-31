@@ -7,10 +7,10 @@ import {
   Grid,
   Container,
 } from "@mui/material";
-import { IProduct } from "../interface/type";
+import { IProductDetails } from "../interface/type";
 
 interface IProps {
-  productDetails: IProduct[];
+  productDetails: IProductDetails[];
 }
 
 function ProductDetail(props: IProps) {
