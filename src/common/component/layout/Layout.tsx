@@ -2,8 +2,8 @@
 import { Box, Divider, useMediaQuery } from "@mui/material";
 import { Outlet } from "react-router";
 
-import Nav from "../navbar/Nav";
-import SecondaryNavbar from "../navbar/SecNavbar";
+import Nav from "../navbar/NavBar";
+import SecondaryNavbar from "../navbar/SecondaryNavbar";
 import Footer from "../../../footer/Footer";
 
 

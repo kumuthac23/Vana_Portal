@@ -12,12 +12,12 @@ const navItems = [
 
 const SecondaryNavbar = () => {
   return (
-    <AppBar position="static" sx={{ boxShadow: 0 }}>
+    <AppBar position="static" sx={{ boxShadow: 0 ,bgcolor:"#bd8d67"}}>
       <Toolbar>
         <Grid container display={"flex"}  gap={8} justifyContent="center">
           {navItems.map((item) => (
             <Grid item key={item.text} xs="auto">
-              <Link href={item.link} sx={{textDecoration:"none"}} color="inherit">
+              <Link href={item.link} sx={{textDecoration:"none",}} color="#ffffff">
                 {item.text}
               </Link>
             </Grid>

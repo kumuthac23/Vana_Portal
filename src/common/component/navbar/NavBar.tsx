@@ -3,7 +3,6 @@ import {
   AppBar,
   Toolbar,
   IconButton,
-  Typography,
   Grid,
   Badge,
   useMediaQuery,
@@ -97,10 +96,7 @@ const Navbar: React.FC = () => {
   </Grid>)
 }
     </Grid>
-    <Grid item xs={4} md={4}  justifyContent="center">
-              <Typography variant="h6" textAlign={"center"} >
-                VANA
-              </Typography>
+    <Grid item xs={4} md={4}  justifyContent="center" alignItems={"center"}>
             </Grid>
             <Grid item xs={4} md={4} >
                 <Box display={"flex"} justifyContent='flex-end' alignItems="flex-end">
