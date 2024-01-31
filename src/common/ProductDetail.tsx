@@ -7,7 +7,6 @@ import {
   Grid,
   Container,
 } from "@mui/material";
-
 import { IProduct } from "../interface/type";
 
 interface IProps {
@@ -49,9 +48,9 @@ function ProductDetail(props: IProps) {
 
   return (
     <Container>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} sx={{ marginTop: 4 }}>
         <Grid item xs={12} md={5}>
-          <Box pb={2}>
+          <Box sx={{ pb: 2 }}>
             <img
               src={mainImage || productDetails[0]?.posterURL || ""}
               alt="product image"
@@ -61,8 +60,8 @@ function ProductDetail(props: IProps) {
                 borderRadius: "5px",
                 objectFit: "contain",
                 height: "auto",
-
                 maxWidth: "100%",
+                objectPosition: "center",
               }}
             />
           </Box>
@@ -70,8 +69,8 @@ function ProductDetail(props: IProps) {
           <Grid
             item
             xs={12}
-            md={4}
-            sx={{ display: "flex", flexDirection: "row", gap: 2, px: 3 }}
+            md={2}
+            sx={{ display: "flex", flexDirection: "row", gap: 2 }}
           >
             {imagesWithPoster.map((item, index) => (
               <Box key={index} onClick={() => handleImageClick(item.image)}>
@@ -97,7 +96,6 @@ function ProductDetail(props: IProps) {
                 display: "flex",
                 flexDirection: "column",
                 height: "100%",
-                py: 3,
               }}
             >
               <Typography variant="h1">{product.title}</Typography>
@@ -123,15 +121,9 @@ function ProductDetail(props: IProps) {
                   size="small"
                   aria-label="small outlined button group"
                 >
-                  <Button onClick={decrementQuantity}>
-                    -
-                  </Button>
-                  <Button  >
-                    {quantity}
-                  </Button>
-                  <Button onClick={incrementQuantity}>
-                    +
-                  </Button>
+                  <Button onClick={decrementQuantity}>-</Button>
+                  <Button>{quantity}</Button>
+                  <Button onClick={incrementQuantity}>+</Button>
                 </ButtonGroup>
               </Box>
               <Box sx={{ mt: 2 }}>
@@ -151,4 +143,3 @@ function ProductDetail(props: IProps) {
 }
 
 export default ProductDetail;
-
