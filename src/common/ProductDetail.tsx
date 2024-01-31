@@ -123,13 +123,13 @@ function ProductDetail(props: IProps) {
                   size="small"
                   aria-label="small outlined button group"
                 >
-                  <Button onClick={decrementQuantity}>
+                  <Button variant="outlined" onClick={decrementQuantity}>
                     -
                   </Button>
                   <Button  >
                     {quantity}
                   </Button>
-                  <Button onClick={incrementQuantity}>
+                  <Button  variant="outlined"onClick={incrementQuantity}>
                     +
                   </Button>
                 </ButtonGroup>

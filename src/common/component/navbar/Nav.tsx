@@ -18,6 +18,8 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import NavbarDrawer from '../../../drawer/NavDrawer';
 import SearchDrawer from '../../../drawer/SearchDrawer';
 import CartDrawer from '../../../drawer/CartDrawer';
+import { paths } from '../../../routes/path';
+import { useNavigate } from 'react-router';
 
 const Navbar: React.FC = () => {
   const isMobileView = useMediaQuery("(max-width:1000px)");
@@ -25,7 +27,7 @@ const Navbar: React.FC = () => {
   const [navDrawerOpen, setNavDrawerOpen] = useState(false);
   const [searchDrawerOpen, setSearchDrawerOpen] = useState(false);
   const [myBagDrawerOpen, setMyBagDrawerOpen] = useState(false);
-
+ const navigate = useNavigate();
   const handleDrawerOpen = () => {
     setNavDrawerOpen(true);
   };
@@ -51,6 +53,10 @@ const Navbar: React.FC = () => {
     setMyBagDrawerOpen(false);
   };
 
+   const moveToLogin = () => {
+     navigate(`/${paths.LOGIN}`, { state: { fromNavbar: true } });
+  };
+  
   return (
     <>
     <AppBar position="static" sx={{ boxShadow: 0 }}>
@@ -105,7 +111,7 @@ const Navbar: React.FC = () => {
             <Grid item xs={4} md={4} >
                 <Box display={"flex"} justifyContent='flex-end' alignItems="flex-end">
             <IconButton color="inherit">
-                <AccountCircleIcon />
+                <AccountCircleIcon  onClick={moveToLogin} />
               </IconButton>
               <IconButton color="inherit" onClick={handleMyBagDrawerOpen}>
                 <Badge badgeContent={0} color="secondary">

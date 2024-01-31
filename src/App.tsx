@@ -1,6 +1,6 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import { ThemeProvider } from '@mui/material';
-import theme from './theme/theme';
+import { ThemeProvider } from "@mui/material";
+import theme from "./theme/theme";
 import Layout from "./common/component/layout/Layout";
 import Home from "./pages/home/Home";
 import Bracelates from "./pages/bracelets/Bracelates";
@@ -11,7 +11,8 @@ import FAQ from "./pages/faqabout/FAQ";
 import { paths } from "./routes/path";
 import ProductDetailPage from "./common/ProductDetail";
 import { productDetail } from "./seed-data/seed-data";
-
+import Login from "./common/Login";
+import Signup from "./common/Signup";
 
 function App() {
   return (
@@ -25,12 +26,20 @@ function App() {
             <Route path={paths.NECKLACES} element={<Necklaces />} />
             <Route path={paths.BESTSELLER} element={<BestSelller />} />
             <Route path={paths.FAQABOUT} element={<FAQ />} />
+            <Route
+              path={paths.LOGIN}
+              element={<Login requiredHeading={true} />}
+            />
+            <Route
+              path={paths.SIGNUP}
+              element={<Signup requiredHeading={true} />}
+            />
           </Route>
         </Routes>
-          <ProductDetailPage productDetails={productDetail} />
+        <ProductDetailPage productDetails={productDetail} />
       </BrowserRouter>
     </ThemeProvider>
   );
 }
 
-export default App
+export default App;

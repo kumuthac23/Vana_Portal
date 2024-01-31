@@ -11,3 +11,16 @@ export interface IProduct {
   posterURL: string;
   description: string;
 }
+export interface ILogin {
+  phoneNumber: string;
+  password: string;
+}
+
+export interface ISignUp {
+  phoneNumber: string | undefined;
+  password: string;
+  name: string;
+  email?: string;
+  confirmPassword: string;
+  role?: string;
+}
