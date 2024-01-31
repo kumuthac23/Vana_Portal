@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Typography,
-  Button,
-  ButtonGroup,
-  Grid,
-  Container,
-} from "@mui/material";
+import { Box } from "@mui/material";
+import { Typography } from "@mui/material";
+import { Button } from "@mui/material";
+import { ButtonGroup } from "@mui/material";
+import { Grid } from "@mui/material";
+import { Container } from "@mui/material";
 import { IProductDetails } from "../interface/type";
 
 interface IProps {
@@ -61,7 +59,6 @@ function ProductDetail(props: IProps) {
                 objectFit: "contain",
                 height: "auto",
                 maxWidth: "100%",
-                objectPosition: "center",
               }}
             />
           </Box>
