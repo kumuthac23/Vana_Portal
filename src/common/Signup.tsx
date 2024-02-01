@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { paths } from "../routes/path";
-import { ISignUp } from "../interface/type";
+
 
 interface SignProps {
   onSign?(): void;
@@ -47,7 +47,7 @@ const schema = yup.object().shape({
   name: yup.string().required("Please enter Name"),
 });
 
-function Signup({ onSign, requiredHeading, onRegisterLinkClick }: SignProps) {
+function Signup({  requiredHeading, onRegisterLinkClick }: SignProps) {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -60,7 +60,6 @@ function Signup({ onSign, requiredHeading, onRegisterLinkClick }: SignProps) {
     register,
     handleSubmit,
     formState: { errors },
-    control,
   } = useForm<ISignUpFormFields>({
     resolver: yupResolver(schema) as any,
     mode: "all",
@@ -72,38 +71,14 @@ function Signup({ onSign, requiredHeading, onRegisterLinkClick }: SignProps) {
 
   const moveToLogin = () => {
     if (!isNavbarLogin && !isOrderLogin && !isSignupLogin) {
-      navigate(`/${paths.CHECKOUT}`);
+    
     } else {
       navigate(`/${paths.LOGIN}`, { state: { fromSignup: true } });
     }
   };
 
   const handleSign = async (data: ISignUpFormFields) => {
-    if (data) {
-      var signUpFormData = {
-        ...data,
-        role: "customer",
-      } as ISignUp;
-      await signUp(signUpFormData)
-        .then((response) => {
-          if (response.data) {
-            updateUserData({
-              ...response.data,
-            });
-            if (!isNavbarLogin && !isOrderLogin && !isSignupLogin) {
-              if (onSign) onSign();
-            } else {
-              navigate(paths.ROOT);
-            }
-          }
-        })
-        .catch((error) => {
-          if (error.response && error.response.data) {
-            console.log(error.response.data);
-            updateSnackBarState(true, error.response.data.message, "error");
-          }
-        });
-    }
+    
   };
 
   return (
