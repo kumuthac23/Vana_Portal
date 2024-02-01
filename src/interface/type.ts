@@ -16,3 +16,9 @@ export interface IProductDetails {
   posterURL: string;
   description: string;
 }
+export interface Collection {
+  _id: string;
+  name: string;
+  description:string;
+  products: Product[];
+}
