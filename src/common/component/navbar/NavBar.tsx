@@ -52,9 +52,9 @@ const Navbar = () => {
 
   return (
     <>
-      <AppBar position="static" sx={{ boxShadow: 0 }}>
+      <AppBar position="static" sx={{ boxShadow: 0,height:"90px" }}>
         <Toolbar>
-          <Grid container alignItems="center">
+          <Grid container display={"flex"} alignItems="center" justifyContent={"center"} padding={2}>
             <Grid item xs={4} md={4}>
               {isMobileView ? (
                 <Grid item xs={12}>
@@ -62,16 +62,15 @@ const Navbar = () => {
                     <IconButton
                       color="inherit"
                       onClick={handleDrawerOpen}
-                      sx={{ color: "#C70039" }}
                     >
-                      <MenuIcon />
+                      <MenuIcon sx={{ color: "#bd8d67" }} />
                     </IconButton>
                     <IconButton
                       color="inherit"
                       onClick={handleSearchDrawerOpen}
-                      sx={{ color: "#C70039" }}
+                     
                     >
-                      <SearchIcon />
+                      <SearchIcon  sx={{ color: "#bd8d67" }}/>
                     </IconButton>
                   </Box>
                 </Grid>
@@ -85,8 +84,8 @@ const Navbar = () => {
                       onClick={handleSearchDrawerOpen}
                       placeholder="Search..."
                       sx={{
-                        color: "#C70039",
                         "& .MuiOutlinedInput-root": {
+                          color: "#bd8d67",
                           "& fieldset": {
                             border: "none",
                           },
@@ -96,7 +95,7 @@ const Navbar = () => {
                         },
                       }}
                       InputProps={{
-                        startAdornment: <SearchIcon />,
+                        startAdornment: <SearchIcon sx={{color: "#bd8d67"}}/>,
                         notched: false,
                       }}
                     />
@@ -117,8 +116,8 @@ const Navbar = () => {
                 src={vanaLogo}
                 sx={{
                   backgroundColor: "#F6F6F6",
-                  height: "60px",
-                  width: "60px",
+                  height: "80px",
+                  width: "80px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -131,16 +130,16 @@ const Navbar = () => {
                 justifyContent="flex-end"
                 alignItems="flex-end"
               >
-                <IconButton color="inherit" sx={{ color: "#C70039" }}>
-                  <AccountCircleIcon />
+                <IconButton color="inherit" >
+                  <AccountCircleIcon sx={{ color: "#bd8d67" }}/>
                 </IconButton>
                 <IconButton
                   color="inherit"
                   onClick={handleMyBagDrawerOpen}
-                  sx={{ color: "#C70039" }}
+                 
                 >
                   <Badge badgeContent={0} color="secondary">
-                    <ShoppingBasketIcon />
+                    <ShoppingBasketIcon  sx={{ color: "#bd8d67" }}/>
                   </Badge>
                 </IconButton>
               </Box>
