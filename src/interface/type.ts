@@ -1,5 +1,6 @@
 export interface Product {
   _id: string;
+  posterUrl:string;
   images: string[]; 
   title: string;
   description: string;
@@ -9,5 +10,6 @@ export interface Product {
 export interface Collection {
   _id: string;
   name: string;
+  description:string;
   products: Product[];
 }
