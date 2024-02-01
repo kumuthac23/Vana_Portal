@@ -2,7 +2,7 @@
 
 import React from "react";
 import { jewelryCollections } from "../../seed-data/seed-data"; 
-import CollectionPage from "../../common/component/reusablecard/ReusableCard";
+import CollectionPage from "../../common/component/reusablepages/ReusablePage";
 
 const NecklacesPage: React.FC = () => {
   const necklaceCollection = jewelryCollections.find(

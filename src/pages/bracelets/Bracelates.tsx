@@ -1,7 +1,7 @@
 
 import React from "react";
 import { jewelryCollections } from "../../seed-data/seed-data"; 
-import CollectionPage from "../../common/component/reusablecard/ReusableCard";
+import CollectionPage from "../../common/component/reusablepages/ReusablePage";
 
 const BraceletsPage: React.FC = () => {
   const braceletsCollection = jewelryCollections.find(
