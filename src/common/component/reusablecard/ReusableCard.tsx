@@ -73,7 +73,7 @@ const ReusableCard = (props: Props) => {
       </Box>
       <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "16px" }}>
         <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <Typography variant="body2" color="textSecondary">
+          <Typography variant="body1" color="textSecondary">
             Products:({collection.products.length})
           </Typography>
         </Box>
