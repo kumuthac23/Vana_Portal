@@ -1,10 +1,8 @@
-import { Typography } from "@mui/material";
-
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
-import { Button } from "@mui/material";
-import { Box } from "@mui/material";
-import { Container } from "@mui/material";
 
 function AboutByVana() {
   const matches = useMediaQuery("(max-width:600px)");

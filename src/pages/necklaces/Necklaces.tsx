@@ -1,9 +1,14 @@
+import CommonPage from "../../common/component/commonpages/CommonPage";
+import { jewelryCollections } from "../../seed-data/seed-data"; 
 
+const NecklacesPage= () => {
+  const necklaceCollection = jewelryCollections.find(
+    (collection) => collection.name === "Necklaces"
+  );
 
-function Necklaces() {
-  return (
-    <div>Necklaces</div>
-  )
-}
+  if (!necklaceCollection) return null;
 
-export default Necklaces
+  return <CommonPage collection={necklaceCollection} />;
+};
+
+export default NecklacesPage;

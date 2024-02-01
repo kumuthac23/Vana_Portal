@@ -1,9 +1,14 @@
+import { jewelryCollections } from "../../seed-data/seed-data";
+import CommonPage from "../../common/component/commonpages/CommonPage";
 
+const BraceletsPage = () => {
+  const braceletsCollection = jewelryCollections.find(
+    (collection) => collection.name === "Bracelets"
+  );
 
-function Bracelates() {
-  return (
-    <div>Bracelates</div>
-  )
-}
+  if (!braceletsCollection) return null;
 
-export default Bracelates
+  return <CommonPage collection={braceletsCollection} />;
+};
+
+export default BraceletsPage;

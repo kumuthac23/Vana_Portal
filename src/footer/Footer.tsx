@@ -86,7 +86,7 @@ function Footer() {
                       startIcon={<EmailIcon sx={{ color: "#0489c9" }} />}
                       variant="contained"
                     >
-                      e-mail
+                      E-mail
                     </Button>
                   </a>
 
@@ -201,7 +201,7 @@ function Footer() {
               Shipping & Returns
             </Typography>
             <Typography variant="body2" mx={2}>
-             Terms and condition
+              Terms and condition
             </Typography>
           </Grid>
         </Grid>

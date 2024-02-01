@@ -1,7 +1,13 @@
-import { Box, Drawer, IconButton, List, ListItemButton, ListItemText, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { paths } from '../routes/path';
+import Drawer from '@mui/material/Drawer';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import List from '@mui/material/List';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemButton from '@mui/material/ListItemButton';
+import IconButton from '@mui/material/IconButton';
 
  interface NavbarDrawerProps {
   open: boolean;
