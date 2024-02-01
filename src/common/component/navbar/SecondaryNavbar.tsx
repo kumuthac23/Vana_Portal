@@ -1,13 +1,17 @@
-import { AppBar, Toolbar, Link, Grid } from '@mui/material';
+import  AppBar  from '@mui/material/AppBar';
+import Toolbar from "@mui/material/Toolbar";
+import Grid from "@mui/material/Grid";
+import Link from "@mui/material/Link";
+
 import { paths } from '../../../routes/path';
 
 const navItems = [
     { text: 'Home', link: paths.ROOT },
-    { text: 'Ear Rings', link: paths.EARRINGS },
+    { text: 'Earrings', link: paths.EARRINGS },
     { text: 'Necklaces', link:paths.NECKLACES },
     { text: 'Bracelets', link: paths.BRACELETS },
     { text: 'Best Seller', link: paths.BESTSELLER },
-    { text: 'FAQ/Aboutus', link: paths.FAQABOUT },
+    { text: 'Aboutus', link: paths.FAQABOUT },
 ];
 
 const SecondaryNavbar = () => {

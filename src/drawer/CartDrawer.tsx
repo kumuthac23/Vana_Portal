@@ -1,7 +1,12 @@
-// CartDrawer.tsx
-import { Drawer, Grid, IconButton, Typography, Button } from '@mui/material';
-import { Close } from '@mui/icons-material';
+
+
+import Drawer from '@mui/material/Drawer';
 import useStyles from '../styles/cartDrawer'; 
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import Button from '@mui/material/Button';
 
  interface CartDrawerProps {
   open: boolean;
@@ -17,7 +22,7 @@ const MyBagDrawer = ({ open, onClose }:CartDrawerProps) => {
         <Grid container item className={classes.drawerHeader}>
           <Typography variant="h6">My Bag</Typography>
           <IconButton onClick={onClose}>
-            <Close />
+            < CloseIcon/>
           </IconButton>
         </Grid>
 
