@@ -1,5 +1,5 @@
+import CommonPage from "../../common/component/commonpages/CommonPage";
 import { jewelryCollections } from "../../seed-data/seed-data"; 
-import ReusablePages from "../../common/component/commonpages/CommonPage";
 
 
 const EarRingsPage = () => {
@@ -9,7 +9,7 @@ const EarRingsPage = () => {
 
   if (!earRingsCollection) return null;
 
-  return <ReusablePages collection={earRingsCollection} />;
+  return <CommonPage collection={earRingsCollection} />;
 };
 
 export default EarRingsPage;

@@ -1,5 +1,5 @@
+import CommonPage from "../../common/component/commonpages/CommonPage";
 import { jewelryCollections } from "../../seed-data/seed-data"; 
-import ReusablePages from "../../common/component/commonpages/CommonPage";
 
 const NecklacesPage= () => {
   const necklaceCollection = jewelryCollections.find(
@@ -8,7 +8,7 @@ const NecklacesPage= () => {
 
   if (!necklaceCollection) return null;
 
-  return <ReusablePages collection={necklaceCollection} />;
+  return <CommonPage collection={necklaceCollection} />;
 };
 
 export default NecklacesPage;
