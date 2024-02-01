@@ -1,16 +1,14 @@
-
-import React from "react";
 import { jewelryCollections } from "../../seed-data/seed-data"; 
-import CollectionPage from "../../common/component/reusablepages/ReusablePage";
+import CommonPages from "../../common/component/commonpages/CommonPage";
 
-const BraceletsPage: React.FC = () => {
+const BraceletsPage = () => {
   const braceletsCollection = jewelryCollections.find(
-    (collection) => collection._id === "jc3"
+    (collection) => collection.name === "Bracelets"
   );
 
   if (!braceletsCollection) return null;
 
-  return <CollectionPage collection={braceletsCollection} />;
+  return <CommonPages collection={braceletsCollection} />;
 };
 
 export default BraceletsPage;

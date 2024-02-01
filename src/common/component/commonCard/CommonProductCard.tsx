@@ -1,4 +1,3 @@
-import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -14,12 +13,8 @@ interface Props {
   hoveredProductImage: string | null;
 }
 
-const ReusableProductCard: React.FC<Props> = ({
-  product,
-  onMouseEnter,
-  onMouseLeave,
-  hoveredProductImage,
-}) => {
+const CommonProductCard = (props: Props) => {
+  const { product, onMouseEnter, onMouseLeave, hoveredProductImage } = props;
   return (
     <Card
       sx={{
@@ -92,4 +87,4 @@ const ReusableProductCard: React.FC<Props> = ({
   );
 };
 
-export default ReusableProductCard;
+export default CommonProductCard;

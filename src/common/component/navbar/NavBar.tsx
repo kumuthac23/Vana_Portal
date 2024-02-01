@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -15,10 +15,11 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import NavbarDrawer from "../../../drawer/NavBarDrawer";
 import SearchDrawer from "../../../drawer/SearchDrawer";
-import CartDrawer from "../../../drawer/CartDrawer";
-import vanaLogo from "../../../../public/assets/Images to Shruthi/logo/JEWELLERY BY VAVA LOGO (2).png";
 
-const Navbar: React.FC = () => {
+import vanaLogo from "../../../../public/assets/Images to Shruthi/logo/JEWELLERY BY VAVA LOGO (2).png";
+import MyBagDrawer from "../../../drawer/MyBagDrawer";
+
+const Navbar = () => {
   const isMobileView = useMediaQuery("(max-width:1000px)");
 
   const [navDrawerOpen, setNavDrawerOpen] = useState(false);
@@ -150,7 +151,7 @@ const Navbar: React.FC = () => {
       <Divider sx={{ width: "80%", margin: "auto" }} />
       <NavbarDrawer open={navDrawerOpen} onClose={handleDrawerClose} />
       <SearchDrawer open={searchDrawerOpen} onClose={handleSearchDrawerClose} />
-      <CartDrawer open={myBagDrawerOpen} onClose={handleMyBagDrawerClose} />
+      <MyBagDrawer open={myBagDrawerOpen} onClose={handleMyBagDrawerClose} />
     </>
   );
 };

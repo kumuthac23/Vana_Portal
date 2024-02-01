@@ -1,16 +1,15 @@
-
-import React from "react";
 import { jewelryCollections } from "../../seed-data/seed-data"; 
-import CollectionPage from "../../common/component/reusablepages/ReusablePage";
+import ReusablePages from "../../common/component/commonpages/CommonPage";
 
-const EarRingsPage: React.FC = () => {
+
+const EarRingsPage = () => {
   const earRingsCollection = jewelryCollections.find(
-    (collection) => collection._id === "jc2"
+    (collection) => collection.name === "Earrings"
   );
 
   if (!earRingsCollection) return null;
 
-  return <CollectionPage collection={earRingsCollection} />;
+  return <ReusablePages collection={earRingsCollection} />;
 };
 
 export default EarRingsPage;

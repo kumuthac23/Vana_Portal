@@ -12,13 +12,13 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from "@mui/material/MenuItem";
-import ReusableProductCard from "../commonCard/CommonCard";
+import CommonProductCard from "../commonCard/CommonProductCard";
 
 interface Props {
   collection: Collection;
 }
 
-const ReusableCard = (props: Props) => {
+const CommonPages = (props: Props) => {
   const { collection } = props;
 
   const [hoveredProductImage, setHoveredProductImage] = useState<string | null>(null);
@@ -92,7 +92,7 @@ const ReusableCard = (props: Props) => {
       <Grid container spacing={3}>
         {collection.products.map((product) => (
           <Grid item key={product._id} xs={12} sm={6} md={4} lg={3}>
-            <ReusableProductCard
+            <CommonProductCard
              product={product}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
@@ -104,4 +104,4 @@ const ReusableCard = (props: Props) => {
   );
 };
 
-export default ReusableCard;
+export default CommonPages;
