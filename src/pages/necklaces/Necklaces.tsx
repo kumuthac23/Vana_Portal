@@ -1,17 +1,14 @@
-// NecklacesPage.tsx
-
-import React from "react";
+import CommonPage from "../../common/component/commonpages/CommonPage";
 import { jewelryCollections } from "../../seed-data/seed-data"; 
-import CollectionPage from "../../common/component/reusablecard/ReusableCard";
 
-const NecklacesPage: React.FC = () => {
+const NecklacesPage= () => {
   const necklaceCollection = jewelryCollections.find(
-    (collection) => collection._id === "jc1"
+    (collection) => collection.name === "Necklaces"
   );
 
   if (!necklaceCollection) return null;
 
-  return <CollectionPage collection={necklaceCollection} />;
+  return <CommonPage collection={necklaceCollection} />;
 };
 
 export default NecklacesPage;

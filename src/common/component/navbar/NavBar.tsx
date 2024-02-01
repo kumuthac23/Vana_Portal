@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -13,12 +13,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
-import NavbarDrawer from "../../../drawer/NavDrawer";
+import NavbarDrawer from "../../../drawer/NavBarDrawer";
 import SearchDrawer from "../../../drawer/SearchDrawer";
-import CartDrawer from "../../../drawer/CartDrawer";
-import vanaLogo from "../../../../public/assets/Images to Shruthi/logo/JEWELLERY BY VAVA LOGO (2).png";
 
-const Navbar: React.FC = () => {
+import vanaLogo from "../../../../public/assets/Images to Shruthi/logo/JEWELLERY BY VAVA LOGO (2).png";
+import MyBagDrawer from "../../../drawer/MyBagDrawer";
+
+const Navbar = () => {
   const isMobileView = useMediaQuery("(max-width:1000px)");
 
   const [navDrawerOpen, setNavDrawerOpen] = useState(false);
@@ -58,12 +59,17 @@ const Navbar: React.FC = () => {
               {isMobileView ? (
                 <Grid item xs={12}>
                   <Box display={"flex"}>
-                    <IconButton color="inherit" onClick={handleDrawerOpen}>
+                    <IconButton
+                      color="inherit"
+                      onClick={handleDrawerOpen}
+                      sx={{ color: "#C70039" }}
+                    >
                       <MenuIcon />
                     </IconButton>
                     <IconButton
                       color="inherit"
                       onClick={handleSearchDrawerOpen}
+                      sx={{ color: "#C70039" }}
                     >
                       <SearchIcon />
                     </IconButton>
@@ -79,6 +85,7 @@ const Navbar: React.FC = () => {
                       onClick={handleSearchDrawerOpen}
                       placeholder="Search..."
                       sx={{
+                        color: "#C70039",
                         "& .MuiOutlinedInput-root": {
                           "& fieldset": {
                             border: "none",
@@ -110,11 +117,11 @@ const Navbar: React.FC = () => {
                 src={vanaLogo}
                 sx={{
                   backgroundColor: "#F6F6F6",
-                  height: "50px",
-                  width: "50px",
-                  display:"flex",
-                  alignItems:"center",
-                  justifyContent:"center"
+                  height: "60px",
+                  width: "60px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               />
             </Grid>
@@ -124,10 +131,14 @@ const Navbar: React.FC = () => {
                 justifyContent="flex-end"
                 alignItems="flex-end"
               >
-                <IconButton color="inherit">
+                <IconButton color="inherit" sx={{ color: "#C70039" }}>
                   <AccountCircleIcon />
                 </IconButton>
-                <IconButton color="inherit" onClick={handleMyBagDrawerOpen}>
+                <IconButton
+                  color="inherit"
+                  onClick={handleMyBagDrawerOpen}
+                  sx={{ color: "#C70039" }}
+                >
                   <Badge badgeContent={0} color="secondary">
                     <ShoppingBasketIcon />
                   </Badge>
@@ -140,7 +151,7 @@ const Navbar: React.FC = () => {
       <Divider sx={{ width: "80%", margin: "auto" }} />
       <NavbarDrawer open={navDrawerOpen} onClose={handleDrawerClose} />
       <SearchDrawer open={searchDrawerOpen} onClose={handleSearchDrawerClose} />
-      <CartDrawer open={myBagDrawerOpen} onClose={handleMyBagDrawerClose} />
+      <MyBagDrawer open={myBagDrawerOpen} onClose={handleMyBagDrawerClose} />
     </>
   );
 };
