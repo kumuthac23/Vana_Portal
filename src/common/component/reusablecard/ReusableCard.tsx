@@ -14,7 +14,6 @@ import Box from "@mui/material/Box";
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from "@mui/material/MenuItem";
 
@@ -22,20 +21,21 @@ interface Props {
   collection: Collection;
 }
 
-const CollectionPage = (props: Props) => {
+const ReusableCard = (props: Props) => {
   const { collection } = props;
-  const [hoveredProductId, setHoveredProductId] = useState<string | null>(null);
-  const [expanded, setExpanded] = useState(false);
-  const [sortOption, setSortOption] = useState<string>('');
+
+  const [hoveredProductImage, setHoveredProductImage] = useState<string | null>(null);
+  const [expandDescription, setExpandDescription] = useState(false);
+  const [sortProductOption, setSortProductOption] = useState<string>('');
 
   const navigate = useNavigate();
 
   const handleMouseEnter = (productId: string) => {
-    setHoveredProductId(productId);
+    setHoveredProductImage(productId);
   };
 
   const handleMouseLeave = () => {
-    setHoveredProductId(null);
+    setHoveredProductImage(null);
   };
 
   const handleCardClick = (productId: string) => {
@@ -44,11 +44,11 @@ const CollectionPage = (props: Props) => {
 
   
   const handleExpandClick = () => {
-    setExpanded(!expanded);
+    setExpandDescription(!expandDescription);
   };
 
   const handleChange = (event: SelectChangeEvent) => {
-    setSortOption(event.target.value as string);
+    setSortProductOption(event.target.value as string);
   };
 
   return (
@@ -60,14 +60,14 @@ const CollectionPage = (props: Props) => {
   </Typography>
   <IconButton
     onClick={handleExpandClick}
-    aria-expanded={expanded}
+    aria-expanded={expandDescription}
     size="medium"
     sx={{ padding: 0, width: "30px", height: "30px", "&:hover": { backgroundColor: "transparent" } }}
   >
     <ExpandMoreIcon />
   </IconButton>
 </Box>
-      <Collapse in={expanded} timeout="auto" unmountOnExit sx={{marginBottom: "16px"}}>
+      <Collapse in={expandDescription} timeout="auto" unmountOnExit sx={{marginBottom: "16px"}}>
         <Typography>{collection.description}</Typography>
       </Collapse>
       </Box>
@@ -77,24 +77,23 @@ const CollectionPage = (props: Props) => {
             Products:({collection.products.length})
           </Typography>
         </Box>
-        <Box sx={{ display: "flex", alignItems: "center",width:"120px",height:"40px"}}>
-          <FormControl fullWidth >
-            <InputLabel id="sort-by-label">Sort by</InputLabel>
+        <Box sx={{ display: "flex", alignItems: "center",width:"200px",height:"40px"}}>
+        <FormControl fullWidth>
             <Select
-            value={sortOption}
-            onChange={handleChange}
-            inputProps={{ 'aria-label': 'Sort by' }}
-            sx={{
-              color: 'inherit',
-              borderBottom: 'none',
-              boxShadow: 'none',
-              '& .MuiSelect-icon': { color: 'inherit' },
-            }}
-          >
-              <MenuItem value="priceLowToHigh">Price: Low to High</MenuItem>
-              <MenuItem value="priceHighToLow">Price: High to Low</MenuItem>
-              <MenuItem value="nameAscending">Name: A-Z</MenuItem>
-              <MenuItem value="nameDescending">Name: Z-A</MenuItem>
+              value={sortProductOption}
+              onChange={handleChange}
+              displayEmpty
+              renderValue={(value) => value || 'Sort by'}
+              style={{
+                border: 'none',
+                backgroundColor: 'transparent',
+                color: 'inherit'
+              }}
+            >
+              <MenuItem value="Price: Low to High">Price: Low to High</MenuItem>
+              <MenuItem value="Price: High to Low">Price: High to Low</MenuItem>
+              <MenuItem value="Name: A-Z">Name: A-Z</MenuItem>
+              <MenuItem value="Name: Z-A">Name: Z-A</MenuItem>
             </Select>
           </FormControl>
         </Box>
@@ -119,13 +118,13 @@ const CollectionPage = (props: Props) => {
                 height="250px"
                 width="auto"
                 image={
-                  hoveredProductId === product._id
+                  hoveredProductImage === product._id
                     ? product.images[0]
                     : product.posterUrl
                 }
                 alt={product.title}
                 sx={{
-                  objectFit: "contain",
+                  objectFit: "cover",
                   "&:hover": {
                     transform: "scale(1.05)",
                     transition: "transform 0.3s ease",
@@ -176,4 +175,4 @@ const CollectionPage = (props: Props) => {
   );
 };
 
-export default CollectionPage;
+export default ReusableCard;
