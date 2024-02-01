@@ -4,7 +4,8 @@ function HomePageBanner() {
   return (
     <Box
       sx={{
-        backgroundImage: "url('/public/images/homepagebanner.jpg')",
+        backgroundImage:
+          "url('/public/images/Homepagebannerimage.JPG')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
