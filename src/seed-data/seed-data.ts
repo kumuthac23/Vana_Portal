@@ -11,8 +11,6 @@ export const jewelryCollections: Collection[] = [
         posterUrl:"/assets/Images to Shruthi/Necklaces/FX1185/950-2.jpg",
         images: [
           "/assets/Images to Shruthi/Necklaces/FX1185/950-.jpg",
-          "/assets/Images to Shruthi/Necklaces/FX1185/950-3.jpg",
-          "/assets/Images to Shruthi/Necklaces/FX1185/950-4.jpg"
         ],
         title: "Classic Pearl Necklace",
         description:
@@ -24,9 +22,6 @@ export const jewelryCollections: Collection[] = [
         posterUrl:"/assets/Images to Shruthi/Necklaces/FX1189/950-5.jpg",
         images: [
           "/assets/Images to Shruthi/Necklaces/FX1189/950-1.jpg",
-          "/assets/Images to Shruthi/Necklaces/FX1189/950-2.jpg",
-          "/assets/Images to Shruthi/Necklaces/FX1189/950-3.jpg",
-          "/assets/Images to Shruthi/Necklaces/FX1189/950-4.jpg"
            ],
         title: "Diamond Pendant Necklace",
         description:
@@ -38,10 +33,6 @@ export const jewelryCollections: Collection[] = [
         posterUrl:"/assets/Images to Shruthi/Necklaces/FX1190/950-3.jpg",
         images: [
           "/assets/Images to Shruthi/Necklaces/FX1190/950-.jpg",
-          "/assets/Images to Shruthi/Necklaces/FX1190/950-1.jpg",
-          "/assets/Images to Shruthi/Necklaces/FX1190/950-2.jpg",
-          "/assets/Images to Shruthi/Necklaces/FX1190/950-4.jpg",
-          "/assets/Images to Shruthi/Necklaces/FX1190/950-5.jpg"
         ],
         title: "Gold Chain Necklace",
         description:
@@ -53,12 +44,55 @@ export const jewelryCollections: Collection[] = [
         posterUrl:"/assets/Images to Shruthi/Necklaces/FX1248/1 (1).jpg",
         images: [
           "/assets/Images to Shruthi/Necklaces/FX1248/1 (3).jpg",
-          "/assets/Images to Shruthi/Necklaces/FX1248/1 (2).jpg"
           ],
         title: "Heart Locket Necklace",
         description:
           "Keep your loved ones close to your heart with this beautiful heart locket necklace.",
         price: 129.99,
+      },
+      {
+        _id: "p5",
+        posterUrl:"/assets/Images to Shruthi/Necklaces/FX1185/950-2.jpg",
+        images: [
+          "/assets/Images to Shruthi/Necklaces/FX1185/950-.jpg",
+        ],
+        title: "Pearl Necklace",
+        description:
+          "Timeless elegance meets modern style with this classic pearl necklace.",
+        price: 100.99,
+      },
+      {
+        _id: "p6",
+        posterUrl:"/assets/Images to Shruthi/Necklaces/FX1189/950-5.jpg",
+        images: [
+          "/assets/Images to Shruthi/Necklaces/FX1189/950-1.jpg",
+           ],
+        title: "Pendant Necklace",
+        description:
+          "Elevate any look with the brilliance of this stunning diamond pendant necklace.",
+        price: 177.99,
+      },
+      {
+        _id: "p7",
+        posterUrl:"/assets/Images to Shruthi/Necklaces/FX1190/950-3.jpg",
+        images: [
+          "/assets/Images to Shruthi/Necklaces/FX1190/950-.jpg",
+        ],
+        title: "Chain Necklace",
+        description:
+          "A versatile and elegant addition to any jewelry collection, perfect for layering or wearing solo.",
+        price: 179.99,
+      },
+      {
+        _id: "p8",
+        posterUrl:"/assets/Images to Shruthi/Necklaces/FX1248/1 (1).jpg",
+        images: [
+          "/assets/Images to Shruthi/Necklaces/FX1248/1 (3).jpg",
+          ],
+        title: "Locket Necklace",
+        description:
+          "Keep your loved ones close to your heart with this beautiful heart locket necklace.",
+        price: 199.99,
       },
     ],
   },
@@ -81,10 +115,7 @@ export const jewelryCollections: Collection[] = [
         _id: "p12",
         posterUrl:"/assets/Images to Shruthi/Earrings/FE2077/950-21.jpg",
         images: [
-          "/assets/Images to Shruthi/Earrings/FE2077/950-93.jpg",
-          "/assets/Images to Shruthi/Earrings/FE2077/950-22.jpg",
-          "/assets/Images to Shruthi/Earrings/FE2077/950-56.jpg",
-          "/assets/Images to Shruthi/Earrings/FE2077/FE2077.jpg"
+          "/assets/Images to Shruthi/Earrings/FE2077/950-93.jpg"
         ],
         title: "Gold Hoop Earrings",
         description:
@@ -95,11 +126,7 @@ export const jewelryCollections: Collection[] = [
         _id: "p13",
         posterUrl:"/assets/Images to Shruthi/Earrings/FE2078/950-2.jpg",
         images: [
-          "/assets/Images to Shruthi/Earrings/FE2078/950-104.jpg",
-          "/assets/Images to Shruthi/Earrings/FE2078/950-3.jpg",
-          "/assets/Images to Shruthi/Earrings/FE2078/950-4.jpg",
-          "/assets/Images to Shruthi/Earrings/FE2078/950-54.jpg",
-          "/assets/Images to Shruthi/Earrings/FE2078/FE2078.jpg",
+          "/assets/Images to Shruthi/Earrings/FE2078/950-104.jpg"
           ],
         title: "Crystal Drop Earrings",
         description:
@@ -111,14 +138,53 @@ export const jewelryCollections: Collection[] = [
         posterUrl:"/assets/Images to Shruthi/Earrings/FE2085/FE2085.jpg",
         images: [
           "/assets/Images to Shruthi/Earrings/FE2085/950-110.jpg",
-          "/assets/Images to Shruthi/Earrings/FE2085/950-27.jpg",
-          "/assets/Images to Shruthi/Earrings/FE2085/950-28.jpg",
-          "/assets/Images to Shruthi/Earrings/FE2085/950-65.jpg"
           ],
         title: "Pearl Stud Earrings",
         description:
           "Classic and sophisticated, these pearl stud earrings are a timeless accessory for any occasion.",
         price: 89.99,
+      },{
+        _id: "p15",
+        posterUrl:"/assets/Images to Shruthi/Earrings/FE1858/18.jpg",
+        images: ["/assets/Images to Shruthi/Earrings/FE1858/49.jpg"
+        ],
+        title: "Stud Earrings",
+        description:
+          "Simple yet elegant, these diamond stud earrings are a versatile addition to any jewelry collection.",
+        price: 299.99,
+      },
+      {
+        _id: "p16",
+        posterUrl:"/assets/Images to Shruthi/Earrings/FE2077/950-21.jpg",
+        images: [
+          "/assets/Images to Shruthi/Earrings/FE2077/950-93.jpg"
+        ],
+        title: "Hoop Earrings",
+        description:
+          "Make a statement with these bold and stylish gold hoop earrings.",
+        price: 99.99,
+      },
+      {
+        _id: "p17",
+        posterUrl:"/assets/Images to Shruthi/Earrings/FE2078/950-2.jpg",
+        images: [
+          "/assets/Images to Shruthi/Earrings/FE2078/950-104.jpg"
+          ],
+        title: "Drop Earrings",
+        description:
+          "Add a touch of glamour to your look with these dazzling crystal drop earrings.",
+        price: 119.99,
+      },
+      {
+        _id: "p18",
+        posterUrl:"/assets/Images to Shruthi/Earrings/FE2085/FE2085.jpg",
+        images: [
+          "/assets/Images to Shruthi/Earrings/FE2085/950-110.jpg",
+          ],
+        title: "Pearls Earrings",
+        description:
+          "Classic and sophisticated, these pearl stud earrings are a timeless accessory for any occasion.",
+        price: 79.99,
       },
       
     ],
@@ -133,7 +199,6 @@ export const jewelryCollections: Collection[] = [
         posterUrl:"/assets/Images to Shruthi/Bracelets/FCSOO4/1.jpg",
         images: [
           "/assets/Images to Shruthi/Bracelets/FCSOO4/2.jpg",
-          "/assets/Images to Shruthi/Bracelets/FCSOO4/3.jpg",
         ],
         title: "Charm Bracelet",
         description:
@@ -145,8 +210,6 @@ export const jewelryCollections: Collection[] = [
         posterUrl:"/assets/Images to Shruthi/Bracelets/FJ1079/1 (1).jpg",
         images: [
           "/assets/Images to Shruthi/Bracelets/FJ1079/1 (3).jpg",
-          "/assets/Images to Shruthi/Bracelets/FJ1079/1 (2).jpg",
-          "/assets/Images to Shruthi/Bracelets/FJ1079/1 (4).jpg"
         ],
         title: "Tennis Bracelet",
         description:
@@ -158,8 +221,6 @@ export const jewelryCollections: Collection[] = [
         posterUrl:"/assets/Images to Shruthi/Bracelets/FJ1088/1.jpg",
         images: [
           "/assets/Images to Shruthi/Bracelets/FJ1088/3.jpg",
-          "/assets/Images to Shruthi/Bracelets/FJ1088/2.jpg",
-          "/assets/Images to Shruthi/Bracelets/FJ1088/4.jpg"
         ],
         title: "Gold Bangle Bracelet",
         description:
@@ -171,14 +232,55 @@ export const jewelryCollections: Collection[] = [
         posterUrl:"/assets/Images to Shruthi/Bracelets/FJ1089/1 (1).jpg",
         images: [
           "/assets/Images to Shruthi/Bracelets/FJ1089/1 (2).jpg",
-          "/assets/Images to Shruthi/Bracelets/FJ1089/1 (3).jpg",
-          "/assets/Images to Shruthi/Bracelets/FJ1089/1 (4).jpg",
-          "/assets/Images to Shruthi/Bracelets/FJ1089/1 (5).jpg"
         ],
         title: "Silver Cuff Bracelet",
         description:
           "Make a statement with this bold and modern silver cuff bracelet, sure to turn heads.",
         price: 109.99,
+      },
+      {
+        _id: "p25",
+        posterUrl:"/assets/Images to Shruthi/Bracelets/FCSOO4/1.jpg",
+        images: [
+          "/assets/Images to Shruthi/Bracelets/FCSOO4/2.jpg",
+        ],
+        title: "harm Bracelet",
+        description:
+          "Create your own unique style with this customizable charm bracelet.",
+        price: 159.99,
+      },
+      {
+        _id: "p26",
+        posterUrl:"/assets/Images to Shruthi/Bracelets/FJ1079/1 (1).jpg",
+        images: [
+          "/assets/Images to Shruthi/Bracelets/FJ1079/1 (3).jpg",
+        ],
+        title: "bunnies Bracelet",
+        description:
+          "Add a touch of luxury to your wrist with this exquisite tennis bracelet featuring sparkling diamonds.",
+        price: 199.99,
+      },
+      {
+        _id: "p27",
+        posterUrl:"/assets/Images to Shruthi/Bracelets/FJ1088/1.jpg",
+        images: [
+          "/assets/Images to Shruthi/Bracelets/FJ1088/3.jpg",
+        ],
+        title: "Bangle Bracelet",
+        description:
+          "Stack up your style with this sleek and sophisticated gold bangle bracelet, perfect for everyday wear.",
+        price: 87.99,
+      },
+      {
+        _id: "p28",
+        posterUrl:"/assets/Images to Shruthi/Bracelets/FJ1089/1 (1).jpg",
+        images: [
+          "/assets/Images to Shruthi/Bracelets/FJ1089/1 (2).jpg",
+        ],
+        title: "Cuff Bracelet",
+        description:
+          "Make a statement with this bold and modern silver cuff bracelet, sure to turn heads.",
+        price: 119.99,
       },
     ],
   },
