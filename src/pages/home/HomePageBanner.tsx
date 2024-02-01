@@ -5,11 +5,11 @@ function HomePageBanner() {
     <Box
       sx={{
         backgroundImage:
-          "url('/public/images/Homepagebannerimage.JPG')",
+          "url('/public/images/home.JPG')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        height: "400px",
+        height: "auto",
         width: "100%",
       }}
     ></Box>
