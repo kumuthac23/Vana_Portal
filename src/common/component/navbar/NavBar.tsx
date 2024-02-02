@@ -52,7 +52,7 @@ const Navbar = () => {
 
   return (
     <>
-      <AppBar position="static" sx={{ boxShadow: 0,height:"90px" }}>
+      <AppBar position="static" sx={{ boxShadow: 0,height:"90px",bgcolor:"#ffffff" }}>
         <Toolbar>
           <Grid container display={"flex"} alignItems="center" justifyContent={"center"} padding={2}>
             <Grid item xs={4} md={4}>
@@ -63,14 +63,14 @@ const Navbar = () => {
                       color="inherit"
                       onClick={handleDrawerOpen}
                     >
-                      <MenuIcon sx={{ color: "#bd8d67" }} />
+                      <MenuIcon />
                     </IconButton>
                     <IconButton
                       color="inherit"
                       onClick={handleSearchDrawerOpen}
                      
                     >
-                      <SearchIcon  sx={{ color: "#bd8d67" }}/>
+                      <SearchIcon />
                     </IconButton>
                   </Box>
                 </Grid>
@@ -85,7 +85,7 @@ const Navbar = () => {
                       placeholder="Search..."
                       sx={{
                         "& .MuiOutlinedInput-root": {
-                          color: "#bd8d67",
+                          color: "#754a39 ",
                           "& fieldset": {
                             border: "none",
                           },
@@ -95,7 +95,7 @@ const Navbar = () => {
                         },
                       }}
                       InputProps={{
-                        startAdornment: <SearchIcon sx={{color: "#bd8d67"}}/>,
+                        startAdornment: <SearchIcon />,
                         notched: false,
                       }}
                     />
@@ -131,7 +131,7 @@ const Navbar = () => {
                 alignItems="flex-end"
               >
                 <IconButton color="inherit" >
-                  <AccountCircleIcon sx={{ color: "#bd8d67" }}/>
+                  <AccountCircleIcon />
                 </IconButton>
                 <IconButton
                   color="inherit"
@@ -139,7 +139,7 @@ const Navbar = () => {
                  
                 >
                   <Badge badgeContent={0} color="secondary">
-                    <ShoppingBasketIcon  sx={{ color: "#bd8d67" }}/>
+                    <ShoppingBasketIcon />
                   </Badge>
                 </IconButton>
               </Box>
