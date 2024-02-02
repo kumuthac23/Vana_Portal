@@ -58,9 +58,7 @@ function Login({ onLogin, requiredHeading, onRegisterLinkClick }: LoginProps) {
     mode: "all",
   });
 
-  const handleLogin = () => {
-
-  };
+  const handleLogin = () => {};
 
   const handleRegisterLinkClick = () => {
     if (isFromNavbar) {
@@ -129,7 +127,10 @@ function Login({ onLogin, requiredHeading, onRegisterLinkClick }: LoginProps) {
               helperText={errors.password?.message?.toString()}
               required
             />
-            <Link sx={{ float: "right" }} onClick={handleForgotPasswordClick}>
+            <Link
+              sx={{ float: "right", color: "blue" }}
+              onClick={handleForgotPasswordClick}
+            >
               Forgot Password?
             </Link>
             <Button
@@ -145,7 +146,9 @@ function Login({ onLogin, requiredHeading, onRegisterLinkClick }: LoginProps) {
               <Box sx={{ cursor: "pointer" }} fontSize="15px">
                 Don't have an Account?
                 <br /> Please &nbsp;
-                <Link onClick={handleRegisterLinkClick}>Register</Link>
+                <Link sx={{ color: "blue" }} onClick={handleRegisterLinkClick}>
+                  Register
+                </Link>
               </Box>
             </FormHelperText>
           </form>

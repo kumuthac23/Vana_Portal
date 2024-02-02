@@ -18,6 +18,8 @@ import SearchDrawer from "../../../drawer/SearchDrawer";
 
 import vanaLogo from "../../../../public/assets/Images to Shruthi/logo/JEWELLERY BY VAVA LOGO (2).png";
 import MyBagDrawer from "../../../drawer/MyBagDrawer";
+import { useNavigate } from "react-router";
+import { paths } from "../../../routes/path";
 
 const Navbar = () => {
   const isMobileView = useMediaQuery("(max-width:1000px)");
@@ -25,7 +27,7 @@ const Navbar = () => {
   const [navDrawerOpen, setNavDrawerOpen] = useState(false);
   const [searchDrawerOpen, setSearchDrawerOpen] = useState(false);
   const [myBagDrawerOpen, setMyBagDrawerOpen] = useState(false);
-
+  const navigate = useNavigate();
   const handleDrawerOpen = () => {
     setNavDrawerOpen(true);
   };
@@ -50,27 +52,36 @@ const Navbar = () => {
     setMyBagDrawerOpen(false);
   };
 
+  const moveToLogin = () => {
+    navigate(`/${paths.LOGIN}`, { state: { fromNavbar: true } });
+  };
+
   return (
     <>
-      <AppBar position="static" sx={{ boxShadow: 0,height:"90px" }}>
+      <AppBar
+        position="static"
+        sx={{ boxShadow: 0, height: "90px", bgcolor: "#ffffff" }}
+      >
         <Toolbar>
-          <Grid container display={"flex"} alignItems="center" justifyContent={"center"} padding={2}>
+          <Grid
+            container
+            display={"flex"}
+            alignItems="center"
+            justifyContent={"center"}
+            padding={2}
+          >
             <Grid item xs={4} md={4}>
               {isMobileView ? (
                 <Grid item xs={12}>
                   <Box display={"flex"}>
-                    <IconButton
-                      color="inherit"
-                      onClick={handleDrawerOpen}
-                    >
+                    <IconButton color="inherit" onClick={handleDrawerOpen}>
                       <MenuIcon sx={{ color: "#bd8d67" }} />
                     </IconButton>
                     <IconButton
                       color="inherit"
                       onClick={handleSearchDrawerOpen}
-                     
                     >
-                      <SearchIcon  sx={{ color: "#bd8d67" }}/>
+                      <SearchIcon sx={{ color: "#bd8d67" }} />
                     </IconButton>
                   </Box>
                 </Grid>
@@ -95,7 +106,9 @@ const Navbar = () => {
                         },
                       }}
                       InputProps={{
-                        startAdornment: <SearchIcon sx={{color: "#bd8d67"}}/>,
+                        startAdornment: (
+                          <SearchIcon sx={{ color: "#bd8d67" }} />
+                        ),
                         notched: false,
                       }}
                     />
@@ -130,16 +143,15 @@ const Navbar = () => {
                 justifyContent="flex-end"
                 alignItems="flex-end"
               >
-                <IconButton color="inherit" >
-                  <AccountCircleIcon sx={{ color: "#bd8d67" }}/>
+                <IconButton color="inherit">
+                  <AccountCircleIcon
+                    sx={{ color: "#bd8d67" }}
+                    onClick={moveToLogin}
+                  />
                 </IconButton>
-                <IconButton
-                  color="inherit"
-                  onClick={handleMyBagDrawerOpen}
-                 
-                >
+                <IconButton color="inherit" onClick={handleMyBagDrawerOpen}>
                   <Badge badgeContent={0} color="secondary">
-                    <ShoppingBasketIcon  sx={{ color: "#bd8d67" }}/>
+                    <ShoppingBasketIcon sx={{ color: "#bd8d67" }} />
                   </Badge>
                 </IconButton>
               </Box>

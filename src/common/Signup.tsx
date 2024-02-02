@@ -82,7 +82,7 @@ function Signup({  requiredHeading, onRegisterLinkClick }: SignProps) {
   };
 
   return (
-    <Container>
+    <Container sx={{ width: "50%" }}>
       <Typography
         variant="h5"
         fontWeight="bold"
@@ -108,7 +108,7 @@ function Signup({  requiredHeading, onRegisterLinkClick }: SignProps) {
               FormHelperTextProps={{
                 sx: { color: "red", marginLeft: "0px" },
               }}
-              autoComplete="new"
+              // autoComplete="new"
             />
           </Box>
           <Box sx={{ padding: "7px 0" }}>
@@ -118,6 +118,7 @@ function Signup({  requiredHeading, onRegisterLinkClick }: SignProps) {
             <TextField
               id="outlined-basic"
               variant="outlined"
+              margin="normal"
               fullWidth
               inputProps={{ style: { padding: "10px" } }}
               {...register("phoneNumber")}

@@ -9,11 +9,10 @@ import Necklaces from "./pages/necklaces/Necklaces";
 import BestSelller from "./pages/bestseller/BestSelller";
 import FAQ from "./pages/faqabout/FAQ";
 import { paths } from "./routes/path";
-import ProductDetailPage from "./common/ProductDetail";
-
 import Login from "./common/Login";
 import Signup from "./common/Signup";
 import { productDetails } from "./seed-data/seed-data";
+import ProductDetail from "./common/ProductDetail";
 
 function App() {
   return (
@@ -36,8 +35,11 @@ function App() {
               element={<Signup requiredHeading={true} />}
             />
           </Route>
+          <Route
+            path={paths.PRODUCTDETAIL}
+            element={<ProductDetail productDetails={productDetails} />}
+          />
         </Routes>
-        <ProductDetailPage productDetails={productDetails} />
       </BrowserRouter>
     </ThemeProvider>
   );
