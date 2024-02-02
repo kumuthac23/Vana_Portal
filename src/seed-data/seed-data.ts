@@ -217,9 +217,9 @@ export const jewelryCollections: Collection[] = [
     products: [
       {
         _id: "p21",
-        posterUrl:"/assets/Images to Shruthi/Bracelets/FCSOO4/1.jpg",
+        posterUrl:"/assets/Images to Shruthi/Bracelets/FCS004/1.jpg",
         images: [
-          "/assets/Images to Shruthi/Bracelets/FCSOO4/2.jpg",
+          "/assets/Images to Shruthi/Bracelets/FCS004/2.jpg",
         ],
         title: "Charm Bracelet",
         description:
@@ -261,9 +261,9 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p25",
-        posterUrl:"/assets/Images to Shruthi/Bracelets/FCSOO4/1.jpg",
+        posterUrl:"/assets/Images to Shruthi/Bracelets/FCS004/1.jpg",
         images: [
-          "/assets/Images to Shruthi/Bracelets/FCSOO4/2.jpg",
+          "/assets/Images to Shruthi/Bracelets/FCS004/2.jpg",
         ],
         title: "harm Bracelet",
         description:

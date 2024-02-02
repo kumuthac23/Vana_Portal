@@ -1,4 +1,3 @@
-// theme.ts
 import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
@@ -14,10 +13,38 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         outlined: {
-          color: "black",
+          color: "white",
         },
         contained: {
           color: "white",
+        },
+      },
+    },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          color: "#754a39",
+        },
+      },
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          "& .MuiInputBase-input": {
+            color: "black", 
+          },
+          "& label.Mui-focused": {
+            color: "black",
+          },
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "black", 
+          },
+          "&:hover .MuiOutlinedInput-notchedOutline": {
+            borderColor: "black",
+          },
+          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+            borderColor: "black", 
+          },
         },
       },
     },

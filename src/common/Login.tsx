@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   Box,
   TextField,
@@ -6,21 +5,16 @@ import {
   Button,
   Link,
   FormHelperText,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  Divider,
 } from "@mui/material";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate, useLocation, NavLink } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { ILogin } from "../interface/type";
-import CloseIcon from "@mui/icons-material/Close";
 import { paths } from "../routes/path";
 
-import { WhatsApp } from "@mui/icons-material";
+
 
 interface LoginProps {
   onLogin?(): void;
@@ -41,7 +35,6 @@ const schema = yup.object().shape({
 });
 
 function Login({ onLogin, requiredHeading, onRegisterLinkClick }: LoginProps) {
-  const [openDialog, setOpenDialog] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const { state } = location;
@@ -74,13 +67,6 @@ function Login({ onLogin, requiredHeading, onRegisterLinkClick }: LoginProps) {
     }
   };
 
-  const handleForgotPasswordClick = () => {
-    setOpenDialog(true);
-  };
-
-  const handleCloseDialog = () => {
-    setOpenDialog(false);
-  };
 
   return (
     <>
@@ -127,15 +113,9 @@ function Login({ onLogin, requiredHeading, onRegisterLinkClick }: LoginProps) {
               helperText={errors.password?.message?.toString()}
               required
             />
-            <Link
-              sx={{ float: "right", color: "blue" }}
-              onClick={handleForgotPasswordClick}
-            >
-              Forgot Password?
-            </Link>
             <Button
-              variant="outlined"
-              color="secondary"
+              variant="contained"
+              color="primary"
               fullWidth
               sx={{ marginTop: 3 }}
               type="submit"
@@ -154,45 +134,6 @@ function Login({ onLogin, requiredHeading, onRegisterLinkClick }: LoginProps) {
           </form>
         </Box>
       </Box>
-      <Dialog open={openDialog} onClose={handleCloseDialog}>
-        <DialogTitle>
-          <strong>Reset Password</strong>
-          <CloseIcon
-            sx={{ position: "absolute", right: 20, top: 20 }}
-            onClick={handleCloseDialog}
-          />
-        </DialogTitle>
-        <Divider />
-        <DialogContent sx={{ textAlign: "center", padding: "10px 24px" }}>
-          <Typography variant="h6">Contact Details</Typography>
-          <Typography variant="body2">
-            Please contact to the phone number or WhatsApp for the password
-            reset
-          </Typography>
-          <Typography sx={{ mt: 2 }} fontWeight="bold">
-            Call: 7010456239
-            <br />
-            (or)
-          </Typography>
-
-          <NavLink to={import.meta.env.VITE_NKS_WHATSAPP} target="_blank">
-            <Button
-              variant="contained"
-              sx={{
-                backgroundColor: "#25D366",
-                marginTop: "4px",
-                color: "#FFFFFF",
-                "&:hover": {
-                  backgroundColor: "#1A9533",
-                },
-              }}
-              startIcon={<WhatsApp fontSize="large" />}
-            >
-              Chat Now
-            </Button>
-          </NavLink>
-        </DialogContent>
-      </Dialog>
     </>
   );
 }
