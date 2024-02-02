@@ -1,5 +1,5 @@
 // theme.ts
-import createTheme from "@mui/material/styles/createTheme";
+import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
@@ -9,6 +9,18 @@ const theme = createTheme({
     secondary: {
       main: "#0f0e0f",
     },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        outlined: {
+          color: "black",
+        },
+        contained: {
+          color: "black",
+        },
+      },
+    }
   },
   typography: {
     fontFamily: "Roboto, sans-serif",
@@ -23,7 +35,6 @@ const theme = createTheme({
       color: "#555",
     },
   },
-  spacing: 8,
 });
 
 export default theme;
