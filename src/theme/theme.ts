@@ -4,7 +4,7 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#ffffff",
+      main: "#754a39",
     },
     secondary: {
       main: "#0f0e0f",
@@ -17,10 +17,10 @@ const theme = createTheme({
           color: "black",
         },
         contained: {
-          color: "black",
+          color: "white",
         },
       },
-    }
+    },
   },
   typography: {
     fontFamily: "Roboto, sans-serif",

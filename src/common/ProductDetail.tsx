@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Box, Divider } from "@mui/material";
+import { Box, Divider, IconButton } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Button } from "@mui/material";
 import { ButtonGroup } from "@mui/material";
 import { Grid } from "@mui/material";
 import { Container } from "@mui/material";
 import { IProductDetails } from "../interface/type";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Navigate, useNavigate } from "react-router";
 
 interface IProps {
   productDetails: IProductDetails[];
@@ -13,6 +15,7 @@ interface IProps {
 
 function ProductDetail(props: IProps) {
   const { productDetails } = props;
+  const navigate = useNavigate();
   const [mainImage, setMainImage] = useState("");
   const [quantity, setQuantity] = useState(1);
 
@@ -46,6 +49,15 @@ function ProductDetail(props: IProps) {
 
   return (
     <Container>
+      <IconButton
+        sx={{
+          float: "left",
+          pl: 0,
+        }}
+        onClick={() => navigate(-1)}
+      >
+        <ArrowBackIcon fontSize="large" />
+      </IconButton>
       <Grid container spacing={2} sx={{ marginTop: 4 }}>
         <Grid item xs={12} md={5} lg={6}>
           <Box sx={{ pb: 2 }}>
