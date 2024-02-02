@@ -1,12 +1,4 @@
-import {
-  Box,
-  Typography,
-  Grid,
-  Button,
-  Divider,
-  IconButton,
-  useMediaQuery,
-} from "@mui/material";
+
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import EmailIcon from "@mui/icons-material/Email";
@@ -14,6 +6,13 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import PhoneIcon from "@mui/icons-material/Phone";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import theme from "../theme/theme";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import Divider from "@mui/material/Divider";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
 
 function Footer() {
  
@@ -91,7 +90,7 @@ function Footer() {
                       variant="contained"
                       
                     >
-                      e-mail
+                      E-mail
                     </Button>
                   </a>
 

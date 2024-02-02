@@ -1,3 +1,11 @@
+export interface Product {
+  _id: string;
+  posterUrl:string;
+  images: string[]; 
+  title: string;
+  description: string;
+  price: number;
+}
 
 export interface IProductDetails {
   _id: string;
@@ -7,4 +15,10 @@ export interface IProductDetails {
   quantity: number;
   posterURL: string;
   description: string;
+}
+export interface Collection {
+  _id: string;
+  name: string;
+  description:string;
+  products: Product[];
 }
