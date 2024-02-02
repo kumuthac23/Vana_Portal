@@ -1,6 +1,7 @@
 import { IProductDetails } from "../interface/type";
 import { Collection } from "../interface/type";
 
+
 export const productDetails: IProductDetails[] = [
   {
     _id: "1",

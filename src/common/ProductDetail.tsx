@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Typography,
-  Button,
-  ButtonGroup,
-  Grid,
-  Container,
-} from "@mui/material";
+import { Box, Divider } from "@mui/material";
+import { Typography } from "@mui/material";
+import { Button } from "@mui/material";
+import { ButtonGroup } from "@mui/material";
+import { Grid } from "@mui/material";
+import { Container } from "@mui/material";
 import { IProductDetails } from "../interface/type";
 
 interface IProps {
@@ -49,7 +47,7 @@ function ProductDetail(props: IProps) {
   return (
     <Container>
       <Grid container spacing={2} sx={{ marginTop: 4 }}>
-        <Grid item xs={12} md={5}>
+        <Grid item xs={12} md={5} lg={6}>
           <Box sx={{ pb: 2 }}>
             <img
               src={mainImage || productDetails[0]?.posterURL || ""}
@@ -61,7 +59,6 @@ function ProductDetail(props: IProps) {
                 objectFit: "contain",
                 height: "auto",
                 maxWidth: "100%",
-                objectPosition: "center",
               }}
             />
           </Box>
@@ -88,21 +85,34 @@ function ProductDetail(props: IProps) {
             ))}
           </Grid>
         </Grid>
-        <Grid item xs={12} md={6} sm={12}>
+        <Grid item xs={12} md={6} lg={6}>
           {productDetails.map((product, index) => (
             <Box
               key={index}
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                height: "100%",
               }}
             >
-              <Typography variant="h1">{product.title}</Typography>
-              <Typography variant="h2" sx={{ mt: 2 }}>
-                ${product.price}
-              </Typography>
-              <Typography variant="h1">Quantity:</Typography>
+              <Box>
+                <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+                  {product.title}
+                </Typography>
+                <Typography variant="h6" sx={{ mt: 2 }}>
+                  ${product.price}
+                </Typography>
+              </Box>
+              <Box sx={{ marginTop: 2 }}>
+                <Divider></Divider>
+              </Box>
+              <Box>
+                <Typography
+                  variant="h6"
+                  sx={{ fontWeight: "bold", marginTop: 1 }}
+                >
+                  Quantity:
+                </Typography>
+              </Box>
               <Box sx={{ mt: 2 }}>
                 <ButtonGroup
                   className="test"
@@ -127,7 +137,7 @@ function ProductDetail(props: IProps) {
                 </ButtonGroup>
               </Box>
               <Box sx={{ mt: 2 }}>
-                <Button variant="contained" sx={{ width: "90%" }}>
+                <Button variant="contained" sx={{ width: "70%" }}>
                   Add to Cart
                 </Button>
               </Box>
