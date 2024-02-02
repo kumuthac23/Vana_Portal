@@ -1,10 +1,14 @@
 import Box from "@mui/material/Box";
 import AboutByVana from "./AboutByVana";
+import HomePageBanner from "./HomePageBanner";
 
 function Home() {
    
   return (
     <>
+      <Box>
+        <HomePageBanner/>
+      </Box>
       <Box
         sx={{
           mb: 2,

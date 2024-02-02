@@ -1,4 +1,10 @@
-
+import { Box } from "@mui/material";
+import { Typography } from "@mui/material";
+import { Button } from "@mui/material";
+import { Grid } from "@mui/material";
+import { IconButton } from "@mui/material";
+import { Divider } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import EmailIcon from "@mui/icons-material/Email";
@@ -6,18 +12,9 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import PhoneIcon from "@mui/icons-material/Phone";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import theme from "../theme/theme";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
-import Divider from "@mui/material/Divider";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
 
 function Footer() {
- 
   const mobilescreen = useMediaQuery("(max-width:700px)");
-
 
   return (
     <Box sx={{ backgroundColor: "#f5f0ec" }}>
@@ -88,7 +85,6 @@ function Footer() {
                     <Button
                       startIcon={<EmailIcon sx={{ color: "#0489c9" }} />}
                       variant="contained"
-                      
                     >
                       E-mail
                     </Button>
@@ -143,8 +139,8 @@ function Footer() {
                           r="129.502"
                           gradientUnits="userSpaceOnUse"
                         >
-                          <stop offset=".09" stop-color="#fa8f21"></stop>
-                          <stop offset=".78" stop-color="#d82d7e"></stop>
+                          <stop offset=".09" stopColor="#fa8f21"></stop>
+                          <stop offset=".78" stopColor="#d82d7e"></stop>
                         </radialGradient>
                         <radialGradient
                           id="b"
@@ -155,10 +151,10 @@ function Footer() {
                         >
                           <stop
                             offset=".64"
-                            stop-color="#8c3aaa"
-                            stop-opacity="0"
+                            stopColor="#8c3aaa"
+                            stopOpacity="0"
                           ></stop>
-                          <stop offset="1" stop-color="#8c3aaa"></stop>
+                          <stop offset="1" stopColor="#8c3aaa"></stop>
                         </radialGradient>
                       </defs>
                       <path
@@ -205,7 +201,7 @@ function Footer() {
               Shipping & Returns
             </Typography>
             <Typography variant="body2" mx={2}>
-              Contact Us
+              Terms and condition
             </Typography>
           </Grid>
         </Grid>
