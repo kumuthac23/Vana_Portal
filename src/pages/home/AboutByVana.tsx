@@ -31,7 +31,7 @@ function AboutByVana() {
           YOU'RE REALLY PRETTY.
         </Typography>
         <Typography variant="h4" fontWeight={"600"}>
-          About ByVana
+          About VANA
         </Typography>
         <Typography
           variant="h6"
