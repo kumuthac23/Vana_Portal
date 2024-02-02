@@ -106,10 +106,15 @@ const CommonPage = (props: Props) => {
               onChange={handleChange}
               displayEmpty
               renderValue={(value) => value || "Sort by"}
-              style={{
-                border: "none",
+              sx={{
                 backgroundColor: "transparent",
                 color: "inherit",
+                "& .MuiOutlinedInput-root": {
+                  border: "none", 
+                  "& fieldset": {
+                    border: "none",
+                  },
+                },
               }}
             >
               <MenuItem value="Price: Low to High">Price: Low to High</MenuItem>

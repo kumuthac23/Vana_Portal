@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Button from '@mui/material/Button';
-
+import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
  interface CartDrawerProps {
   open: boolean;
   onClose: () => void;
@@ -27,6 +27,9 @@ const MyBagDrawer = ({ open, onClose }:CartDrawerProps) => {
         </Grid>
 
         <Grid container item direction="column" className={classes.drawerContent}>
+          <IconButton>
+            <ProductionQuantityLimitsIcon fontSize="large" style={{ fontSize: 150 }}/>
+          </IconButton>
           <Typography variant="body1" gutterBottom>
             Your cart is empty
           </Typography>
