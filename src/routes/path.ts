@@ -7,4 +7,5 @@ export enum paths {
   FAQABOUT = "aboutus",
   LOGIN = "login",
   SIGNUP = "signup",
+  PRODUCTDETAIL = "/detail/:productId",
 }

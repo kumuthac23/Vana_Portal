@@ -1,8 +1,13 @@
-export interface IProductDetail {
-  product: IProduct;
+export interface Product {
+  _id: string;
+  posterUrl:string;
+  images: string[]; 
+  title: string;
+  description: string;
+  price: number;
 }
 
-export interface IProduct {
+export interface IProductDetails {
   _id: string;
   title: string;
   price: number;
@@ -23,4 +28,10 @@ export interface ISignUp {
   email?: string;
   confirmPassword: string;
   role?: string;
+}
+export interface Collection {
+  _id: string;
+  name: string;
+  description:string;
+  products: Product[];
 }

@@ -1,12 +1,10 @@
-import {
-  Box,
-  Typography,
-  Grid,
-  Button,
-  Divider,
-  IconButton,
-  useMediaQuery,
-} from "@mui/material";
+import { Box } from "@mui/material";
+import { Typography } from "@mui/material";
+import { Button } from "@mui/material";
+import { Grid } from "@mui/material";
+import { IconButton } from "@mui/material";
+import { Divider } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import EmailIcon from "@mui/icons-material/Email";
@@ -16,9 +14,7 @@ import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import theme from "../theme/theme";
 
 function Footer() {
- 
   const mobilescreen = useMediaQuery("(max-width:700px)");
-
 
   return (
     <Box sx={{ backgroundColor: "#f5f0ec" }}>
@@ -89,9 +85,8 @@ function Footer() {
                     <Button
                       startIcon={<EmailIcon sx={{ color: "#0489c9" }} />}
                       variant="contained"
-                      
                     >
-                      e-mail
+                      E-mail
                     </Button>
                   </a>
 
@@ -206,7 +201,7 @@ function Footer() {
               Shipping & Returns
             </Typography>
             <Typography variant="body2" mx={2}>
-              Contact Us
+              Terms and condition
             </Typography>
           </Grid>
         </Grid>

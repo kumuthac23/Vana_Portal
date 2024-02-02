@@ -1,20 +1,37 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 function HomePageBanner() {
-    return (
-     
-        <Box
+  return (
+    <>
+      <Box sx={{ textAlign: "center", py: 2 }}>
+        <Typography
+          variant="h4"
           sx={{
-            backgroundImage: "url('/public/images/homepagebanner.jpg')", // Replace '/path/to/your/image.jpg' with the path to your image file
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            height: "400px",
-            width: "100%",
+            fontWeight: 600,
+            fontFamily: '"Crimson Text", serif',
+            fontStyle: "italic",
           }}
-        ></Box>
-      
-    );
+        >
+          Shine bright, just like a diamond's light.
+        </Typography>
+        <Typography variant="h6" sx={{ fontSize: "15px", py: 2 }}>
+          Shine bright, a beacon in the night, With brilliance that dazzles,
+          pure and white.
+        </Typography>
+      </Box>
+
+      <Box
+        sx={{
+          backgroundImage: "url('/public/images/2.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          height: "90vh",
+          width: "100vw",
+        }}
+      ></Box>
+    </>
+  );
 }
 
 export default HomePageBanner;

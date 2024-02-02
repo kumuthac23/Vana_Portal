@@ -17,7 +17,7 @@ const theme = createTheme({
           color: "black",
         },
         contained: {
-          color: "white",
+          color: "black",
         },
       },
     }

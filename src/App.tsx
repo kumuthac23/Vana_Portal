@@ -10,9 +10,10 @@ import BestSelller from "./pages/bestseller/BestSelller";
 import FAQ from "./pages/faqabout/FAQ";
 import { paths } from "./routes/path";
 import ProductDetailPage from "./common/ProductDetail";
-import { productDetail } from "./seed-data/seed-data";
+
 import Login from "./common/Login";
 import Signup from "./common/Signup";
+import { productDetails } from "./seed-data/seed-data";
 
 function App() {
   return (
@@ -36,7 +37,7 @@ function App() {
             />
           </Route>
         </Routes>
-        <ProductDetailPage productDetails={productDetail} />
+        <ProductDetailPage productDetails={productDetails} />
       </BrowserRouter>
     </ThemeProvider>
   );
