@@ -29,7 +29,7 @@ const CommonProductCard = (props: Props) => {
       onMouseLeave={onMouseLeave}
     >
       <Link
-        to={`/detail/productId`}
+        to={`/detail/${product._id}`}
         state={{ product }}
         style={{ textDecoration: "none", color: "inherit" }}
       >
@@ -40,7 +40,7 @@ const CommonProductCard = (props: Props) => {
           image={
             hoveredProductImage === product._id
               ? product.images[0]
-              : product.posterUrl
+              : product.posterURL
           }
           alt={product.title}
           sx={{
