@@ -7,7 +7,9 @@ import CommonProductCard from "../../common/component/commonCard/CommonProductCa
 function NewArrivals() {
   const [newArrivalProducts, setNewArrivalProducts] = useState<Product[]>([]);
   const handleMouseEnter = (productId: string) => {};
-  const [hoveredProductImage, setHoveredProductImage] = useState<string | null>( null );
+  const [hoveredProductImage, setHoveredProductImage] = useState<string | null>(
+    null
+  );
   const handleMouseLeave = () => {};
 
   async function fetchData() {
