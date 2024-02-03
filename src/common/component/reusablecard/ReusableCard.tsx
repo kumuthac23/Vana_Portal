@@ -1,5 +1,3 @@
-// CollectionPage.tsx
-
 import { useState } from "react";
 import { Collection } from "../../../interface/type";
 import { useNavigate } from "react-router-dom";
