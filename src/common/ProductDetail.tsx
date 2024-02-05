@@ -5,19 +5,17 @@ import { Button } from "@mui/material";
 import { ButtonGroup } from "@mui/material";
 import { Grid } from "@mui/material";
 import { Container } from "@mui/material";
-import { IProductDetails } from "../interface/type";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
+import { useProductDetailById } from "../CustomRQHooks/Hooks";
 
-interface IProps {
-  productDetails: IProductDetails[];
-}
-
-function ProductDetail(props: IProps) {
-  const { productDetails } = props;
+function ProductDetail() {
+  const { productId } = useParams();
   const navigate = useNavigate();
   const [mainImage, setMainImage] = useState("");
   const [quantity, setQuantity] = useState(1);
+
+  const productDetailQuery = useProductDetailById(productId ?? "");
 
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
@@ -33,19 +31,10 @@ function ProductDetail(props: IProps) {
     setMainImage(image);
   };
 
-  const imagesWithPoster = productDetails
-    .map((product) => ({
-      image: product.posterURL,
-      isPoster: true,
-    }))
-    .concat(
-      productDetails.flatMap((product) =>
-        product.images.map((image) => ({
-          image,
-          isPoster: false,
-        }))
-      )
-    );
+
+const productDetails = productDetailQuery.data;
+
+
 
   return (
     <Container>
@@ -62,7 +51,9 @@ function ProductDetail(props: IProps) {
         <Grid item xs={12} md={5} lg={6}>
           <Box sx={{ pb: 2 }}>
             <img
-              src={mainImage || productDetails[0]?.posterURL || ""}
+              src={
+                mainImage || (productDetails && productDetails.posterURL) || ""
+              }
               alt="product image"
               style={{
                 display: "block",
@@ -81,83 +72,85 @@ function ProductDetail(props: IProps) {
             md={2}
             sx={{ display: "flex", flexDirection: "row", gap: 2 }}
           >
-            {imagesWithPoster.map((item, index) => (
-              <Box key={index} onClick={() => handleImageClick(item.image)}>
-                <img
-                  src={item.image}
-                  alt={`Image ${index + 1}`}
-                  style={{
-                    height: "87px",
-                    width: "75px",
-                    borderRadius: "5px",
-                    objectFit: "cover",
-                  }}
-                />
-              </Box>
-            ))}
+            {productDetails &&
+              productDetails.images
+                .concat(productDetails.posterURL)
+                .map(( image , index) => (
+                  <Box key={index} onClick={() => handleImageClick(image)}>
+                    <img
+                      src={image}
+                      // alt={`Image ${index + 1}`}
+                      style={{
+                        height: "87px",
+                        width: "75px",
+                        borderRadius: "5px",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </Box>
+                ))}
           </Grid>
         </Grid>
         <Grid item xs={12} md={6} lg={6}>
-          {productDetails.map((product, index) => (
-            <Box
-              key={index}
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            {productDetails && (
+              <>
                 <Typography variant="h5" sx={{ fontWeight: "bold" }}>
-                  {product.title}
+                  {productDetails.title}
                 </Typography>
                 <Typography variant="h6" sx={{ mt: 2 }}>
-                  ${product.price}
+                  ${productDetails.price}
                 </Typography>
-              </Box>
-              <Box sx={{ marginTop: 2 }}>
-                <Divider></Divider>
-              </Box>
-              <Box>
-                <Typography
-                  variant="h6"
-                  sx={{ fontWeight: "bold", marginTop: 1 }}
-                >
-                  Quantity:
-                </Typography>
-              </Box>
-              <Box sx={{ mt: 2 }}>
-                <ButtonGroup
-                  className="test"
-                  sx={{
-                    lineHeight: 1,
-                    padding: 0,
-                    "& .MuiButtonGroup-grouped": {
-                      minWidth: "32px",
-                    },
-                    "& .MuiButtonBase-root:hover": {
-                      border: "none",
-                    },
-                    marginLeft: "8px",
-                    border: "1px solid #dfdfdf",
-                  }}
-                  size="small"
-                  aria-label="small outlined button group"
-                >
-                  <Button onClick={decrementQuantity}>-</Button>
-                  <Button>{quantity}</Button>
-                  <Button onClick={incrementQuantity}>+</Button>
-                </ButtonGroup>
-              </Box>
-              <Box sx={{ mt: 2 }}>
-                <Button variant="contained" sx={{ width: "70%" }}>
-                  Add to Cart
-                </Button>
-              </Box>
-              <Box sx={{ marginTop: "20px" }}>
-                <p>{product.description}</p>
-              </Box>
-            </Box>
-          ))}
+                <Box sx={{ marginTop: 2 }}>
+                  <Divider></Divider>
+                </Box>
+                <Box>
+                  <Typography
+                    variant="h6"
+                    sx={{ fontWeight: "bold", marginTop: 1 }}
+                  >
+                    Quantity:
+                  </Typography>
+                </Box>
+                <Box sx={{ mt: 2 }}>
+                  <ButtonGroup
+                    className="test"
+                    sx={{
+                      lineHeight: 1,
+                      padding: 0,
+                      "& .MuiButtonGroup-grouped": {
+                        minWidth: "32px",
+                      },
+                      "& .MuiButtonBase-root:hover": {
+                        border: "none",
+                      },
+                      marginLeft: "8px",
+                      border: "1px solid #dfdfdf",
+                    }}
+                    size="small"
+                    aria-label="small outlined button group"
+                  >
+                    <Button onClick={decrementQuantity}>-</Button>
+                    <Button>{quantity}</Button>
+                    <Button onClick={incrementQuantity}>+</Button>
+                  </ButtonGroup>
+                </Box>
+                <Box sx={{ mt: 2 }}>
+                  <Button variant="contained" sx={{ width: "70%" }}>
+                    Add to Cart
+                  </Button>
+                </Box>
+                <Box sx={{ marginTop: "20px" }}>
+                  <p>{productDetails?.description}</p>
+                </Box>
+              </>
+            )}
+          </Box>
         </Grid>
       </Grid>
     </Container>
