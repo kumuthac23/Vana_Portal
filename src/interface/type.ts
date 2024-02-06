@@ -30,8 +30,8 @@ export interface ISignUp {
   role?: string;
 }
 export interface Collection {
-  _id: string;
+  _id?: string;
   name: string;
-  description:string;
-  products: Product[];
+  description?:string;
+  products?: Product[];
 }

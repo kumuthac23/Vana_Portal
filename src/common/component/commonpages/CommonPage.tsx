@@ -1,24 +1,27 @@
 import { useState } from "react";
-import { Collection } from "../../../interface/type";
+import {  Product } from "../../../interface/type";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import CommonProductCard from "../commonCard/CommonProductCard";
+import { useGetAllItemsByCollectionName } from "../../../hooks/CustomRQHooks";
+
 
 interface Props {
-  collection: Collection;
+  collectionName:string
 }
 
 const CommonPage = (props: Props) => {
-  const { collection } = props;
+  const { collectionName } = props;
 
   const [hoveredProductImage, setHoveredProductImage] = useState<string | null>(
     null
@@ -42,6 +45,12 @@ const CommonPage = (props: Props) => {
     setSortProductOption(event.target.value as string);
   };
 
+  // Fetch products for the current collection
+  const { data: fetchedCollection, isLoading, isError } = useGetAllItemsByCollectionName(collectionName);
+  
+  
+
+
   return (
     <Container sx={{ marginY: "15px" }}>
       <Box>
@@ -54,7 +63,7 @@ const CommonPage = (props: Props) => {
           }}
         >
           <Typography variant="h5" gutterBottom>
-            {collection.name}
+            {fetchedCollection?.name}
           </Typography>
           <IconButton
             onClick={handleExpandClick}
@@ -76,7 +85,7 @@ const CommonPage = (props: Props) => {
           unmountOnExit
           sx={{ marginBottom: "16px" }}
         >
-          <Typography>{collection.description}</Typography>
+          <Typography>{fetchedCollection?.description}</Typography>
         </Collapse>
       </Box>
       <Box
@@ -89,7 +98,7 @@ const CommonPage = (props: Props) => {
       >
         <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
           <Typography variant="body1" color="textSecondary">
-            Products:({collection.products.length})
+            Products: {isLoading ? 'Loading...' : isError ? 'Error' : fetchedCollection?.products?.length || 0}
           </Typography>
         </Box>
         <Box
@@ -125,18 +134,24 @@ const CommonPage = (props: Props) => {
           </FormControl>
         </Box>
       </Box>
-      <Grid container spacing={3}>
-        {collection.products.map((product) => (
-          <Grid item key={product._id} xs={12} sm={6} md={4} lg={3}>
-            <CommonProductCard
-              product={product}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              hoveredProductImage={hoveredProductImage}
-            />
-          </Grid>
-        ))}
-      </Grid>
+      {isLoading ? (
+        <CircularProgress />
+      ) : isError ? (
+        <Typography>Error fetching products</Typography>
+      ) : (
+        <Grid container spacing={3}>
+          {fetchedCollection!.products && fetchedCollection!.products.map((product: Product) => (
+            <Grid item key={product._id} xs={12} sm={6} md={4} lg={3}>
+              <CommonProductCard
+                product={product}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                hoveredProductImage={hoveredProductImage}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      )}
     </Container>
   );
 };

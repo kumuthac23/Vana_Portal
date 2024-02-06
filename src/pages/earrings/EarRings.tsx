@@ -1,15 +1,19 @@
+// EarringsPage.tsx
 import CommonPage from "../../common/component/commonpages/CommonPage";
-import { jewelryCollections } from "../../seed-data/seed-data"; 
+import { useGetAllItemsByCollectionName } from "../../hooks/CustomRQHooks";
 
 
-const EarRingsPage = () => {
-  const earRingsCollection = jewelryCollections.find(
-    (collection) => collection.name === "Earrings"
+
+const Earrings = () => {
+  const { data: EarringsCollection, isLoading, isError } = useGetAllItemsByCollectionName("Earrings");
+
+  return (
+    <>
+      {isLoading && <p>Loading...</p>}
+      {isError && <p>Error fetching collection</p>}
+      {EarringsCollection && <CommonPage collectionName="Earrings" />}
+    </>
   );
-
-  if (!earRingsCollection) return null;
-
-  return <CommonPage collection={earRingsCollection} />;
 };
 
-export default EarRingsPage;
+export default Earrings;

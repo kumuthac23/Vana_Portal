@@ -1,14 +1,19 @@
+// NecklacesPage.tsx
 import CommonPage from "../../common/component/commonpages/CommonPage";
-import { jewelryCollections } from "../../seed-data/seed-data"; 
+import { useGetAllItemsByCollectionName } from "../../hooks/CustomRQHooks";
 
-const NecklacesPage= () => {
-  const necklaceCollection = jewelryCollections.find(
-    (collection) => collection.name === "Necklaces"
+
+
+const NecklacesPage = () => {
+  const { data: necklacesCollection, isLoading, isError } = useGetAllItemsByCollectionName("Necklaces");
+
+  return (
+    <>
+      {isLoading && <p>Loading...</p>}
+      {isError && <p>Error fetching collection</p>}
+      {necklacesCollection && <CommonPage collectionName="Necklaces" />}
+    </>
   );
-
-  if (!necklaceCollection) return null;
-
-  return <CommonPage collection={necklaceCollection} />;
 };
 
 export default NecklacesPage;

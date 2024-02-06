@@ -29,7 +29,7 @@ const CommonProductCard = (props: Props) => {
       onMouseLeave={onMouseLeave}
     >
       <Link
-        to={`/detail/productId`}
+        to={`/detail/${product._id}`}
         state={{ product }}
         style={{ textDecoration: "none", color: "inherit" }}
       >
