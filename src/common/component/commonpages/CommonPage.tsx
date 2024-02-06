@@ -74,9 +74,11 @@ const CommonPage = (props: Props) => {
           in={expandDescription}
           timeout="auto"
           unmountOnExit
-          sx={{ marginBottom: "16px" }}
+          sx={{ margin: "30px" }}
         >
-          <Typography>{collection.description}</Typography>
+          <Typography sx={{ fontFamily: "sans-serief" }}>
+            {collection.description}
+          </Typography>
         </Collapse>
       </Box>
       <Box
@@ -100,7 +102,12 @@ const CommonPage = (props: Props) => {
             height: "40px",
           }}
         >
-          <FormControl fullWidth>
+          <FormControl
+            fullWidth
+            sx={{
+              border: sortProductOption ? "none" : "none",
+            }}
+          >
             <Select
               value={sortProductOption}
               onChange={handleChange}
@@ -110,7 +117,7 @@ const CommonPage = (props: Props) => {
                 backgroundColor: "transparent",
                 color: "inherit",
                 "& .MuiOutlinedInput-root": {
-                  border: "none", 
+                  border: "none",
                   "& fieldset": {
                     border: "none",
                   },

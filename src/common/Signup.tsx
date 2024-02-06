@@ -13,7 +13,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { paths } from "../routes/path";
 
-
 interface SignProps {
   onSign?(): void;
   requiredHeading?: boolean;
@@ -47,7 +46,7 @@ const schema = yup.object().shape({
   name: yup.string().required("Please enter Name"),
 });
 
-function Signup({  requiredHeading, onRegisterLinkClick }: SignProps) {
+function Signup({ requiredHeading, onRegisterLinkClick }: SignProps) {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -71,18 +70,19 @@ function Signup({  requiredHeading, onRegisterLinkClick }: SignProps) {
 
   const moveToLogin = () => {
     if (!isNavbarLogin && !isOrderLogin && !isSignupLogin) {
-    
     } else {
       navigate(`/${paths.LOGIN}`, { state: { fromSignup: true } });
     }
   };
 
-  const handleSign = async (data: ISignUpFormFields) => {
-    
-  };
+  const handleSign = async (data: ISignUpFormFields) => {};
 
   return (
-    <Container sx={{ width: "50%" }}>
+    <Container
+      sx={{
+        width: { xs: "90%", sm: "50%" },
+      }}
+    >
       <Typography
         variant="h5"
         fontWeight="bold"
@@ -112,7 +112,7 @@ function Signup({  requiredHeading, onRegisterLinkClick }: SignProps) {
             />
           </Box>
           <Box sx={{ padding: "7px 0" }}>
-            <Typography padding="5px 0px">
+            <Typography padding="3px 0px">
               PhoneNumber<span style={{ color: "red" }}>*</span>
             </Typography>
             <TextField

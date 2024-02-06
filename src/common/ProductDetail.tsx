@@ -143,9 +143,13 @@ function ProductDetail(props: IProps) {
                   size="small"
                   aria-label="small outlined button group"
                 >
-                  <Button onClick={decrementQuantity}>-</Button>
-                  <Button>{quantity}</Button>
-                  <Button onClick={incrementQuantity}>+</Button>
+                  <Button sx={{ color: "black" }} onClick={decrementQuantity}>
+                    -
+                  </Button>
+                  <Button sx={{ color: "black" }}>{quantity}</Button>
+                  <Button onClick={incrementQuantity} sx={{ color: "black" }}>
+                    +
+                  </Button>
                 </ButtonGroup>
               </Box>
               <Box sx={{ mt: 2 }}>

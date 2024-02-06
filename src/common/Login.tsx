@@ -80,7 +80,7 @@ function Login({ onLogin, requiredHeading, onRegisterLinkClick }: LoginProps) {
       >
         <Box>
           {requiredHeading && (
-            <Typography variant="h5" align="center" gutterBottom>
+            <Typography variant="h5" align="center" gutterBottom sx={{p:2,fontWeight:"bold"}}>
               Login
             </Typography>
           )}

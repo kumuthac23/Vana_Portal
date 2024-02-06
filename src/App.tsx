@@ -19,6 +19,14 @@ function App() {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
+          <Route
+            path={paths.LOGIN}
+            element={<Login requiredHeading={true} />}
+          />
+          <Route
+            path={paths.SIGNUP}
+            element={<Signup requiredHeading={true} />}
+          />
           <Route path={paths.ROOT} element={<Layout />}>
             <Route index element={<Home />} />
             <Route path={paths.EARRINGS} element={<EarRings />} />
@@ -26,14 +34,6 @@ function App() {
             <Route path={paths.NECKLACES} element={<Necklaces />} />
             <Route path={paths.BESTSELLER} element={<BestSelller />} />
             <Route path={paths.FAQABOUT} element={<FAQ />} />
-            <Route
-              path={paths.LOGIN}
-              element={<Login requiredHeading={true} />}
-            />
-            <Route
-              path={paths.SIGNUP}
-              element={<Signup requiredHeading={true} />}
-            />
           </Route>
           <Route
             path={paths.PRODUCTDETAIL}
