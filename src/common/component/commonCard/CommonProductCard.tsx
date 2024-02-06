@@ -45,7 +45,7 @@ const CommonProductCard = (props: Props) => {
           component="img"
           height="250px"
           width="auto"
-          image={isHovered && product.images.length > 0 ? product.images[0] : product.posterUrl}
+          image={isHovered && product.images.length > 0 ? product.images[0] : product.posterURL}
           alt={product.title}
           sx={{
             objectFit: "cover",

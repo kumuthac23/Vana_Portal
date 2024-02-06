@@ -1,7 +1,7 @@
 export interface Product {
   type: string;
   _id: string;
-  posterUrl:string;
+  posterURL:string;
   images: string[]; 
   title: string;
   description: string;
