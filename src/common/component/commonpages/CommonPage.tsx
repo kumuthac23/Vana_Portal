@@ -1,55 +1,51 @@
 import { useState } from "react";
-import {  Product } from "../../../interface/type";
+import { Icommonpage, Product} from "../../../interface/type";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
-import CircularProgress from "@mui/material/CircularProgress";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import CommonProductCard from "../commonCard/CommonProductCard";
-import { useGetAllItemsByCollectionName } from "../../../hooks/CustomRQHooks";
+import { SortingOption, SortingOptionLabel, sortingOptions } from "../../../interface/type";
 
+const CommonPage = (props: Icommonpage) => {
+  const jewelleryItemWithCollection = props;
+  console.log(props);
 
-interface Props {
-  collectionName:string
-}
-
-const CommonPage = (props: Props) => {
-  const { collectionName } = props;
-
-  const [hoveredProductImage, setHoveredProductImage] = useState<string | null>(
-    null
-  );
   const [expandDescription, setExpandDescription] = useState(false);
-  const [sortProductOption, setSortProductOption] = useState<string>("");
+  const [sortProductOption, setSortProductOption] = useState<SortingOption>(SortingOption.Default);
 
-  const handleMouseEnter = (productId: string) => {
-    setHoveredProductImage(productId);
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredProductImage(null);
-  };
 
   const handleExpandClick = () => {
     setExpandDescription(!expandDescription);
   };
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setSortProductOption(event.target.value as string);
+  const handleSortChange = (event: SelectChangeEvent) => {
+    setSortProductOption(event.target.value as SortingOption);
   };
 
-  // Fetch products for the current collection
-  const { data: fetchedCollection, isLoading, isError } = useGetAllItemsByCollectionName(collectionName);
-  
-  
+  const sortProducts = (products: Product[]): Product[] => {
+    switch (sortProductOption) {
+      case SortingOption.PriceLowToHigh:
+        return products.slice().sort((a, b) => a.price - b.price);
+      case SortingOption.PriceHighToLow:
+        return products.slice().sort((a, b) => b.price - a.price);
+      case SortingOption.NameAZ:
+        return products.slice().sort((a, b) => a.title.localeCompare(b.title));
+      case SortingOption.NameZA:
+        return products.slice().sort((a, b) => b.title.localeCompare(a.title));
+      default:
+        return products;
+    }
+  };
 
+  const sortedProducts = sortProducts(jewelleryItemWithCollection?.jewelleryItems || []);
 
   return (
     <Container sx={{ marginY: "15px" }}>
@@ -63,7 +59,8 @@ const CommonPage = (props: Props) => {
           }}
         >
           <Typography variant="h5" gutterBottom>
-            {fetchedCollection?.name}
+            {jewelleryItemWithCollection?.JewelleryCollectionName ||
+              "Collection Name"}
           </Typography>
           <IconButton
             onClick={handleExpandClick}
@@ -85,7 +82,10 @@ const CommonPage = (props: Props) => {
           unmountOnExit
           sx={{ marginBottom: "16px" }}
         >
-          <Typography>{fetchedCollection?.description}</Typography>
+          <Typography>
+            {jewelleryItemWithCollection?.JewelleryCollectionDescription ||
+              "No description available"}
+          </Typography>
         </Collapse>
       </Box>
       <Box
@@ -98,7 +98,7 @@ const CommonPage = (props: Props) => {
       >
         <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
           <Typography variant="body1" color="textSecondary">
-            Products: {isLoading ? 'Loading...' : isError ? 'Error' : fetchedCollection?.products?.length || 0}
+            Products: {sortedProducts.length}
           </Typography>
         </Box>
         <Box
@@ -112,45 +112,43 @@ const CommonPage = (props: Props) => {
           <FormControl fullWidth>
             <Select
               value={sortProductOption}
-              onChange={handleChange}
+              onChange={handleSortChange}
               displayEmpty
               renderValue={(value) => value || "Sort by"}
               sx={{
                 backgroundColor: "transparent",
                 color: "inherit",
                 "& .MuiOutlinedInput-root": {
-                  border: "none", 
+                  border: "none",
                   "& fieldset": {
                     border: "none",
                   },
                 },
               }}
             >
-              <MenuItem value="Price: Low to High">Price: Low to High</MenuItem>
-              <MenuItem value="Price: High to Low">Price: High to Low</MenuItem>
-              <MenuItem value="Name: A-Z">Name: A-Z</MenuItem>
-              <MenuItem value="Name: Z-A">Name: Z-A</MenuItem>
+              {sortingOptions.map((option: SortingOptionLabel) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Box>
       </Box>
-      {isLoading ? (
-        <CircularProgress />
-      ) : isError ? (
-        <Typography>Error fetching products</Typography>
-      ) : (
+      {jewelleryItemWithCollection &&
+      jewelleryItemWithCollection.jewelleryItems &&
+      jewelleryItemWithCollection.jewelleryItems.length > 0 ? (
         <Grid container spacing={3}>
-          {fetchedCollection!.products && fetchedCollection!.products.map((product: Product) => (
+          {sortedProducts.map((product:Product) => (
             <Grid item key={product._id} xs={12} sm={6} md={4} lg={3}>
               <CommonProductCard
                 product={product}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-                hoveredProductImage={hoveredProductImage}
               />
             </Grid>
           ))}
         </Grid>
+      ) : (
+        <Typography>No products available</Typography>
       )}
     </Container>
   );

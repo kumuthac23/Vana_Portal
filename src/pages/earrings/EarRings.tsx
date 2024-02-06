@@ -2,16 +2,27 @@
 import CommonPage from "../../common/component/commonpages/CommonPage";
 import { useGetAllItemsByCollectionName } from "../../hooks/CustomRQHooks";
 
-
-
 const Earrings = () => {
-  const { data: EarringsCollection, isLoading, isError } = useGetAllItemsByCollectionName("Earrings");
+  const {
+    data: EarringsCollection,
+    isLoading,
+    isError,
+  } = useGetAllItemsByCollectionName("Earrings");
+  console.log(EarringsCollection);
 
   return (
     <>
       {isLoading && <p>Loading...</p>}
       {isError && <p>Error fetching collection</p>}
-      {EarringsCollection && <CommonPage collectionName="Earrings" />}
+      {EarringsCollection && (
+        <CommonPage
+          JewelleryCollectionName={EarringsCollection.JewelleryCollectionName}
+          JewelleryCollectionDescription={
+            EarringsCollection.JewelleryCollectionDescription || ""
+          }
+          jewelleryItems={EarringsCollection.jewelleryItems || []}
+        />
+      )}
     </>
   );
 };
