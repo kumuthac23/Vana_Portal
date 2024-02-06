@@ -35,3 +35,13 @@ export interface Collection {
   description:string;
   products: Product[];
 }
+
+export interface ISearchProduct {
+  _id: string;
+  posterURL: string;
+  images: string[];
+  title: string;
+  description: string;
+  price: number;
+}
+
