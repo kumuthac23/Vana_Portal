@@ -14,7 +14,6 @@ import Signup from "./common/Signup";
 import { productDetails } from "./seed-data/seed-data";
 import ProductDetail from "./common/ProductDetail";
 import { QueryClientProvider,QueryClient } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 export const queryClient = new QueryClient();
 
@@ -47,7 +46,6 @@ function App() {
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
-    <ReactQueryDevtools initialIsOpen buttonPosition="bottom-left" />
     </QueryClientProvider>
   );
 }
