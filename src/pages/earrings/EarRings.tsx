@@ -8,7 +8,6 @@ const Earrings = () => {
     isLoading,
     isError,
   } = useGetAllItemsByCollectionName("Earrings");
-  console.log(EarringsCollection);
 
   return (
     <>

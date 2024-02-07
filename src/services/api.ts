@@ -1,10 +1,10 @@
-import { Collection} from "../interface/type";
+import { ICollection} from "../interface/type";
 import { httpWithoutCredentials } from "./http";
-import {  Product } from "../interface/type";
+import {  IProduct } from "../interface/type";
 
  const getAllItemsByCollectionName = async (collectionName:string) => {
     try {
-      const response = await httpWithoutCredentials.get<Collection>(
+      const response = await httpWithoutCredentials.get<ICollection>(
         `/JewelleryItem/getJewelleryItemsByJewelleryCollectionId/${collectionName}`
       );
   
@@ -18,7 +18,7 @@ import {  Product } from "../interface/type";
 
 const getNewArrivalProductsData = async () => {
   try {
-    const response = await httpWithoutCredentials.get<Product[]>(
+    const response = await httpWithoutCredentials.get<IProduct[]>(
       "/JewelleryItem/getNewArrivalProducts"
     );
     return response.data;

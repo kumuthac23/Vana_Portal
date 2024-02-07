@@ -2,12 +2,12 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Product } from "../../../interface/type";
+import { IProduct } from "../../../interface/type";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
 interface Props {
-  product: Product;
+  product: IProduct;
 }
 
 const CommonProductCard = (props: Props) => {

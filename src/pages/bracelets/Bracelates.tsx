@@ -8,7 +8,6 @@ const Bracelets = () => {
     isLoading,
     isError,
   } = useGetAllItemsByCollectionName("Bracelets");
-  console.log(BraceletsCollection);
 
   return (
     <>

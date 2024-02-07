@@ -1,4 +1,6 @@
-export interface Product {
+import { SortingOption } from "../common/component/sortingOption";
+
+export interface IProduct {
   type: string;
   _id: string;
   posterURL:string;
@@ -11,7 +13,7 @@ export interface Product {
 export interface Icommonpage{
   JewelleryCollectionDescription: string,
   JewelleryCollectionName: string,
-  jewelleryItems:Product[]
+  jewelleryItems:IProduct[]
 }
 
 export interface IProductDetails {
@@ -36,38 +38,18 @@ export interface ISignUp {
   confirmPassword: string;
   role?: string;
 }
-export interface Collection {
+export interface ICollection {
   jewelleryItems: never[];
   JewelleryCollectionDescription: string;
   JewelleryCollectionName: string;
   _id?: string;
   name: string;
   description?:string;
-  products?: Product[];
+  products?: IProduct[];
 }
 
 
-
-
-// sorting products
-
-export enum SortingOption {
-  Default = "",
-  PriceLowToHigh = "Price: Low to High",
-  PriceHighToLow = "Price: High to Low",
-  NameAZ = "Name: A-Z",
-  NameZA = "Name: Z-A",
-}
-
-export interface SortingOptionLabel {
+export interface ISortingOptionLabel {
   value: SortingOption;
   label: string;
 }
-
-export const sortingOptions: SortingOptionLabel[] = [
-  { value: SortingOption.Default, label: "Default" },
-  { value: SortingOption.PriceLowToHigh, label: "Price: Low to High" },
-  { value: SortingOption.PriceHighToLow, label: "Price: High to Low" },
-  { value: SortingOption.NameAZ, label: "Name: A-Z" },
-  { value: SortingOption.NameZA, label: "Name: Z-A" },
-];
