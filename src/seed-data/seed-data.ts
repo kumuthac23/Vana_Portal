@@ -264,4 +264,4 @@ export const jewelryCollections: Collection[] = [
   },
 ];
 
-export default jewelryCollections;
+// export default jewelryCollections;

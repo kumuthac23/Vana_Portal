@@ -1,10 +1,19 @@
-export interface Product {
+import { SortingOption } from "../common/component/sortingOption";
+
+export interface IProduct {
+  type: string;
   _id: string;
-  posterUrl:string;
+  posterURL:string;
   images: string[]; 
   title: string;
   description: string;
   price: number;
+}
+
+export interface Icommonpage{
+  JewelleryCollectionDescription: string,
+  JewelleryCollectionName: string,
+  jewelleryItems:IProduct[]
 }
 
 export interface IProductDetails {
@@ -29,9 +38,18 @@ export interface ISignUp {
   confirmPassword: string;
   role?: string;
 }
-export interface Collection {
-  _id: string;
+export interface ICollection {
+  jewelleryItems: never[];
+  JewelleryCollectionDescription: string;
+  JewelleryCollectionName: string;
+  _id?: string;
   name: string;
-  description:string;
-  products: Product[];
+  description?:string;
+  products?: IProduct[];
+}
+
+
+export interface ISortingOptionLabel {
+  value: SortingOption;
+  label: string;
 }
