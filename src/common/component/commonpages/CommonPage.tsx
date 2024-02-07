@@ -33,12 +33,13 @@ const CommonPage = (props: Icommonpage) => {
     const sortedProducts = sortProducts(jewelleryItemWithCollection?.jewelleryItems || []);
     setSortedProducts(sortedProducts);
   }, [jewelleryItemWithCollection?.jewelleryItems, sortProductOption]);
+
   const handleExpandClick = () => {
     setExpandDescription(!expandDescription);
   };
 
   const handleSortChange = (e:any) => {
-    setSortProductOption(e.target.value as SortingOption);
+    setSortProductOption(e.target.value );
   };
 
   const sortProducts = (products: IProduct[]): IProduct[] => {
