@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Icommonpage, Product} from "../../../interface/type";
+import { Icommonpage, Product } from "../../../interface/type";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
@@ -12,15 +12,19 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import CommonProductCard from "../commonCard/CommonProductCard";
-import { SortingOption, SortingOptionLabel, sortingOptions } from "../../../interface/type";
+import {
+  SortingOption,
+  SortingOptionLabel,
+  sortingOptions,
+} from "../../../interface/type";
 
 const CommonPage = (props: Icommonpage) => {
   const jewelleryItemWithCollection = props;
-  console.log(props);
 
   const [expandDescription, setExpandDescription] = useState(false);
-  const [sortProductOption, setSortProductOption] = useState<SortingOption>(SortingOption.Default);
-
+  const [sortProductOption, setSortProductOption] = useState<SortingOption>(
+    SortingOption.Default
+  );
 
   const handleExpandClick = () => {
     setExpandDescription(!expandDescription);
@@ -45,7 +49,9 @@ const CommonPage = (props: Icommonpage) => {
     }
   };
 
-  const sortedProducts = sortProducts(jewelleryItemWithCollection?.jewelleryItems || []);
+  const sortedProducts = sortProducts(
+    jewelleryItemWithCollection?.jewelleryItems || []
+  );
 
   return (
     <Container sx={{ marginY: "15px" }}>
@@ -116,14 +122,16 @@ const CommonPage = (props: Icommonpage) => {
               displayEmpty
               renderValue={(value) => value || "Sort by"}
               sx={{
-                backgroundColor: "transparent",
-                color: "inherit",
-                "& .MuiOutlinedInput-root": {
-                  border: "none",
-                  "& fieldset": {
-                    border: "none",
+                boxShadow: "none",
+                ".MuiOutlinedInput-notchedOutline": { border: 0 },
+                "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                  {
+                    border: 0,
                   },
-                },
+                "&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                  {
+                    border: 0,
+                  },
               }}
             >
               {sortingOptions.map((option: SortingOptionLabel) => (
@@ -139,11 +147,9 @@ const CommonPage = (props: Icommonpage) => {
       jewelleryItemWithCollection.jewelleryItems &&
       jewelleryItemWithCollection.jewelleryItems.length > 0 ? (
         <Grid container spacing={3}>
-          {sortedProducts.map((product:Product) => (
+          {sortedProducts.map((product: Product) => (
             <Grid item key={product._id} xs={12} sm={6} md={4} lg={3}>
-              <CommonProductCard
-                product={product}
-              />
+              <CommonProductCard product={product} />
             </Grid>
           ))}
         </Grid>
