@@ -13,9 +13,13 @@ import Login from "./common/Login";
 import Signup from "./common/Signup";
 import { productDetails } from "./seed-data/seed-data";
 import ProductDetail from "./common/ProductDetail";
+import { QueryClientProvider,QueryClient } from "@tanstack/react-query";
+
+export const queryClient = new QueryClient();
 
 function App() {
   return (
+    <QueryClientProvider client={queryClient}>
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Routes>
@@ -42,6 +46,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
+    </QueryClientProvider>
   );
 }
 
