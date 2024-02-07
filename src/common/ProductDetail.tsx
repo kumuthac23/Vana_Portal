@@ -176,8 +176,6 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate, useParams } from "react-router";
 import { useProductDetailById } from "../CustomRQHooks/Hooks";
 
-
-
 function ProductDetail() {
   const { productId } = useParams();
   const navigate = useNavigate();
@@ -200,7 +198,7 @@ function ProductDetail() {
     setMainImage(image);
   };
 
-  const productDetails  = productDetailQuery.data;
+  const productDetails = productDetailQuery.data;
 
   useEffect(() => {
     if (productDetails && productDetails.images.length > 0) {
@@ -224,7 +222,7 @@ function ProductDetail() {
           <Box sx={{ pb: 2 }}>
             <img
               src={mainImage}
-              alt="product image"
+              // alt="product image"
               style={{
                 display: "block",
                 margin: "1px auto",
@@ -270,7 +268,7 @@ function ProductDetail() {
               flexDirection: "column",
             }}
           >
-            {productDetails && (
+            {productDetails ? (
               <>
                 <Typography variant="h5" sx={{ fontWeight: "bold" }}>
                   {productDetails.title}
@@ -321,14 +319,14 @@ function ProductDetail() {
                   <Typography>{productDetails.description}</Typography>
                 </Box>
               </>
+            ) : (
+              <Box>Product Not Found</Box>
             )}
           </Box>
         </Grid>
       </Grid>
     </Container>
- 
-
- );
+  );
 }
 
 export default ProductDetail;
