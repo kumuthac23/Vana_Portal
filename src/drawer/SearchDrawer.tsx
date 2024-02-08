@@ -17,6 +17,7 @@ interface SearchDrawerProps {
   onClose: () => void;
 }
 
+
 const SearchDrawer = ({ open, onClose }: SearchDrawerProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [products, setProducts] = useState<ISearchProduct[]>([]);
@@ -26,6 +27,7 @@ const SearchDrawer = ({ open, onClose }: SearchDrawerProps) => {
     const value = event.target.value;
     setSearchTerm(value);
   };
+  ;
   const fetchSearchProduct = async () => {
     try {
       const response = await httpWithoutCredentials.get<ISearchProduct[]>(
@@ -43,7 +45,15 @@ const SearchDrawer = ({ open, onClose }: SearchDrawerProps) => {
     if (searchTerm && searchTerm.trim() !== "") {
       fetchSearchProduct();
     }
-  }, [searchTerm]);
+   
+    if (!open) {
+      setSearchTerm("");
+      setProducts([]);
+    }
+  }, [searchTerm, open]);
+
+ 
+
 
   const handleProductClick = (productId: string) => {
     navigate(`productDetail/${productId}`);

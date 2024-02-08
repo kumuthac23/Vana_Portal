@@ -74,7 +74,7 @@ const CommonPage = (props: Props) => {
           in={expandDescription}
           timeout="auto"
           unmountOnExit
-          sx={{ marginBottom: "16px" }}
+          sx={{ margin: "25px" }}
         >
           <Typography>{collection.description}</Typography>
         </Collapse>
