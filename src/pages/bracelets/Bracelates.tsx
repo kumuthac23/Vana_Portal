@@ -1,14 +1,29 @@
-import { jewelryCollections } from "../../seed-data/seed-data";
+// BraceletsPage.tsx
 import CommonPage from "../../common/component/commonpages/CommonPage";
+import { useGetAllItemsByCollectionName } from "../../hooks/CustomRQHooks";
 
-const BraceletsPage = () => {
-  const braceletsCollection = jewelryCollections.find(
-    (collection) => collection.name === "Bracelets"
+const Bracelets = () => {
+  const {
+    data: BraceletsCollection,
+    isLoading,
+    isError,
+  } = useGetAllItemsByCollectionName("Bracelets");
+
+  return (
+    <>
+      {isLoading && <p>Loading...</p>}
+      {isError && <p>Error fetching collection</p>}
+      {BraceletsCollection && (
+        <CommonPage
+          JewelleryCollectionName={BraceletsCollection.JewelleryCollectionName}
+          JewelleryCollectionDescription={
+            BraceletsCollection.JewelleryCollectionDescription || ""
+          }
+          jewelleryItems={BraceletsCollection.jewelleryItems || []}
+        />
+      )}
+    </>
   );
-
-  if (!braceletsCollection) return null;
-
-  return <CommonPage collection={braceletsCollection} />;
 };
 
-export default BraceletsPage;
+export default Bracelets;

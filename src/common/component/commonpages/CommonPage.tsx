@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Collection } from "../../../interface/type";
+import { useEffect, useState } from "react";
+import { Icommonpage, IProduct, ISortingOptionLabel} from "../../../interface/type";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
@@ -9,38 +9,54 @@ import Box from "@mui/material/Box";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import CommonProductCard from "../commonCard/CommonProductCard";
+import { SortingOption } from "../sortingOption";
 
-interface Props {
-  collection: Collection;
-}
+const sortingOptions: ISortingOptionLabel[] = [
+  { value: SortingOption.Default, label: "Default" },
+  { value: SortingOption.PriceLowToHigh, label: "Price: Low to High" },
+  { value: SortingOption.PriceHighToLow, label: "Price: High to Low" },
+  { value: SortingOption.NameAZ, label: "Name: A-Z" },
+  { value: SortingOption.NameZA, label: "Name: Z-A" },
+];
 
-const CommonPage = (props: Props) => {
-  const { collection } = props;
+const CommonPage = (props: Icommonpage) => {
+  const jewelleryItemWithCollection = props;
 
-  const [hoveredProductImage, setHoveredProductImage] = useState<string | null>(
-    null
-  );
   const [expandDescription, setExpandDescription] = useState(false);
-  const [sortProductOption, setSortProductOption] = useState<string>("");
+  const [sortProductOption, setSortProductOption] = useState<SortingOption>(SortingOption.NameAZ);
+  const [sortedProducts, setSortedProducts] = useState<IProduct[]>([]);
 
-  const handleMouseEnter = (productId: string) => {
-    setHoveredProductImage(productId);
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredProductImage(null);
-  };
+  useEffect(() => {
+    const sortedProducts = sortProducts(jewelleryItemWithCollection?.jewelleryItems || []);
+    setSortedProducts(sortedProducts);
+  }, [jewelleryItemWithCollection?.jewelleryItems, sortProductOption]);
 
   const handleExpandClick = () => {
     setExpandDescription(!expandDescription);
   };
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setSortProductOption(event.target.value as string);
+  const handleSortChange = (e:any) => {
+    setSortProductOption(e.target.value );
   };
+
+  const sortProducts = (products: IProduct[]): IProduct[] => {
+    switch (sortProductOption) {
+      case SortingOption.PriceLowToHigh:
+        return products.slice().sort((a, b) => a.price - b.price);
+      case SortingOption.PriceHighToLow:
+        return products.slice().sort((a, b) => b.price - a.price);
+        case SortingOption.NameAZ:
+      return products.slice().sort((a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: 'base', usage: 'sort' }));
+    case SortingOption.NameZA:
+      return products.slice().sort((a, b) => b.title.localeCompare(a.title, undefined, { sensitivity: 'base', usage: 'sort' }));
+    default:
+      return products;
+    }
+  };
+
 
   return (
     <Container sx={{ marginY: "15px" }}>
@@ -54,7 +70,8 @@ const CommonPage = (props: Props) => {
           }}
         >
           <Typography variant="h5" gutterBottom>
-            {collection.name}
+            {jewelleryItemWithCollection?.JewelleryCollectionName ||
+              "Collection Name"}
           </Typography>
           <IconButton
             onClick={handleExpandClick}
@@ -76,7 +93,10 @@ const CommonPage = (props: Props) => {
           unmountOnExit
           sx={{ margin: "25px" }}
         >
-          <Typography>{collection.description}</Typography>
+          <Typography>
+            {jewelleryItemWithCollection?.JewelleryCollectionDescription ||
+              "No description available"}
+          </Typography>
         </Collapse>
       </Box>
       <Box
@@ -89,7 +109,7 @@ const CommonPage = (props: Props) => {
       >
         <Box sx={{ display: "flex", alignItems: "center", gap: "8px" }}>
           <Typography variant="body1" color="textSecondary">
-            Products:({collection.products.length})
+            Products: {sortedProducts.length}
           </Typography>
         </Box>
         <Box
@@ -103,40 +123,44 @@ const CommonPage = (props: Props) => {
           <FormControl fullWidth>
             <Select
               value={sortProductOption}
-              onChange={handleChange}
+              onChange={handleSortChange}
               displayEmpty
               renderValue={(value) => value || "Sort by"}
               sx={{
-                backgroundColor: "transparent",
-                color: "inherit",
-                "& .MuiOutlinedInput-root": {
-                  border: "none", 
-                  "& fieldset": {
-                    border: "none",
+                boxShadow: "none",
+                ".MuiOutlinedInput-notchedOutline": { border: 0 },
+                "&.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                  {
+                    border: 0,
                   },
-                },
+                "&.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                  {
+                    border: 0,
+                  },
               }}
             >
-              <MenuItem value="Price: Low to High">Price: Low to High</MenuItem>
-              <MenuItem value="Price: High to Low">Price: High to Low</MenuItem>
-              <MenuItem value="Name: A-Z">Name: A-Z</MenuItem>
-              <MenuItem value="Name: Z-A">Name: Z-A</MenuItem>
+              {sortingOptions.map((option: ISortingOptionLabel) => (
+                <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Box>
       </Box>
-      <Grid container spacing={3}>
-        {collection.products.map((product) => (
-          <Grid item key={product._id} xs={12} sm={6} md={4} lg={3}>
-            <CommonProductCard
-              product={product}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              hoveredProductImage={hoveredProductImage}
-            />
-          </Grid>
-        ))}
-      </Grid>
+      {jewelleryItemWithCollection &&
+      jewelleryItemWithCollection.jewelleryItems &&
+      jewelleryItemWithCollection.jewelleryItems.length > 0 ? (
+        <Grid container spacing={3}>
+          {sortedProducts.map((product:IProduct) => (
+            <Grid item key={product._id} xs={12} sm={6} md={4} lg={3}>
+              <CommonProductCard product={product} />
+            </Grid>
+          ))}
+        </Grid>
+      ) : (
+        <Typography>No products available</Typography>
+      )}
     </Container>
   );
 };
