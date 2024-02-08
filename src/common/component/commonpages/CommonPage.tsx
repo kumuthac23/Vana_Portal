@@ -91,7 +91,7 @@ const CommonPage = (props: Icommonpage) => {
           in={expandDescription}
           timeout="auto"
           unmountOnExit
-          sx={{ marginBottom: "16px" }}
+          sx={{ margin: "25px" }}
         >
           <Typography>
             {jewelleryItemWithCollection?.JewelleryCollectionDescription ||

@@ -48,6 +48,15 @@ export interface ICollection {
   products?: IProduct[];
 }
 
+export interface ISearchProduct {
+  _id: string;
+  posterURL: string;
+  images: string[];
+  title: string;
+  description: string;
+  price: number;
+}
+
 
 export interface ISortingOptionLabel {
   value: SortingOption;
