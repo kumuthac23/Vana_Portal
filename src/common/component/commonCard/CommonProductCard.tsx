@@ -2,20 +2,26 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Product } from "../../../interface/type";
+import { IProduct } from "../../../interface/type";
 import { Link } from "react-router-dom";
-
-
+import { useState } from "react";
 
 interface Props {
-  product: Product;
-  onMouseEnter: (productId: string) => void;
-  onMouseLeave: () => void;
-  hoveredProductImage: string | null;
+  product: IProduct;
 }
 
 const CommonProductCard = (props: Props) => {
-  const { product, onMouseEnter, onMouseLeave, hoveredProductImage } = props;
+  const { product } = props;
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
     <Card
       sx={{
@@ -25,11 +31,11 @@ const CommonProductCard = (props: Props) => {
         textDecoration: "none",
         cursor: "pointer",
       }}
-      onMouseEnter={() => onMouseEnter(product._id)}
-      onMouseLeave={onMouseLeave}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <Link
-        to={`/detail/productId`}
+        to={`/detail/${product._id}`}
         state={{ product }}
         style={{ textDecoration: "none", color: "inherit" }}
       >
@@ -38,9 +44,9 @@ const CommonProductCard = (props: Props) => {
           height="250px"
           width="auto"
           image={
-            hoveredProductImage === product._id
+            isHovered && product.images && product.images.length > 0
               ? product.images[0]
-              : product.posterUrl
+              : product.posterURL
           }
           alt={product.title}
           sx={{
