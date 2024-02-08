@@ -13,39 +13,39 @@ import Login from "./common/Login";
 import Signup from "./common/Signup";
 import { productDetails } from "./seed-data/seed-data";
 import ProductDetail from "./common/ProductDetail";
-import { QueryClientProvider,QueryClient } from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-export const queryClient = new QueryClient();
+const queryClient = new QueryClient();
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <Routes>
-          <Route path={paths.ROOT} element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path={paths.EARRINGS} element={<EarRings />} />
-            <Route path={paths.BRACELETS} element={<Bracelates />} />
-            <Route path={paths.NECKLACES} element={<Necklaces />} />
-            <Route path={paths.BESTSELLER} element={<BestSelller />} />
-            <Route path={paths.FAQABOUT} element={<FAQ />} />
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Routes>
+            <Route path={paths.ROOT} element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path={paths.EARRINGS} element={<EarRings />} />
+              <Route path={paths.BRACELETS} element={<Bracelates />} />
+              <Route path={paths.NECKLACES} element={<Necklaces />} />
+              <Route path={paths.BESTSELLER} element={<BestSelller />} />
+              <Route path={paths.FAQABOUT} element={<FAQ />} />
+              <Route
+                path={paths.LOGIN}
+                element={<Login requiredHeading={true} />}
+              />
+              <Route
+                path={paths.SIGNUP}
+                element={<Signup requiredHeading={true} />}
+              />
+            </Route>
             <Route
-              path={paths.LOGIN}
-              element={<Login requiredHeading={true} />}
+              path={paths.PRODUCTDETAIL}
+              element={<ProductDetail />}
             />
-            <Route
-              path={paths.SIGNUP}
-              element={<Signup requiredHeading={true} />}
-            />
-          </Route>
-          <Route
-            path={paths.PRODUCTDETAIL}
-            element={<ProductDetail productDetails={productDetails} />}
-          />
-        </Routes>
-      </BrowserRouter>
-    </ThemeProvider>
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
