@@ -1,5 +1,5 @@
-import { ICollection} from "../interface/type";
-import { httpWithoutCredentials } from "./http";
+import { ICollection, ILogin, ISignUp} from "../interface/type";
+import { httpWithCredentials, httpWithoutCredentials } from "./http";
 import {  IProduct } from "../interface/type";
 
  const getAllItemsByCollectionName = async (collectionName:string) => {
@@ -31,7 +31,31 @@ export { getNewArrivalProductsData,getAllItemsByCollectionName };
 
 
 
+const loginCredentials = async (credential: ILogin) => {
+  try {
+    const response = await httpWithCredentials.post<ILogin>(
+      "/user/userlogin",
+      credential
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
 
 
+const signUpCredentials = async (credential: ISignUp) => {
+  try {
+    const response = await httpWithCredentials.post<ISignUp>(
+      "/user/userregister",
+      credential
+    );
+    return response.data; 
+  } catch (error) {
+    throw error
+  }
+};
 
+
+export {loginCredentials,signUpCredentials}
 

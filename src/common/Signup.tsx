@@ -12,20 +12,14 @@ import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { paths } from "../routes/path";
+import { useSignUp } from "../hooks/CustomRQHooks";
+import { ISignUp } from "../interface/type";
 
 
 interface SignProps {
   onSign?(): void;
   requiredHeading?: boolean;
   onRegisterLinkClick?(): void;
-}
-
-interface ISignUpFormFields {
-  phoneNumber: string;
-  password: string;
-  confirmPassword: string;
-  email?: string;
-  name: string;
 }
 
 const schema = yup.object().shape({
@@ -47,9 +41,11 @@ const schema = yup.object().shape({
   name: yup.string().required("Please enter Name"),
 });
 
-function Signup({  requiredHeading, onRegisterLinkClick }: SignProps) {
+
+function Signup({ requiredHeading, onRegisterLinkClick }: SignProps) {
   const navigate = useNavigate();
   const location = useLocation();
+  const signUpMutation = useSignUp();
 
   const { state } = location;
   const isNavbarLogin = state?.fromNavbarLogin || false;
@@ -60,14 +56,27 @@ function Signup({  requiredHeading, onRegisterLinkClick }: SignProps) {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ISignUpFormFields>({
+  } = useForm<ISignUp>({
     resolver: yupResolver(schema) as any,
     mode: "all",
   });
 
-  // const moveToLogin = () => {
-  //   navigate("/checkout");
-  // };
+
+  
+  
+  const handleSign = async (data: ISignUp) => {
+    console.log(data); 
+    try {
+      await signUpMutation.mutateAsync(data);
+  
+      navigate(`/${paths.LOGIN}`, { state: { fromSignup: true } });
+      console.log(data);
+
+    } catch (error) {
+      console.error("Signup failed:", error);
+    }
+  };
+  
 
   const moveToLogin = () => {
     if (!isNavbarLogin && !isOrderLogin && !isSignupLogin) {
@@ -77,9 +86,6 @@ function Signup({  requiredHeading, onRegisterLinkClick }: SignProps) {
     }
   };
 
-  const handleSign = async (data: ISignUpFormFields) => {
-    
-  };
 
   return (
     <Container sx={{ width: "50%" }}>

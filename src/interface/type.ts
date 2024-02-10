@@ -31,13 +31,14 @@ export interface ILogin {
 }
 
 export interface ISignUp {
-  phoneNumber: string | undefined;
+  phoneNumber: string;
   password: string;
   name: string;
-  email?: string;
+  email: string;
   confirmPassword: string;
   role?: string;
 }
+
 export interface ICollection {
   jewelleryItems: never[];
   JewelleryCollectionDescription: string;
