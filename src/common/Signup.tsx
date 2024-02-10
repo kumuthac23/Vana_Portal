@@ -12,8 +12,9 @@ import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { paths } from "../routes/path";
-import { useSignUp } from "../hooks/CustomRQHooks";
 import { ISignUp } from "../interface/type";
+import { useAuthContext } from "../context/AuthContext";
+import { signUp } from "../services/api";
 
 
 interface SignProps {
@@ -21,6 +22,15 @@ interface SignProps {
   requiredHeading?: boolean;
   onRegisterLinkClick?(): void;
 }
+
+interface ISignUpFormFields {
+  phoneNumber: string;
+  password: string;
+  confirmPassword: string;
+  email?: string;
+  userName: string;
+}
+
 
 const schema = yup.object().shape({
   phoneNumber: yup
@@ -41,11 +51,11 @@ const schema = yup.object().shape({
   name: yup.string().required("Please enter Name"),
 });
 
-
-function Signup({ requiredHeading, onRegisterLinkClick }: SignProps) {
+function Signup({ onSign, requiredHeading, onRegisterLinkClick }: SignProps) {
   const navigate = useNavigate();
   const location = useLocation();
-  const signUpMutation = useSignUp();
+  const { updateUserData } = useAuthContext();
+
 
   const { state } = location;
   const isNavbarLogin = state?.fromNavbarLogin || false;
@@ -56,36 +66,44 @@ function Signup({ requiredHeading, onRegisterLinkClick }: SignProps) {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ISignUp>({
+  } = useForm<ISignUpFormFields>({
     resolver: yupResolver(schema) as any,
     mode: "all",
   });
 
 
-  
-  
-  const handleSign = async (data: ISignUp) => {
-    console.log(data); 
-    try {
-      await signUpMutation.mutateAsync(data);
-  
-      navigate(`/${paths.LOGIN}`, { state: { fromSignup: true } });
-      console.log(data);
-
-    } catch (error) {
-      console.error("Signup failed:", error);
+  const handleSign = async (data: ISignUpFormFields) => {
+    console.log("data", data);
+    if (data) {
+      var signUpFormData = {
+        ...data,
+      } as ISignUp;
+      await signUp(signUpFormData)
+        .then((response) => {
+          if (response.data) {
+            updateUserData({
+              ...response.data,
+            });
+            if (!isNavbarLogin && !isOrderLogin && !isSignupLogin) {
+              if (onSign) onSign();
+            } else {
+            }
+          }
+        })
+        .catch((error) => {
+          if (error.response && error.response.data) {
+            console.log(error.response.data);
+          }
+        });
     }
   };
-  
 
   const moveToLogin = () => {
     if (!isNavbarLogin && !isOrderLogin && !isSignupLogin) {
-    
     } else {
       navigate(`/${paths.LOGIN}`, { state: { fromSignup: true } });
     }
   };
-
 
   return (
     <Container sx={{ width: "50%" }}>
@@ -108,9 +126,9 @@ function Signup({ requiredHeading, onRegisterLinkClick }: SignProps) {
               variant="outlined"
               fullWidth
               inputProps={{ style: { padding: "10px" } }}
-              {...register("name")}
-              error={!!errors.name}
-              helperText={errors.name?.message?.toString()}
+              {...register("userName")}
+              error={!!errors.userName}
+              helperText={errors.userName?.message?.toString()}
               FormHelperTextProps={{
                 sx: { color: "red", marginLeft: "0px" },
               }}

@@ -30,14 +30,14 @@ export interface ILogin {
   password: string;
 }
 
-export interface ISignUp {
-  phoneNumber: string;
-  password: string;
-  name: string;
-  email: string;
-  confirmPassword: string;
-  role?: string;
-}
+// export interface ISignUp {
+//   phoneNumber: string;
+//   password: string;
+//   name: string;
+//   email: string;
+//   confirmPassword: string;
+//   role?: string;
+// }
 
 export interface ICollection {
   jewelleryItems: never[];
@@ -53,4 +53,31 @@ export interface ICollection {
 export interface ISortingOptionLabel {
   value: SortingOption;
   label: string;
+}
+
+export interface IAuthContext {
+  user: IUser | null;
+  updateUserData: (user: IUser | null) => void;
+}
+
+
+export interface IUser {
+  userId: string | null;
+  phoneNumber: string | null;
+  name: string | null;
+}
+
+
+export interface ILoginResponse {
+  data: IUser | null;
+  message: string;
+  status?: boolean;
+}
+
+export interface ISignUp {
+  phoneNumber: string | undefined;
+  password: string;
+  userName: string;
+  email?: string;
+  confirmPassword: string;
 }

@@ -1,20 +1,23 @@
-import { ICollection, ILogin, ISignUp} from "../interface/type";
+import {
+  ICollection,
+  ILogin,
+  ILoginResponse,
+  ISignUp,
+} from "../interface/type";
 import { httpWithCredentials, httpWithoutCredentials } from "./http";
-import {  IProduct } from "../interface/type";
+import { IProduct } from "../interface/type";
 
- const getAllItemsByCollectionName = async (collectionName:string) => {
-    try {
-      const response = await httpWithoutCredentials.get<ICollection>(
-        `/JewelleryItem/getJewelleryItemsByJewelleryCollectionId/${collectionName}`
-      );
-  
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  };
+const getAllItemsByCollectionName = async (collectionName: string) => {
+  try {
+    const response = await httpWithoutCredentials.get<ICollection>(
+      `/JewelleryItem/getJewelleryItemsByJewelleryCollectionId/${collectionName}`
+    );
 
-
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
 
 const getNewArrivalProductsData = async () => {
   try {
@@ -27,9 +30,7 @@ const getNewArrivalProductsData = async () => {
   }
 };
 
-export { getNewArrivalProductsData,getAllItemsByCollectionName };
-
-
+export { getNewArrivalProductsData, getAllItemsByCollectionName };
 
 const loginCredentials = async (credential: ILogin) => {
   try {
@@ -44,18 +45,16 @@ const loginCredentials = async (credential: ILogin) => {
 };
 
 
-const signUpCredentials = async (credential: ISignUp) => {
+const signUp = async (credential: ISignUp) => {
   try {
-    const response = await httpWithCredentials.post<ISignUp>(
-      "/user/userregister",
+    const response = await httpWithCredentials.post<ILoginResponse>(
+      "/customer/signup",
       credential
     );
-    return response.data; 
+    return response.data;
   } catch (error) {
-    throw error
+    throw error;
   }
 };
 
-
-export {loginCredentials,signUpCredentials}
-
+export { loginCredentials, signUp };
