@@ -39,6 +39,7 @@ function App() {
             path={paths.PRODUCTDETAIL}
             element={<ProductDetail productDetails={productDetails} />}
           />
+          
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
