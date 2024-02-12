@@ -1,6 +1,6 @@
 import useAxiosLoader from "../services/http";
 import { Box } from "@mui/material";
-import  { memo } from "react";
+import { memo } from "react";
 
 const Spinner = () => <div className="spinner"></div>;
 
@@ -19,7 +19,7 @@ function Loader() {
                             borderRadius: "50%",
                         }}
                         className="spinner-image"
-                        src="public/assets/Images to Shruthi/logo/JEWELLERY BY VAVA LOGO (2).png"
+                        src="/public/images/2.jpg"
                         alt=""
                     />
                 </Box>

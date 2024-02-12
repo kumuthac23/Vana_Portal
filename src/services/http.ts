@@ -6,8 +6,6 @@ export const axiosInstance = axios.create({
   withCredentials: false, // Set the default credential configuration
 });
 
-
-
 const setBaseUrl = (url: string) => {
   axiosInstance.defaults.baseURL = url;
 };
@@ -72,7 +70,9 @@ const withCredentialsConfig = {
   withCredentials: true,
 } as AxiosRequestConfig;
 
-
+const withoutCredentialsConfig = {
+  withCredentials: false,
+} as AxiosRequestConfig;
 
 const httpWithCredentials = {
   get: <T>(
@@ -99,20 +99,25 @@ const httpWithCredentials = {
     axiosInstance.put<T>(url, data, { ...config, ...withCredentialsConfig }),
 };
 
-const httpWithoutCredentials = axios.create({
-  baseURL: import.meta.env.VITE_AXIOS_BASE_URL,
-  withCredentials: false,
-});
-
-export const http = {
-  get: <T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> =>
-    httpWithoutCredentials.get<T>(url, config),
-  post: <T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> =>
-    httpWithoutCredentials.post<T>(url, data, config),
-  delete: <T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> =>
-    httpWithoutCredentials.delete<T>(url, config),
-  update: <T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> =>
-    httpWithoutCredentials.put<T>(url, data, config),
+const httpWithoutCredentials = {
+  get: <T>(
+    url: string,
+    config?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> => axiosInstance.get<T>(url, config),
+  post: <T>(
+    url: string,
+    data?: any,
+    config?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> => axiosInstance.post<T>(url, data, config),
+  delete: <T>(
+    url: string,
+    config?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> => axiosInstance.delete<T>(url, config),
+  update: <T>(
+    url: string,
+    data?: any,
+    config?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> => axiosInstance.put<T>(url, data, config),
 };
 
 const httpWithMultipartFormData = axiosInstance;
