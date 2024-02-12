@@ -23,14 +23,14 @@ export const productDetails: IProductDetails[] = [
 
 export const jewelryCollections: Collection[] = [
   {
-    _id: "jc1",
+    _id: "jc1 ",
     name: "Necklaces",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     products: [
       {
-        _id: "p1",
-        posterURL: "/assets/Images to Shruthi/Necklaces/FX1185/950-2.jpg",
+        _id: "65b9245f014979d2feafa787",
+        posterUrl: "/assets/Images to Shruthi/Necklaces/FX1185/950-2.jpg",
         images: ["/assets/Images to Shruthi/Necklaces/FX1185/950-.jpg"],
         title: "Classic Pearl Necklace",
         description:
@@ -38,8 +38,8 @@ export const jewelryCollections: Collection[] = [
         price: 99.99,
       },
       {
-        _id: "p2",
-        posterURL: "/assets/Images to Shruthi/Necklaces/FX1189/950-5.jpg",
+        _id: "65b9245f014979d2feafa787",
+        posterUrl: "/assets/Images to Shruthi/Necklaces/FX1189/950-5.jpg",
         images: ["/assets/Images to Shruthi/Necklaces/FX1189/950-1.jpg"],
         title: "Diamond Pendant Necklace",
         description:
@@ -48,7 +48,7 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p3",
-        posterURL: "/assets/Images to Shruthi/Necklaces/FX1190/950-3.jpg",
+        posterUrl: "/assets/Images to Shruthi/Necklaces/FX1190/950-3.jpg",
         images: ["/assets/Images to Shruthi/Necklaces/FX1190/950-.jpg"],
         title: "Gold Chain Necklace",
         description:
@@ -57,7 +57,7 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p4",
-        posterURL: "/assets/Images to Shruthi/Necklaces/FX1248/1 (1).jpg",
+        posterUrl: "/assets/Images to Shruthi/Necklaces/FX1248/1 (1).jpg",
         images: ["/assets/Images to Shruthi/Necklaces/FX1248/1 (3).jpg"],
         title: "Heart Locket Necklace",
         description:
@@ -66,7 +66,7 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p5",
-        posterURL: "/assets/Images to Shruthi/Necklaces/FX1185/950-2.jpg",
+        posterUrl: "/assets/Images to Shruthi/Necklaces/FX1185/950-2.jpg",
         images: ["/assets/Images to Shruthi/Necklaces/FX1185/950-.jpg"],
         title: "Pearl Necklace",
         description:
@@ -75,7 +75,7 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p6",
-        posterURL: "/assets/Images to Shruthi/Necklaces/FX1189/950-5.jpg",
+        posterUrl: "/assets/Images to Shruthi/Necklaces/FX1189/950-5.jpg",
         images: ["/assets/Images to Shruthi/Necklaces/FX1189/950-1.jpg"],
         title: "Pendant Necklace",
         description:
@@ -84,7 +84,7 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p7",
-        posterURL: "/assets/Images to Shruthi/Necklaces/FX1190/950-3.jpg",
+        posterUrl: "/assets/Images to Shruthi/Necklaces/FX1190/950-3.jpg",
         images: ["/assets/Images to Shruthi/Necklaces/FX1190/950-.jpg"],
         title: "Chain Necklace",
         description:
@@ -93,7 +93,7 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p8",
-        posterURL: "/assets/Images to Shruthi/Necklaces/FX1248/1 (1).jpg",
+        posterUrl: "/assets/Images to Shruthi/Necklaces/FX1248/1 (1).jpg",
         images: ["/assets/Images to Shruthi/Necklaces/FX1248/1 (3).jpg"],
         title: "Locket Necklace",
         description:
@@ -110,7 +110,7 @@ export const jewelryCollections: Collection[] = [
     products: [
       {
         _id: "p11",
-        posterURL: "/assets/Images to Shruthi/Earrings/FE1858/18.jpg",
+        posterUrl: "/assets/Images to Shruthi/Earrings/FE1858/18.jpg",
         images: ["/assets/Images to Shruthi/Earrings/FE1858/49.jpg"],
         title: "Diamond Stud Earrings",
         description:
@@ -119,7 +119,7 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p12",
-        posterURL: "/assets/Images to Shruthi/Earrings/FE2077/950-21.jpg",
+        posterUrl: "/assets/Images to Shruthi/Earrings/FE2077/950-21.jpg",
         images: ["/assets/Images to Shruthi/Earrings/FE2077/950-93.jpg"],
         title: "Gold Hoop Earrings",
         description:
@@ -128,7 +128,7 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p13",
-        posterURL: "/assets/Images to Shruthi/Earrings/FE2078/950-2.jpg",
+        posterUrl: "/assets/Images to Shruthi/Earrings/FE2078/950-2.jpg",
         images: ["/assets/Images to Shruthi/Earrings/FE2078/950-104.jpg"],
         title: "Crystal Drop Earrings",
         description:
@@ -137,7 +137,7 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p14",
-        posterURL: "/assets/Images to Shruthi/Earrings/FE2085/FE2085.jpg",
+        posterUrl: "/assets/Images to Shruthi/Earrings/FE2085/FE2085.jpg",
         images: ["/assets/Images to Shruthi/Earrings/FE2085/950-110.jpg"],
         title: "Pearl Stud Earrings",
         description:
@@ -146,7 +146,7 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p15",
-        posterURL: "/assets/Images to Shruthi/Earrings/FE1858/18.jpg",
+        posterUrl: "/assets/Images to Shruthi/Earrings/FE1858/18.jpg",
         images: ["/assets/Images to Shruthi/Earrings/FE1858/49.jpg"],
         title: "Stud Earrings",
         description:
@@ -155,7 +155,7 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p16",
-        posterURL: "/assets/Images to Shruthi/Earrings/FE2077/950-21.jpg",
+        posterUrl: "/assets/Images to Shruthi/Earrings/FE2077/950-21.jpg",
         images: ["/assets/Images to Shruthi/Earrings/FE2077/950-93.jpg"],
         title: "Hoop Earrings",
         description:
@@ -164,7 +164,7 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p17",
-        posterURL: "/assets/Images to Shruthi/Earrings/FE2078/950-2.jpg",
+        posterUrl: "/assets/Images to Shruthi/Earrings/FE2078/950-2.jpg",
         images: ["/assets/Images to Shruthi/Earrings/FE2078/950-104.jpg"],
         title: "Drop Earrings",
         description:
@@ -173,7 +173,7 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p18",
-        posterURL: "/assets/Images to Shruthi/Earrings/FE2085/FE2085.jpg",
+        posterUrl: "/assets/Images to Shruthi/Earrings/FE2085/FE2085.jpg",
         images: ["/assets/Images to Shruthi/Earrings/FE2085/950-110.jpg"],
         title: "Pearls Earrings",
         description:
@@ -190,7 +190,7 @@ export const jewelryCollections: Collection[] = [
     products: [
       {
         _id: "p21",
-        posterURL: "/assets/Images to Shruthi/Bracelets/FCS004/1.jpg",
+        posterUrl: "/assets/Images to Shruthi/Bracelets/FCS004/1.jpg",
         images: ["/assets/Images to Shruthi/Bracelets/FCS004/2.jpg"],
         title: "Charm Bracelet",
         description:
@@ -199,7 +199,7 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p22",
-        posterURL: "/assets/Images to Shruthi/Bracelets/FJ1079/1 (1).jpg",
+        posterUrl: "/assets/Images to Shruthi/Bracelets/FJ1079/1 (1).jpg",
         images: ["/assets/Images to Shruthi/Bracelets/FJ1079/1 (3).jpg"],
         title: "Tennis Bracelet",
         description:
@@ -208,7 +208,7 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p23",
-        posterURL: "/assets/Images to Shruthi/Bracelets/FJ1088/1.jpg",
+        posterUrl: "/assets/Images to Shruthi/Bracelets/FJ1088/1.jpg",
         images: ["/assets/Images to Shruthi/Bracelets/FJ1088/3.jpg"],
         title: "Gold Bangle Bracelet",
         description:
@@ -217,7 +217,7 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p24",
-        posterURL: "/assets/Images to Shruthi/Bracelets/FJ1089/1 (1).jpg",
+        posterUrl: "/assets/Images to Shruthi/Bracelets/FJ1089/1 (1).jpg",
         images: ["/assets/Images to Shruthi/Bracelets/FJ1089/1 (2).jpg"],
         title: "Silver Cuff Bracelet",
         description:
@@ -226,7 +226,7 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p25",
-        posterURL: "/assets/Images to Shruthi/Bracelets/FCS004/1.jpg",
+        posterUrl: "/assets/Images to Shruthi/Bracelets/FCS004/1.jpg",
         images: ["/assets/Images to Shruthi/Bracelets/FCS004/2.jpg"],
         title: "harm Bracelet",
         description:
@@ -235,7 +235,7 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p26",
-        posterURL: "/assets/Images to Shruthi/Bracelets/FJ1079/1 (1).jpg",
+        posterUrl: "/assets/Images to Shruthi/Bracelets/FJ1079/1 (1).jpg",
         images: ["/assets/Images to Shruthi/Bracelets/FJ1079/1 (3).jpg"],
         title: "bunnies Bracelet",
         description:
@@ -244,7 +244,7 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p27",
-        posterURL: "/assets/Images to Shruthi/Bracelets/FJ1088/1.jpg",
+        posterUrl: "/assets/Images to Shruthi/Bracelets/FJ1088/1.jpg",
         images: ["/assets/Images to Shruthi/Bracelets/FJ1088/3.jpg"],
         title: "Bangle Bracelet",
         description:
@@ -253,7 +253,7 @@ export const jewelryCollections: Collection[] = [
       },
       {
         _id: "p28",
-        posterURL: "/assets/Images to Shruthi/Bracelets/FJ1089/1 (1).jpg",
+        posterUrl: "/assets/Images to Shruthi/Bracelets/FJ1089/1 (1).jpg",
         images: ["/assets/Images to Shruthi/Bracelets/FJ1089/1 (2).jpg"],
         title: "Cuff Bracelet",
         description:
@@ -264,4 +264,4 @@ export const jewelryCollections: Collection[] = [
   },
 ];
 
-export default jewelryCollections;
+// export default jewelryCollections;
