@@ -1,4 +1,3 @@
-import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -13,43 +12,31 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
-import NavbarDrawer from "../../../drawer/NavBarDrawer";
-import SearchDrawer from "../../../drawer/SearchDrawer";
-
 import vanaLogo from "../../../../public/assets/Images to Shruthi/logo/JEWELLERY BY VAVA LOGO (2).png";
-import MyBagDrawer from "../../../drawer/MyBagDrawer";
 import { useNavigate } from "react-router";
 import { paths } from "../../../routes/path";
+import { DrawerEnum, useDrawer } from "../../../context/DrawerContext";
+
+import NavbarDrawer from "../../../drawer/NavBarDrawer";
+import SearchDrawer from "../../../drawer/SearchDrawer";
+import MyBagDrawer from "../../../drawer/MyBagDrawer";
 
 const Navbar = () => {
   const isMobileView = useMediaQuery("(max-width:1000px)");
 
-  const [navDrawerOpen, setNavDrawerOpen] = useState(false);
-  const [searchDrawerOpen, setSearchDrawerOpen] = useState(false);
-  const [myBagDrawerOpen, setMyBagDrawerOpen] = useState(false);
+  const { drawerState  ,updateDrawerState } = useDrawer();
   const navigate = useNavigate();
-  const handleDrawerOpen = () => {
-    setNavDrawerOpen(true);
-  };
 
-  const handleDrawerClose = () => {
-    setNavDrawerOpen(false);
+   const handleDrawerOpen = () => {
+    updateDrawerState(DrawerEnum.Navbar);
   };
 
   const handleSearchDrawerOpen = () => {
-    setSearchDrawerOpen(true);
-  };
-
-  const handleSearchDrawerClose = () => {
-    setSearchDrawerOpen(false);
+    updateDrawerState(DrawerEnum.Search);
   };
 
   const handleMyBagDrawerOpen = () => {
-    setMyBagDrawerOpen(true);
-  };
-
-  const handleMyBagDrawerClose = () => {
-    setMyBagDrawerOpen(false);
+    updateDrawerState(DrawerEnum.MyBag);
   };
 
   const moveToLogin = () => {
@@ -157,9 +144,9 @@ const Navbar = () => {
         </Toolbar>
       </AppBar>
       <Divider sx={{ width: "80%", margin: "auto" }} />
-      <NavbarDrawer open={navDrawerOpen} onClose={handleDrawerClose} />
-      <SearchDrawer open={searchDrawerOpen} onClose={handleSearchDrawerClose} />
-      <MyBagDrawer open={myBagDrawerOpen} onClose={handleMyBagDrawerClose} />
+      <NavbarDrawer open={drawerState.isNavbarDrawerOpen} onClose={handleDrawerOpen} />
+      <SearchDrawer open={drawerState.isSearchDrawerOpen} onClose={handleSearchDrawerOpen} />
+      <MyBagDrawer open={drawerState.isMyBagDrawerOpen} onClose={handleMyBagDrawerOpen} />
     </>
   );
 };

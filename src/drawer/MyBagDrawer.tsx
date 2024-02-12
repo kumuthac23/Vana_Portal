@@ -8,6 +8,8 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Button from '@mui/material/Button';
 import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
+import { DrawerEnum, useDrawer } from '../context/DrawerContext';
+
  interface CartDrawerProps {
   open: boolean;
   onClose: () => void;
@@ -15,13 +17,18 @@ import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantity
 
 const MyBagDrawer = ({ open, onClose }:CartDrawerProps) => {
   const classes = useStyles();
+  const { updateDrawerState } = useDrawer();
+   
+  const handleDrawerClose = () => {
+    updateDrawerState(DrawerEnum.MyBag); 
+  };
 
   return (
     <Drawer anchor="right" open={open} onClose={onClose} >
       <Grid container direction="column" sx={{width:"378px"}} className={classes.drawerContainer}>
         <Grid container item className={classes.drawerHeader}>
           <Typography variant="h6">My Bag</Typography>
-          <IconButton onClick={onClose}>
+          <IconButton onClick={handleDrawerClose}>
             < CloseIcon/>
           </IconButton>
         </Grid>

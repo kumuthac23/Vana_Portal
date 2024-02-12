@@ -8,14 +8,15 @@ import List from '@mui/material/List';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemButton from '@mui/material/ListItemButton';
 import IconButton from '@mui/material/IconButton';
+import { DrawerEnum, useDrawer } from '../context/DrawerContext';
 
- interface NavbarDrawerProps {
+interface NavbarDrawerProps {
   open: boolean;
   onClose: () => void;
 }
 
 
-const NavbarDrawer = ({ open, onClose }:NavbarDrawerProps) => {
+const NavbarDrawer = ({ open,onClose }: NavbarDrawerProps) => {
   const drawerItems = [
     { text: 'Home', link: paths.ROOT },
     { text: 'Ear Rings', link: paths.EARRINGS },
@@ -25,8 +26,15 @@ const NavbarDrawer = ({ open, onClose }:NavbarDrawerProps) => {
     { text: 'FAQ/Aboutus', link: paths.FAQABOUT },
   ];
 
+  const { updateDrawerState } = useDrawer();
+
+const handleDrawerClose = () => {
+  onClose();
+  updateDrawerState(DrawerEnum.Navbar);
+};
+
   return (
-    <Drawer anchor="left" open={open} onClose={onClose} >
+    <Drawer anchor="left" open={open} onClose={handleDrawerClose} >
       <Box  sx={{width:"300px"}}>
       <Box sx={{ display: 'flex', alignItems: 'center', p: 2 ,justifyContent:"space-between"}}>
           <Typography variant="h6" sx={{ marginLeft: 1 }}>
@@ -38,7 +46,7 @@ const NavbarDrawer = ({ open, onClose }:NavbarDrawerProps) => {
         </Box>
       <List>
         {drawerItems.map((item, index) => (
-          <ListItemButton key={index} component={Link} to={item.link} onClick={onClose}>
+          <ListItemButton key={index} component={Link} to={item.link} onClick={handleDrawerClose}>
             <ListItemText primary={item.text} />
           </ListItemButton>
         ))}
