@@ -14,6 +14,8 @@ import Signup from "./common/Signup";
 import { productDetails } from "./seed-data/seed-data";
 import ProductDetail from "./common/ProductDetail";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import SnackBarProvider from "./context/SnackBarContext";
+import CustomSnackBar from "./common/CustomSnackBar";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +23,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
+        <SnackBarProvider>
         <BrowserRouter>
           <Routes>
             <Route path={paths.ROOT} element={<Layout />}>
@@ -44,7 +47,9 @@ function App() {
               element={<ProductDetail />}
             />
           </Routes>
-        </BrowserRouter>
+          </BrowserRouter>
+          <CustomSnackBar />
+        </SnackBarProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );
