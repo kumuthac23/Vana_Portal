@@ -23,6 +23,7 @@ const getNewArrivalProductsData = async () => {
     );
     return response.data;
   } catch (error) {
+    console.error('Error in getNewArrivalProductsData:', error);
     throw error;
   }
 };
