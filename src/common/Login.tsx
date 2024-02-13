@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate, useLocation } from "react-router-dom";
-
+import { useSnackBar } from "../context/SnackBarContext";
 import { ILogin } from "../interface/type";
 import { paths } from "../routes/path";
 
@@ -37,6 +37,7 @@ const schema = yup.object().shape({
 function Login({ onLogin, requiredHeading, onRegisterLinkClick }: LoginProps) {
   const navigate = useNavigate();
   const location = useLocation();
+  const { updateSnackBarState } = useSnackBar();
   const { state } = location;
   const isFromNavbar = state?.fromNavbar || false;
   const isFromOrders = state?.fromOrders || false;
@@ -51,7 +52,18 @@ function Login({ onLogin, requiredHeading, onRegisterLinkClick }: LoginProps) {
     mode: "all",
   });
 
-  const handleLogin = () => {};
+  const handleLogin = async (data: ILogin) => {
+    try {
+      
+      if (onLogin) {
+        onLogin();
+      }
+    } catch (error) {
+      // Handle login error, show snackbar, etc.
+      updateSnackBarState(true, "Login failed", "error");
+    }
+  };
+
 
   const handleRegisterLinkClick = () => {
     if (isFromNavbar) {

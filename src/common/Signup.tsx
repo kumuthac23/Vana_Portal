@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { paths } from "../routes/path";
-
+import { useSnackBar } from "../context/SnackBarContext";
 
 interface SignProps {
   onSign?(): void;
@@ -27,6 +27,8 @@ interface ISignUpFormFields {
   email?: string;
   name: string;
 }
+
+
 
 const schema = yup.object().shape({
   phoneNumber: yup
@@ -47,8 +49,9 @@ const schema = yup.object().shape({
   name: yup.string().required("Please enter Name"),
 });
 
-function Signup({  requiredHeading, onRegisterLinkClick }: SignProps) {
+function Signup({ requiredHeading, onRegisterLinkClick }: SignProps) {
   const navigate = useNavigate();
+  const { updateSnackBarState } = useSnackBar();
   const location = useLocation();
 
   const { state } = location;
@@ -71,16 +74,22 @@ function Signup({  requiredHeading, onRegisterLinkClick }: SignProps) {
 
   const moveToLogin = () => {
     if (!isNavbarLogin && !isOrderLogin && !isSignupLogin) {
-    
+
     } else {
       navigate(`/${paths.LOGIN}`, { state: { fromSignup: true } });
     }
   };
 
-  const handleSign = async (data: ISignUpFormFields) => {
-    
-  };
-
+ const handleSign = async (data: ISignUpFormFields) => {
+    try {
+      // Your asynchronous code goes here
+   } catch (error:any) {
+     if (error.response && error.response.data) {
+       console.log(error.response.data);
+       updateSnackBarState(true, error.response.data.message, "error");
+     }
+   }
+ }; 
   return (
     <Container sx={{ width: "50%" }}>
       <Typography
@@ -108,7 +117,7 @@ function Signup({  requiredHeading, onRegisterLinkClick }: SignProps) {
               FormHelperTextProps={{
                 sx: { color: "red", marginLeft: "0px" },
               }}
-              // autoComplete="new"
+            // autoComplete="new"
             />
           </Box>
           <Box sx={{ padding: "7px 0" }}>
