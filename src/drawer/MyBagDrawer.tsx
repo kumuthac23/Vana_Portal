@@ -15,7 +15,7 @@ interface MyBagDrawerProps {
 }
 
 interface CartItem {
-  productId: string; 
+  _id: string; 
   posterURL: string;
   title: string;
   price: number;
@@ -31,12 +31,27 @@ const MyBagDrawer = ({ open, onClose }: MyBagDrawerProps) => {
       try {
         const storedCartItems: CartItem[] = JSON.parse(localStorage.getItem('cart') || '[]');
         const promises = storedCartItems.map(async (item) => {
-          const response = await axios.get(`/JewelleryItem/mybag/${item.productId}`);
+          const response = await axios.get(`/JewelleryItem/mybag/${item._id}`);
           const productData = response.data;
-          return { ...productData, productId: item.productId, quantity: item.quantity };
+           console.log(productData);
+
+          if (response.status === 200 && productData) {
+            return { 
+              _id: productData._id, 
+              posterURL: productData.posterURL, 
+              title: productData.title, 
+              price: productData.price, 
+              quantity: item.quantity 
+            };
+          } else {
+            throw new Error('Failed to fetch product data');
+          }
         });
+
         const updatedCartItems = await Promise.all(promises);
         setCartItems(updatedCartItems);
+        console.log(updatedCartItems);
+        
       } catch (error) {
         console.error('Error fetching cart details:', error);
       }
@@ -45,9 +60,10 @@ const MyBagDrawer = ({ open, onClose }: MyBagDrawerProps) => {
     fetchCartDetails();
   }, [open]);
 
+
   const handleIncrement = (productId: string) => {
     const updatedCart = cartItems.map(item => {
-      if (item.productId === productId) {
+      if (item._id === productId) {
         const newQuantity = item.quantity + 1;
         updateLocalStorage(productId, newQuantity);
         return { ...item, quantity: newQuantity };
@@ -59,7 +75,7 @@ const MyBagDrawer = ({ open, onClose }: MyBagDrawerProps) => {
 
   const handleDecrement = (productId: string) => {
     const updatedCart = cartItems.map(item => {
-      if (item.productId === productId && item.quantity > 1) {
+      if (item._id === productId && item.quantity > 1) {
         const newQuantity = item.quantity - 1;
         updateLocalStorage(productId, newQuantity);
         return { ...item, quantity: newQuantity };
@@ -70,7 +86,7 @@ const MyBagDrawer = ({ open, onClose }: MyBagDrawerProps) => {
   };
 
   const handleRemove = (productId: string) => {
-    const updatedCart = cartItems.filter(item => item.productId !== productId);
+    const updatedCart = cartItems.filter(item => item._id !== productId);
     setCartItems(updatedCart);
     updateLocalStorage(productId, 0);
   };
@@ -78,7 +94,7 @@ const MyBagDrawer = ({ open, onClose }: MyBagDrawerProps) => {
   const updateLocalStorage = (productId: string, quantity: number) => {
     const storedCartItems: CartItem[] = JSON.parse(localStorage.getItem('cart') || '[]');
     const updatedCartItems = storedCartItems.map(item => {
-      if (item.productId === productId) {
+      if (item._id === productId) {
         return { ...item, quantity };
       }
       return item;
@@ -112,14 +128,13 @@ const MyBagDrawer = ({ open, onClose }: MyBagDrawerProps) => {
         ) : (
           <>
             {cartItems.map(item => (
-              <Grid container item key={item.productId} alignItems="center">
-                <img src={item.posterURL} alt={item.title} />
+              <Grid container item key={item._id} alignItems="center">
                 <Typography>{item.title}</Typography>
                 <Typography>{item.price}</Typography>
-                <IconButton onClick={() => handleDecrement(item.productId)}>-</IconButton>
+                <IconButton onClick={() => handleDecrement(item._id)}>-</IconButton>
                 <Typography>{item.quantity}</Typography>
-                <IconButton onClick={() => handleIncrement(item.productId)}>+</IconButton>
-                <Button onClick={() => handleRemove(item.productId)}>Remove</Button>
+                <IconButton onClick={() => handleIncrement(item._id)}>+</IconButton>
+                <Button onClick={() => handleRemove(item._id)}>Remove</Button>
               </Grid>
             ))}
             <Typography>Total Price: ${
