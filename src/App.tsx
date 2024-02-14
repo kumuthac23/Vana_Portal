@@ -10,7 +10,6 @@ import BestSelller from "./pages/bestseller/BestSelller";
 import FAQ from "./pages/faqabout/FAQ";
 import { paths } from "./routes/path";
 import Login from "./common/Login";
-import Signup from "./common/Signup";
 import { productDetails } from "./seed-data/seed-data";
 import ProductDetail from "./common/ProductDetail";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
@@ -36,15 +35,12 @@ function App() {
                   path={paths.LOGIN}
                   element={<Login requiredHeading={true} />}
                 />
-                <Route
+                {/* <Route
                   path={paths.SIGNUP}
                   element={<Signup requiredHeading={true} />}
-                />
+                /> */}
               </Route>
-              {/* <Route
-                path={paths.PRODUCTDETAIL}
-                element={<ProductDetail productDetails={productDetails} />}
-              /> */}
+              <Route path={paths.PRODUCTDETAIL} element={<ProductDetail />} />
             </Routes>
           </BrowserRouter>
         </ThemeProvider>
