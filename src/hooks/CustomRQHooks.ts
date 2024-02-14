@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import {  getAllItemsByCollectionName, loginCredentials } from "../services/api";
+import {  getAllItemsByCollectionName, getAllItemsById, loginCredentials, signUpCredentials } from "../services/api";
 
 
 export const useGetAllItemsByCollectionName = (collectionName:string) => {
@@ -10,6 +10,13 @@ export const useGetAllItemsByCollectionName = (collectionName:string) => {
     });
   };
 
+  export const useGetAllItemsById = (jewelleryItemsId:string) => {
+    return useQuery({
+     queryKey:["getAllItemsbyId",jewelleryItemsId],
+     queryFn:() => getAllItemsById(jewelleryItemsId),
+      refetchOnWindowFocus: false,
+    });
+  };
 
  
   export const useLogin = () => {

@@ -11,9 +11,9 @@ export interface IProduct {
 }
 
 export interface Icommonpage {
-  JewelleryCollectionDescription: string;
-  JewelleryCollectionName: string;
-  jewelleryItems: IProduct[];
+  JewelleryCollectionDescription: string,
+  JewelleryCollectionName: string,
+  jewelleryItems: IProduct[]
 }
 
 export interface IProductDetails {
@@ -25,6 +25,9 @@ export interface IProductDetails {
   posterURL: string;
   description: string;
 }
+
+
+
 export interface ILogin {
   phoneNumber: string;
   password: string;
@@ -63,6 +66,24 @@ export interface ISortingOptionLabel {
   label: string;
 }
 
+export interface CartItem {
+  _id: string;
+  posterURL: string;
+  title: string;
+  price: number;
+  quantity: number
+}
+
+export interface IMyBag {
+  _id: string;
+  posterURL: string;
+  title: string;
+  price: number;
+}
+export interface MyBagDrawerProps {
+  open: boolean;
+  onClose: () => void;
+}
 export interface IAuthContext {
   user: IUser | null;
   updateUserData: (user: IUser | null) => void;

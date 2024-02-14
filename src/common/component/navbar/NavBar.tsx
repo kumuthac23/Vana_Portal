@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -16,10 +16,14 @@ import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import NavbarDrawer from "../../../drawer/NavBarDrawer";
 import SearchDrawer from "../../../drawer/SearchDrawer";
 
-import vanaLogo from "../../../../public/assets/Images to Shruthi/logo/JEWELLERY BY VAVA LOGO (2).png";
+import vanaLogo from "../../../../public/assets/Images to Shruthi/logo/Jewellery By Vana LOGO.png";
 import MyBagDrawer from "../../../drawer/MyBagDrawer";
 import { useNavigate } from "react-router";
 import { paths } from "../../../routes/path";
+import { CartItem } from "../../../interface/type";
+
+
+
 
 const Navbar = () => {
   const isMobileView = useMediaQuery("(max-width:1000px)");
@@ -27,6 +31,8 @@ const Navbar = () => {
   const [navDrawerOpen, setNavDrawerOpen] = useState(false);
   const [searchDrawerOpen, setSearchDrawerOpen] = useState(false);
   const [myBagDrawerOpen, setMyBagDrawerOpen] = useState(false);
+  const [uniqueProductCount, setUniqueProductCount] = useState(0);
+
   const navigate = useNavigate();
   const handleDrawerOpen = () => {
     setNavDrawerOpen(true);
@@ -56,9 +62,20 @@ const Navbar = () => {
     navigate(`/${paths.LOGIN}`, { state: { fromNavbar: true } });
   };
 
+
+  useEffect(() => {
+    const cartItems: CartItem[] = JSON.parse(localStorage.getItem("cart") || "[]");
+    let totalQuantity = 0;
+    for (const item of cartItems) {
+      totalQuantity += item.quantity;
+    }
+    setUniqueProductCount(totalQuantity);
+  }, []);
+
+  
   return (
     <>
-      <AppBar position="static" sx={{ boxShadow: 0,height:"90px",bgcolor:"#ffffff" }}>
+      <AppBar position="static" sx={{ boxShadow: 0,height:"110px",bgcolor:"#ffffff" }}>
         <Toolbar>
           <Grid
             container
@@ -127,8 +144,8 @@ const Navbar = () => {
                 src={vanaLogo}
                 sx={{
                   backgroundColor: "#F6F6F6",
-                  height: "80px",
-                  width: "80px",
+                  height: "100px",
+                  width: "100px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -147,7 +164,7 @@ const Navbar = () => {
                   />
                 </IconButton>
                 <IconButton color="inherit" onClick={handleMyBagDrawerOpen}>
-                  <Badge badgeContent={0} color="secondary">
+                  <Badge badgeContent={uniqueProductCount} color="secondary">
                     <ShoppingBasketIcon />
                   </Badge>
                 </IconButton>
