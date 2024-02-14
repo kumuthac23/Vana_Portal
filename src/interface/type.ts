@@ -33,14 +33,14 @@ export interface ILogin {
   password: string;
 }
 
-export interface ISignUp {
-  phoneNumber: string;
-  password: string;
-  name: string;
-  email: string;
-  confirmPassword: string;
-  role?: string;
-}
+// export interface ISignUp {
+//   phoneNumber: string;
+//   password: string;
+//   name: string;
+//   email: string;
+//   confirmPassword: string;
+//   role?: string;
+// }
 
 export interface ICollection {
   jewelleryItems: never[];
@@ -60,7 +60,6 @@ export interface ISearchProduct {
   description: string;
   price: number;
 }
-
 
 export interface ISortingOptionLabel {
   value: SortingOption;
@@ -84,4 +83,40 @@ export interface IMyBag {
 export interface MyBagDrawerProps {
   open: boolean;
   onClose: () => void;
+}
+export interface IAuthContext {
+  user: IUser | null;
+  updateUserData: (user: IUser | null) => void;
+}
+
+export interface IUser {
+  userId: string | null;
+  phoneNumber: string | null;
+  name: string | null;
+}
+
+export interface ILoginResponse {
+  data: IUser | null;
+  message: string;
+  status?: boolean;
+}
+
+export interface ISignUp {
+  phoneNumber: string | undefined;
+  password: string;
+  userName: string;
+  email?: string;
+  confirmPassword: string;
+}
+export interface ISnackBarContextType {
+  snackBarState: {
+    snackbarOpen: boolean;
+    snackbarMessage: string;
+    snackbarSeverity: string;
+  };
+  updateSnackBarState: (
+    isOpen: boolean,
+    message: any,
+    severity: string
+  ) => void;
 }

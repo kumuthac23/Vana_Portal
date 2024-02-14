@@ -1,30 +1,30 @@
-import { ICollection, ILogin, ISignUp} from "../interface/type";
+import { ICollection, ILogin, ISignUp } from "../interface/type";
 import { httpWithCredentials, httpWithoutCredentials } from "./http";
-import {  IProduct } from "../interface/type";
+import { IProduct } from "../interface/type";
 
- const getAllItemsByCollectionName = async (collectionName:string) => {
-    try {
-      const response = await httpWithoutCredentials.get<ICollection>(
-        `/JewelleryItem/getJewelleryItemsByJewelleryCollectionId/${collectionName}`
-      );
-  
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  };
+const getAllItemsByCollectionName = async (collectionName: string) => {
+  try {
+    const response = await httpWithoutCredentials.get<ICollection>(
+      `/JewelleryItem/getJewelleryItemsByJewelleryCollectionId/${collectionName}`
+    );
 
-  const getAllItemsById = async (jewelleryItemsId:string) => {
-    try {
-      const response = await httpWithoutCredentials.get<IProduct[]>(
-        `/JewelleryItem/getJewelleryItemById/${jewelleryItemsId}`
-      );
-  
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  };
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+const getAllItemsById = async (jewelleryItemsId: string) => {
+  try {
+    const response = await httpWithoutCredentials.get<IProduct[]>(
+      `/JewelleryItem/getJewelleryItemById/${jewelleryItemsId}`
+    );
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
 
 
 
@@ -40,7 +40,7 @@ const getNewArrivalProductsData = async () => {
   }
 };
 
-export { getNewArrivalProductsData,getAllItemsByCollectionName ,getAllItemsById};
+export { getNewArrivalProductsData, getAllItemsByCollectionName, getAllItemsById };
 
 
 
@@ -63,12 +63,11 @@ const signUpCredentials = async (credential: ISignUp) => {
       "/user/userregister",
       credential
     );
-    return response.data; 
+    return response.data;
   } catch (error) {
     throw error
   }
 };
 
 
-export {loginCredentials,signUpCredentials}
-
+export { loginCredentials, signUpCredentials }

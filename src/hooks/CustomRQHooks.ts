@@ -18,12 +18,6 @@ export const useGetAllItemsByCollectionName = (collectionName:string) => {
     });
   };
 
-  export const useSignUp = () => {
-    return useMutation ({
-      mutationKey: ["signUp"],
-      mutationFn: signUpCredentials,
-    });
-  };
  
   export const useLogin = () => {
     return useMutation ({
