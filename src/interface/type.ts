@@ -3,17 +3,17 @@ import { SortingOption } from "../common/component/sortingOption";
 export interface IProduct {
   type: string;
   _id: string;
-  posterURL:string;
-  images: string[]; 
+  posterURL: string;
+  images: string[];
   title: string;
   description: string;
   price: number;
 }
 
-export interface Icommonpage{
-  JewelleryCollectionDescription: string,
-  JewelleryCollectionName: string,
-  jewelleryItems:IProduct[]
+export interface Icommonpage {
+  JewelleryCollectionDescription: string;
+  JewelleryCollectionName: string;
+  jewelleryItems: IProduct[];
 }
 
 export interface IProductDetails {
@@ -45,10 +45,18 @@ export interface ICollection {
   JewelleryCollectionName: string;
   _id?: string;
   name: string;
-  description?:string;
+  description?: string;
   products?: IProduct[];
 }
 
+export interface ISearchProduct {
+  _id: string;
+  posterURL: string;
+  images: string[];
+  title: string;
+  description: string;
+  price: number;
+}
 
 export interface ISortingOptionLabel {
   value: SortingOption;
@@ -60,13 +68,11 @@ export interface IAuthContext {
   updateUserData: (user: IUser | null) => void;
 }
 
-
 export interface IUser {
   userId: string | null;
   phoneNumber: string | null;
   name: string | null;
 }
-
 
 export interface ILoginResponse {
   data: IUser | null;
@@ -80,4 +86,16 @@ export interface ISignUp {
   userName: string;
   email?: string;
   confirmPassword: string;
+}
+export interface ISnackBarContextType {
+  snackBarState: {
+    snackbarOpen: boolean;
+    snackbarMessage: string;
+    snackbarSeverity: string;
+  };
+  updateSnackBarState: (
+    isOpen: boolean,
+    message: any,
+    severity: string
+  ) => void;
 }

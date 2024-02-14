@@ -97,9 +97,10 @@ function Signup({ onSign, requiredHeading, onRegisterLinkClick }: SignProps) {
 
   const moveToLogin = () => {
     if (!isNavbarLogin && !isOrderLogin && !isSignupLogin) {
-    } else {
-      navigate(`/${paths.LOGIN}`, { state: { fromSignup: true } });
     }
+    // else {
+    //   navigate(/${paths.LOGIN}, { state: { fromSignup: true } });
+    // }
   };
 
   return (

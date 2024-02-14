@@ -5,6 +5,8 @@ import './index.css'
 import CssBaseline from "@mui/material/CssBaseline";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import theme from './theme/theme.ts';
+import Loader from './common/Loader.tsx';
+
 
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -12,6 +14,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <App />
+      <Loader/>
     </ThemeProvider>
   </React.StrictMode>
 );
