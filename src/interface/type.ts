@@ -3,17 +3,17 @@ import { SortingOption } from "../common/component/sortingOption";
 export interface IProduct {
   type: string;
   _id: string;
-  posterURL:string;
-  images: string[]; 
+  posterURL: string;
+  images: string[];
   title: string;
   description: string;
   price: number;
 }
 
-export interface Icommonpage{
+export interface Icommonpage {
   JewelleryCollectionDescription: string,
   JewelleryCollectionName: string,
-  jewelleryItems:IProduct[]
+  jewelleryItems: IProduct[]
 }
 
 export interface IProductDetails {
@@ -48,7 +48,7 @@ export interface ICollection {
   JewelleryCollectionName: string;
   _id?: string;
   name: string;
-  description?:string;
+  description?: string;
   products?: IProduct[];
 }
 
@@ -68,8 +68,11 @@ export interface ISortingOptionLabel {
 }
 
 export interface CartItem {
-  productId: string;
-  quantity: number;
+  _id: string;
+  posterURL: string;
+  title: string;
+  price: number;
+  quantity: number
 }
 
 export interface IMyBag {

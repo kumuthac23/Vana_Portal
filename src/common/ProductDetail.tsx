@@ -10,8 +10,6 @@ import { useNavigate, useParams } from "react-router";
 import { useProductDetailById } from "../CustomRQHooks/Hooks";
 import { CartItem } from "../interface/type";
 
-
-
 function ProductDetail() {
   const { productId } = useParams();
   const navigate = useNavigate();
@@ -44,22 +42,27 @@ function ProductDetail() {
 
   const addToCart = () => {
     const cartItem: CartItem = {
-      productId: productId!,
-      quantity: quantity
+      _id: productId! || productDetails?._id!,
+      quantity: quantity || productDetails?.quantity!,
+      posterURL: "" || productDetails?.posterURL!,
+      title: "" || productDetails?.title!,
+      price: 0 || productDetails?.price!,
     };
-    let existingCart: CartItem[] = JSON.parse(localStorage.getItem("cart") || "[]");
-    const existingItemIndex = existingCart.findIndex(item => item.productId === productId);
+    let existingCart: CartItem[] = JSON.parse(
+      localStorage.getItem("cart") || "[]"
+    );
+    const existingItemIndex = existingCart.findIndex(
+      (item) => item._id === productId
+    );
     if (existingItemIndex !== -1) {
       existingCart[existingItemIndex].quantity += quantity;
     } else {
       existingCart.push(cartItem);
     }
     localStorage.setItem("cart", JSON.stringify(existingCart));
-    setQuantity(1); 
+    setQuantity(1);
     console.log(existingCart);
-    
   };
-  
 
   return (
     <Container>
@@ -171,7 +174,11 @@ function ProductDetail() {
                   </ButtonGroup>
                 </Box>
                 <Box sx={{ mt: 2 }}>
-                  <Button variant="contained" sx={{ width: "70%" }} onClick={addToCart}>
+                  <Button
+                    variant="contained"
+                    sx={{ width: "70%" }}
+                    onClick={addToCart}
+                  >
                     Add to Cart
                   </Button>
                 </Box>
