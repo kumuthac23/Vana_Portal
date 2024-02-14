@@ -8,19 +8,7 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 
 import useStyles from "../styles/cartDrawer";
-
-interface MyBagDrawerProps {
-  open: boolean;
-  onClose: () => void;
-}
-
-interface CartItem {
-  _id: string;
-  posterURL: string;
-  title: string;
-  price: number;
-  quantity: number;
-}
+import { CartItem, MyBagDrawerProps } from "../interface/type";
 
 const MyBagDrawer = ({ open, onClose }: MyBagDrawerProps) => {
   const classes = useStyles();

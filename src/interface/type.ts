@@ -81,3 +81,7 @@ export interface IMyBag {
   title: string;
   price: number;
 }
+export interface MyBagDrawerProps {
+  open: boolean;
+  onClose: () => void;
+}
