@@ -22,16 +22,13 @@ import { useNavigate } from "react-router";
 import { paths } from "../../../routes/path";
 import { CartItem } from "../../../interface/type";
 
-
-
-
 const Navbar = () => {
   const isMobileView = useMediaQuery("(max-width:1000px)");
 
   const [navDrawerOpen, setNavDrawerOpen] = useState(false);
   const [searchDrawerOpen, setSearchDrawerOpen] = useState(false);
   const [myBagDrawerOpen, setMyBagDrawerOpen] = useState(false);
-  const [uniqueProductCount, setUniqueProductCount] = useState(0);
+  const [myBagCount, setMyBagCount] = useState(0);
 
   const navigate = useNavigate();
   const handleDrawerOpen = () => {
@@ -62,20 +59,23 @@ const Navbar = () => {
     navigate(`/${paths.LOGIN}`, { state: { fromNavbar: true } });
   };
 
-
   useEffect(() => {
-    const cartItems: CartItem[] = JSON.parse(localStorage.getItem("cart") || "[]");
+    const cartItems: CartItem[] = JSON.parse(
+      localStorage.getItem("cart") || "[]"
+    );
     let totalQuantity = 0;
     for (const item of cartItems) {
       totalQuantity += item.quantity;
     }
-    setUniqueProductCount(totalQuantity);
+    setMyBagCount(cartItems.length);
   }, []);
 
-  
   return (
     <>
-      <AppBar position="static" sx={{ boxShadow: 0,height:"110px",bgcolor:"#ffffff" }}>
+      <AppBar
+        position="static"
+        sx={{ boxShadow: 0, height: "110px", bgcolor: "#ffffff" }}
+      >
         <Toolbar>
           <Grid
             container
@@ -88,10 +88,7 @@ const Navbar = () => {
               {isMobileView ? (
                 <Grid item xs={12}>
                   <Box display={"flex"}>
-                    <IconButton
-                      color="inherit"
-                      onClick={handleDrawerOpen}
-                    >
+                    <IconButton color="inherit" onClick={handleDrawerOpen}>
                       <MenuIcon />
                     </IconButton>
                     <IconButton
@@ -159,12 +156,10 @@ const Navbar = () => {
                 alignItems="flex-end"
               >
                 <IconButton color="inherit">
-                  <AccountCircleIcon
-                    onClick={moveToLogin}
-                  />
+                  <AccountCircleIcon onClick={moveToLogin} />
                 </IconButton>
                 <IconButton color="inherit" onClick={handleMyBagDrawerOpen}>
-                  <Badge badgeContent={uniqueProductCount} color="secondary">
+                  <Badge badgeContent={myBagCount} color="secondary">
                     <ShoppingBasketIcon />
                   </Badge>
                 </IconButton>
