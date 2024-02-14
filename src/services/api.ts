@@ -14,6 +14,19 @@ import {  IProduct } from "../interface/type";
     }
   };
 
+  const getAllItemsById = async (jewelleryItemsId:string) => {
+    try {
+      const response = await httpWithoutCredentials.get<IProduct[]>(
+        `/JewelleryItem/getJewelleryItemById/${jewelleryItemsId}`
+      );
+  
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+
 
 
 const getNewArrivalProductsData = async () => {
@@ -27,7 +40,7 @@ const getNewArrivalProductsData = async () => {
   }
 };
 
-export { getNewArrivalProductsData,getAllItemsByCollectionName };
+export { getNewArrivalProductsData,getAllItemsByCollectionName ,getAllItemsById};
 
 
 

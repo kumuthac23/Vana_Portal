@@ -10,7 +10,6 @@ import { DebounceInput } from "react-debounce-input";
 import { useNavigate } from "react-router";
 import { Card, CardMedia, Divider, Grid, Typography } from "@mui/material";
 import SearchOffIcon from "@mui/icons-material/SearchOff";
-import { DrawerEnum, useDrawer } from "../context/DrawerContext";
 
 interface SearchDrawerProps {
   open: boolean;
@@ -22,7 +21,6 @@ const SearchDrawer = ({ open, onClose }: SearchDrawerProps) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [products, setProducts] = useState<ISearchProduct[]>([]);
   const navigate = useNavigate();
-  const { updateDrawerState } = useDrawer();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -59,15 +57,8 @@ const SearchDrawer = ({ open, onClose }: SearchDrawerProps) => {
   const handleProductClick = (productId: string) => {
     navigate(`productDetail/${productId}`);
   };
-
-  
-  const handleDrawerClose = () => {
-    onClose();
-    updateDrawerState(DrawerEnum.Search); 
-  };
-
   return (
-    <Drawer anchor="left" open={open} onClose={handleDrawerClose}>
+    <Drawer anchor="left" open={open} onClose={onClose}>
       <Box
         sx={{
           width: "500px",

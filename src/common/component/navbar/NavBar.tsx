@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -12,40 +13,69 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
-import vanaLogo from "../../../../public/assets/Images to Shruthi/logo/JEWELLERY BY VAVA LOGO (2).png";
-import { useNavigate } from "react-router";
-import { paths } from "../../../routes/path";
-import { DrawerEnum, useDrawer } from "../../../context/DrawerContext";
-
 import NavbarDrawer from "../../../drawer/NavBarDrawer";
 import SearchDrawer from "../../../drawer/SearchDrawer";
+
+import vanaLogo from "../../../../public/assets/Images to Shruthi/logo/Jewellery By Vana LOGO.png";
 import MyBagDrawer from "../../../drawer/MyBagDrawer";
+import { useNavigate } from "react-router";
+import { paths } from "../../../routes/path";
+import { CartItem } from "../../../interface/type";
+
+
+
 
 const Navbar = () => {
   const isMobileView = useMediaQuery("(max-width:1000px)");
 
-  const { drawerState  ,updateDrawerState } = useDrawer();
-  const navigate = useNavigate();
+  const [navDrawerOpen, setNavDrawerOpen] = useState(false);
+  const [searchDrawerOpen, setSearchDrawerOpen] = useState(false);
+  const [myBagDrawerOpen, setMyBagDrawerOpen] = useState(false);
+  const [uniqueProductCount, setUniqueProductCount] = useState(0);
 
-   const handleDrawerOpen = () => {
-    updateDrawerState(DrawerEnum.Navbar);
+  const navigate = useNavigate();
+  const handleDrawerOpen = () => {
+    setNavDrawerOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setNavDrawerOpen(false);
   };
 
   const handleSearchDrawerOpen = () => {
-    updateDrawerState(DrawerEnum.Search);
+    setSearchDrawerOpen(true);
+  };
+
+  const handleSearchDrawerClose = () => {
+    setSearchDrawerOpen(false);
   };
 
   const handleMyBagDrawerOpen = () => {
-    updateDrawerState(DrawerEnum.MyBag);
+    setMyBagDrawerOpen(true);
+  };
+
+  const handleMyBagDrawerClose = () => {
+    setMyBagDrawerOpen(false);
   };
 
   const moveToLogin = () => {
     navigate(`/${paths.LOGIN}`, { state: { fromNavbar: true } });
   };
 
+
+  useEffect(() => {
+    const cartItems: CartItem[] = JSON.parse(localStorage.getItem("cart") || "[]");
+    let totalQuantity = 0;
+    for (const item of cartItems) {
+      totalQuantity += item.quantity;
+    }
+    setUniqueProductCount(totalQuantity);
+  }, []);
+
+  
   return (
     <>
-      <AppBar position="static" sx={{ boxShadow: 0,height:"90px",bgcolor:"#ffffff" }}>
+      <AppBar position="static" sx={{ boxShadow: 0,height:"110px",bgcolor:"#ffffff" }}>
         <Toolbar>
           <Grid
             container
@@ -114,8 +144,8 @@ const Navbar = () => {
                 src={vanaLogo}
                 sx={{
                   backgroundColor: "#F6F6F6",
-                  height: "80px",
-                  width: "80px",
+                  height: "100px",
+                  width: "100px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -134,7 +164,7 @@ const Navbar = () => {
                   />
                 </IconButton>
                 <IconButton color="inherit" onClick={handleMyBagDrawerOpen}>
-                  <Badge badgeContent={0} color="secondary">
+                  <Badge badgeContent={uniqueProductCount} color="secondary">
                     <ShoppingBasketIcon />
                   </Badge>
                 </IconButton>
@@ -144,9 +174,9 @@ const Navbar = () => {
         </Toolbar>
       </AppBar>
       <Divider sx={{ width: "80%", margin: "auto" }} />
-      <NavbarDrawer open={drawerState.isNavbarDrawerOpen} onClose={handleDrawerOpen} />
-      <SearchDrawer open={drawerState.isSearchDrawerOpen} onClose={handleSearchDrawerOpen} />
-      <MyBagDrawer open={drawerState.isMyBagDrawerOpen} onClose={handleMyBagDrawerOpen} />
+      <NavbarDrawer open={navDrawerOpen} onClose={handleDrawerClose} />
+      <SearchDrawer open={searchDrawerOpen} onClose={handleSearchDrawerClose} />
+      <MyBagDrawer open={myBagDrawerOpen} onClose={handleMyBagDrawerClose} />
     </>
   );
 };

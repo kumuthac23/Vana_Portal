@@ -9,11 +9,6 @@ export interface IProduct {
   description: string;
   price: number;
 }
-export interface ISizeDetail {
-  price: number;
-  MRPprice: number;
-  _id: string;
-}
 
 export interface Icommonpage{
   JewelleryCollectionDescription: string,
@@ -30,6 +25,9 @@ export interface IProductDetails {
   posterURL: string;
   description: string;
 }
+
+
+
 export interface ILogin {
   phoneNumber: string;
   password: string;
@@ -69,7 +67,14 @@ export interface ISortingOptionLabel {
   label: string;
 }
 
-export interface IMyBagCountValue {
-  mybagCount: number;
-  updateMyBagCount: any;
+export interface CartItem {
+  productId: string;
+  quantity: number;
+}
+
+export interface IMyBag {
+  _id: string;
+  posterURL: string;
+  title: string;
+  price: number;
 }
